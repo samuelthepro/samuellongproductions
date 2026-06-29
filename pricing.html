@@ -17,7 +17,9 @@
     --line:rgba(255,255,255,.1);--accent:#d0021b;--glow:rgba(208,2,27,.5);
     --font-display:'Bebas Neue',sans-serif;--font-body:'Sora',sans-serif;
   }
-  .wordmark{font-family:var(--font-display);line-height:.82;letter-spacing:.06em;color:#fff;text-transform:uppercase;display:block;}
+  .wordmark{font-family:var(--font-display);color:#fff;text-transform:uppercase;display:inline-block;line-height:1;}
+  .wordmark .wm1{display:block;font-size:1em;letter-spacing:.04em;}
+  .wordmark .wm2{display:block;font-size:.46em;letter-spacing:.34em;margin-top:3px;}
   @keyframes slpKenP{0%{transform:scale(1.02);}100%{transform:scale(1.14);}}
 </style>
 </head>
@@ -30,7 +32,7 @@
 
   <nav style="position:fixed;top:0;left:0;right:0;z-index:8000;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,64px);border-bottom:1px solid var(--line);background:var(--bg);color:#fff;">
     <a href="index.html" style="text-decoration:none;color:inherit;display:flex;align-items:center;">
-      <span class="wordmark" style="font-size:19px;">Samuel&nbsp;Long<br>Productions</span>
+      <span class="wordmark" style="font-size:21px;"><span class="wm1">Samuel Long</span><span class="wm2">Productions</span></span>
     </a>
     <div style="display:flex;align-items:center;gap:clamp(14px,3vw,40px);flex-wrap:wrap;justify-content:flex-end;">
       <a href="index.html" style="text-decoration:none;color:inherit;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">Home</a>
@@ -367,7 +369,7 @@
   <footer style="background:var(--bg);padding:clamp(48px,8vh,80px) clamp(20px,5vw,64px) 40px;border-top:1px solid var(--line);">
     <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:flex-end;">
       <a href="index.html" style="text-decoration:none;display:flex;align-items:center;">
-        <span class="wordmark" style="font-size:40px;">Samuel&nbsp;Long<br>Productions</span>
+        <span class="wordmark" style="font-size:42px;"><span class="wm1">Samuel Long</span><span class="wm2">Productions</span></span>
       </a>
       <div style="display:flex;flex-wrap:wrap;gap:22px;">
         <a href="https://www.instagram.com/samuellongproductions/" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Instagram</a>
