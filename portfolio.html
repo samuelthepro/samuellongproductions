@@ -64,13 +64,13 @@
     </div>
   </header>
 
-  <!-- CATEGORY MENU -->
-  <nav aria-label="Portfolio categories" style="background:var(--bg);padding:clamp(18px,3vh,26px) clamp(20px,5vw,64px);">
+  <!-- CATEGORY MENU (photo only) -->
+  <nav id="cat-menu" aria-label="Portfolio categories" style="display:none;background:var(--bg);padding:clamp(18px,3vh,26px) clamp(20px,5vw,64px);border-top:1px solid var(--line);">
     <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
-      <button class="cat-btn" onclick="slpGo('weddings')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Weddings</button>
-      <button class="cat-btn" onclick="slpGo('seniors')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Seniors</button>
-      <button class="cat-btn" onclick="slpGo('greek')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Greek Life</button>
-      <button class="cat-btn" onclick="slpGo('commercial')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Commercial</button>
+      <button id="cat-weddings" class="cat-btn" onclick="slpCat('weddings')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 18px var(--glow);">Weddings</button>
+      <button id="cat-seniors" class="cat-btn" onclick="slpCat('seniors')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Seniors</button>
+      <button id="cat-greek" class="cat-btn" onclick="slpCat('greek')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Greek Life</button>
+      <button id="cat-commercial" class="cat-btn" onclick="slpCat('commercial')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Commercial</button>
     </div>
   </nav>
 
@@ -103,8 +103,7 @@
             </article>
           </div>
           <div data-fade style="display:flex;flex-wrap:wrap;gap:14px;">
-            <a href="https://www.youtube.com/@Samuellongproductions" style="text-decoration:none;color:#fff;background:var(--accent);padding:15px 30px;border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 0 30px var(--glow);">Watch on YouTube</a>
-            <a href="contact.html" style="text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.35);padding:15px 30px;border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;">Book a video project</a>
+            <a href="contact.html" style="text-decoration:none;color:#fff;background:var(--accent);padding:15px 30px;border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 0 30px var(--glow);">Book a video project</a>
           </div>
         </div>
       </section>
@@ -150,7 +149,7 @@
     </section>
 
     <!-- 02 SENIORS -->
-    <section id="seniors" style="padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg2);">
+    <section id="seniors" style="display:none;padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg2);">
       <div style="max-width:1280px;margin:0 auto;">
         <div data-fade style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:clamp(30px,5vh,52px);">
           <div style="max-width:60ch;">
@@ -186,7 +185,7 @@
     </section>
 
     <!-- 03 GREEK LIFE -->
-    <section id="greek" style="padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg);">
+    <section id="greek" style="display:none;padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg);">
       <div style="max-width:1280px;margin:0 auto;">
         <div data-fade style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:clamp(30px,5vh,52px);">
           <div style="max-width:60ch;">
@@ -214,7 +213,7 @@
     </section>
 
     <!-- 04 COMMERCIAL -->
-    <section id="commercial" style="padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg2);">
+    <section id="commercial" style="display:none;padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg2);">
       <div style="max-width:1280px;margin:0 auto;">
         <div data-fade style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:clamp(30px,5vh,52px);">
           <div style="max-width:60ch;">
@@ -289,20 +288,41 @@
 </div>
 
 <script>
+var SLP_CATS = ['weddings','seniors','greek','commercial'];
 function slpSetTab(t){
   var base = 'cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;';
   var on = 'color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 22px var(--glow);';
   var off = 'color:#fff;background:transparent;border:1px solid rgba(255,255,255,.35);box-shadow:none;';
   document.getElementById('panel-video').style.display = (t === 'video') ? '' : 'none';
   document.getElementById('panel-photo').style.display = (t === 'photo') ? '' : 'none';
+  document.getElementById('cat-menu').style.display = (t === 'photo') ? '' : 'none';
   document.getElementById('tab-video').style.cssText = base + (t === 'video' ? on : off);
   document.getElementById('tab-photo').style.cssText = base + (t === 'photo' ? on : off);
+  if (t === 'photo') slpCat(window._slpCat || 'weddings', true);
 }
-function slpGo(id){
-  slpSetTab('photo');
-  var el = document.getElementById(id);
-  if (!el) return;
-  var y = el.getBoundingClientRect().top + window.scrollY;
+function slpCatStyle(active){
+  var base = 'cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;';
+  return base + (active
+    ? 'color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 18px var(--glow);'
+    : 'color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);box-shadow:none;');
+}
+function slpCat(id, noScroll){
+  if (SLP_CATS.indexOf(id) === -1) id = 'weddings';
+  window._slpCat = id;
+  SLP_CATS.forEach(function(c){
+    var sec = document.getElementById(c);
+    if (sec) sec.style.display = (c === id) ? '' : 'none';
+    var btn = document.getElementById('cat-' + c);
+    if (btn) btn.style.cssText = slpCatStyle(c === id);
+  });
+  var shown = document.getElementById(id);
+  if (shown) [].slice.call(shown.querySelectorAll('[data-fade],[data-reveal]')).forEach(function(e){ e.style.opacity = '1'; e.style.transform = 'none'; });
+  if (noScroll) return;
+  var menu = document.getElementById('cat-menu');
+  if (!menu) return;
+  var navEl = document.querySelector('nav');
+  var navH = navEl ? navEl.offsetHeight : 90;
+  var y = Math.max(0, menu.getBoundingClientRect().top + window.scrollY - navH - 6);
   var startY = window.scrollY;
   window.scrollTo({top: y, behavior: 'smooth'});
   setTimeout(function(){
@@ -336,6 +356,8 @@ function slpGo(id){
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+  var h = (location.hash || '').replace('#','');
+  if (SLP_CATS.indexOf(h) !== -1) { slpSetTab('photo'); slpCat(h); }
 })();
 </script>
 </body>
