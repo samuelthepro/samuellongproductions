@@ -16,6 +16,11 @@
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{margin:0;}
+  @media (max-width:480px){
+    nav a{font-size:11px !important;letter-spacing:.12em !important;}
+    nav img{height:40px !important;}
+    .scroll-cue{display:none !important;}
+  }
   :root{
     --bg:#08080a;--bg2:#101013;--panel:#141418;--text:#f5f3ef;--muted:#9c9aa0;
     --line:rgba(255,255,255,.1);--accent:#d0021b;--glow:rgba(208,2,27,.5);
@@ -40,7 +45,7 @@
     <a href="#top" style="text-decoration:none;color:inherit;display:flex;align-items:center;">
       <img src="uploads/logo.png" alt="Samuel Long Productions" style="height:46px;width:auto;display:block;">
     </a>
-    <div style="display:flex;align-items:center;gap:clamp(18px,3vw,34px);justify-content:center;">
+    <div style="display:flex;align-items:center;gap:clamp(12px,3vw,34px);justify-content:center;flex-wrap:wrap;">
       <a href="about.html" style="text-decoration:none;color:inherit;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">About</a>
       <a href="portfolio.html" style="text-decoration:none;color:inherit;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">Portfolio</a>
       <a href="pricing.html" style="text-decoration:none;color:inherit;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">Pricing</a>
@@ -68,7 +73,7 @@
         <a href="contact.html" style="text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.35);padding:15px 30px;border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;backdrop-filter:blur(6px);">Get in touch</a>
       </div>
     </div>
-    <div style="position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:#fff;">
+    <div class="scroll-cue" style="position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:#fff;">
       <span style="font-size:9px;letter-spacing:.34em;text-transform:uppercase;opacity:.7;">Scroll</span>
       <span style="width:1px;height:30px;background:linear-gradient(var(--accent),transparent);animation:slpCue 1.8s ease-in-out infinite;"></span>
     </div>
@@ -77,10 +82,6 @@
   <!-- APPROACH -->
   <section id="approach" style="padding:clamp(90px,16vh,180px) clamp(20px,5vw,64px);background:var(--bg);position:relative;">
     <div style="max-width:1200px;margin:0 auto;">
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:34px;">
-        <span style="width:34px;height:1px;background:var(--accent);"></span>
-        <span style="font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);">The approach</span>
-      </div>
       <h2 data-reveal style="margin:0;max-width:13ch;font-family:var(--font-display);text-transform:var(--disp-tt);letter-spacing:var(--disp-ls);font-weight:var(--disp-weight);line-height:1.02;font-size:clamp(34px,6vw,82px);">
         Created with purpose, passion &amp; authenticity.
       </h2>
@@ -106,10 +107,6 @@
     <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
       <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(40px,7vh,80px);">
         <div>
-          <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
-            <span style="width:34px;height:1px;background:var(--accent);"></span>
-            <span style="font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);">Selected work</span>
-          </div>
           <h2 data-reveal style="margin:0;font-family:var(--font-display);text-transform:var(--disp-tt);letter-spacing:var(--disp-ls);font-weight:var(--disp-weight);line-height:.95;font-size:clamp(40px,8vw,110px);">Four things we do well</h2>
         </div>
       </div>

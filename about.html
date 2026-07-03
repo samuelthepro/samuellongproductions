@@ -16,6 +16,11 @@
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{margin:0;}
+  @media (max-width:480px){
+    nav a{font-size:11px !important;letter-spacing:.12em !important;}
+    nav img{height:40px !important;}
+    .scroll-cue{display:none !important;}
+  }
   :root{
     --bg:#08080a;--bg2:#101013;--panel:#15151a;--text:#f5f3ef;--muted:#9c9aa0;
     --line:rgba(255,255,255,.1);--accent:#d0021b;--glow:rgba(208,2,27,.5);
@@ -38,7 +43,7 @@
     <a href="index.html" style="text-decoration:none;color:inherit;display:flex;align-items:center;">
       <img src="uploads/logo.png" alt="Samuel Long Productions" style="height:46px;width:auto;display:block;">
     </a>
-    <div style="display:flex;align-items:center;gap:clamp(18px,3vw,34px);justify-content:center;">
+    <div style="display:flex;align-items:center;gap:clamp(12px,3vw,34px);justify-content:center;flex-wrap:wrap;">
       <a href="about.html" style="text-decoration:none;color:#fff;font-size:12px;letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid var(--accent);padding-bottom:3px;">About</a>
       <a href="portfolio.html" style="text-decoration:none;color:inherit;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">Portfolio</a>
       <a href="pricing.html" style="text-decoration:none;color:inherit;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">Pricing</a>
@@ -49,19 +54,15 @@
   <!-- HERO -->
   <header style="position:relative;min-height:60svh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(110px,16vh,150px) clamp(20px,5vw,64px) clamp(44px,7vh,74px);overflow:hidden;">
     <div style="position:absolute;inset:0;z-index:0;overflow:hidden;">
-      <div style="position:absolute;inset:-4%;background-image:url('https://images-pw.pixieset.com/site/2YpDP0/kKXQ8q/P1230201-fffc5e34-1500.jpg');background-size:cover;background-position:center 40%;animation:slpKenP 24s ease-in-out infinite alternate;"></div>
+      <div style="position:absolute;inset:-4%;background-image:url('uploads/about/samuel-camera-operator.jpg');background-size:cover;background-position:50% 22%;animation:slpKenP 24s ease-in-out infinite alternate;"></div>
     </div>
     <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,4,6,.55) 0%,rgba(4,4,6,.35) 45%,rgba(4,4,6,.96) 100%);"></div>
     <div style="position:absolute;inset:0;z-index:1;background:radial-gradient(110% 80% at 85% 100%,var(--glow) 0%,transparent 55%);opacity:.45;mix-blend-mode:screen;"></div>
     <div style="position:relative;z-index:2;max-width:1100px;">
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
-        <span style="width:34px;height:1px;background:var(--accent);box-shadow:0 0 12px var(--glow);"></span>
-        <span style="font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:#e9e6e1;">Let's get to know each other</span>
-      </div>
       <h1 data-reveal style="margin:0;font-family:var(--font-display);text-transform:var(--disp-tt);letter-spacing:var(--disp-ls);font-weight:var(--disp-weight);line-height:.9;color:#fff;font-size:clamp(52px,11vw,150px);text-shadow:0 4px 40px rgba(0,0,0,.45);">Hi, I'm <span style="color:var(--accent);">Samuel Long</span></h1>
       <p data-reveal data-delay="160" style="margin:22px 0 0;max-width:640px;font-size:clamp(15px,1.7vw,19px);line-height:1.7;color:#e7e4df;font-weight:300;">Cinematic video, photography &amp; aerial imaging — telling real stories with clarity, craft and a whole lot of heart.</p>
     </div>
-    <div style="position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:#fff;">
+    <div class="scroll-cue" style="position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:#fff;">
       <span style="font-size:9px;letter-spacing:.34em;text-transform:uppercase;opacity:.7;">Scroll</span>
       <span style="width:1px;height:30px;background:linear-gradient(var(--accent),transparent);animation:slpCue 1.8s ease-in-out infinite;"></span>
     </div>
@@ -74,7 +75,10 @@
       <!-- LEFT: portrait -->
       <div data-fade style="display:grid;gap:16px;">
         <div style="position:relative;overflow:hidden;border-radius:8px;aspect-ratio:4/5;background:var(--panel);">
-          <img loading="lazy" src="https://images-pw.pixieset.com/site/2YpDP0/GkDVQM/P1230059-9ddedfd1-1500.jpeg" alt="Samuel Long behind the camera" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img loading="lazy" src="uploads/about/samuel-drone-launch.jpg" alt="Samuel Long with his drone and camera gear" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div style="position:relative;overflow:hidden;border-radius:8px;aspect-ratio:16/10;background:var(--panel);">
+          <img loading="lazy" src="uploads/about/samuel-drone-portrait.jpg" alt="Samuel Long with his drone" style="width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block;">
         </div>
         <div style="display:flex;align-items:center;gap:16px;">
           <span style="font-family:var(--font-display);font-size:clamp(40px,6vw,64px);color:var(--accent);line-height:1;">2019</span>
@@ -84,10 +88,6 @@
 
       <!-- RIGHT: bio -->
       <div data-fade style="display:flex;flex-direction:column;gap:24px;max-width:52ch;padding-top:6px;">
-        <div style="display:flex;align-items:center;gap:14px;">
-          <span style="width:34px;height:1px;background:var(--accent);"></span>
-          <span style="font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);">The story</span>
-        </div>
         <h2 style="margin:0;font-family:var(--font-display);text-transform:var(--disp-tt);letter-spacing:var(--disp-ls);font-weight:var(--disp-weight);line-height:1.0;font-size:clamp(30px,4.6vw,56px);">The person behind the lens</h2>
         <p style="margin:0;font-size:clamp(16px,1.7vw,19px);line-height:1.75;color:var(--text);font-weight:300;">Since 2019, Samuel Long Productions has provided high-quality visual storytelling through video, photo, and aerial imaging. With over seven years of hands-on experience capturing weddings, sporting events, and creative commercial projects, I specialize in turning real moments into cinematic visuals that connect with your audience.</p>
         <p style="margin:0;font-size:clamp(15px,1.6vw,17px);line-height:1.75;color:var(--muted);font-weight:300;">As an FAA-certified drone pilot and seasoned videographer, I bring both technical precision and artistic vision to every shoot. Whether filming on the ground or in the air, my goal is always the same: to deliver polished, emotionally resonant content tailored to your needs.</p>
@@ -99,7 +99,7 @@
 
   <!-- CREDENTIALS -->
   <section style="padding:clamp(50px,8vh,90px) clamp(20px,5vw,64px);background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
-    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:clamp(24px,4vw,48px);">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:clamp(20px,4vw,48px);">
       <div data-fade style="display:flex;flex-direction:column;gap:8px;">
         <span style="font-family:var(--font-display);font-size:clamp(40px,5vw,64px);color:#fff;line-height:.9;">7<span style="color:var(--accent);">+</span></span>
         <span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);">Years of experience</span>
@@ -122,10 +122,6 @@
   <!-- WHO I WORK WITH -->
   <section style="padding:clamp(80px,13vh,150px) clamp(20px,5vw,64px);background:var(--bg);position:relative;">
     <div style="max-width:1200px;margin:0 auto;">
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:28px;">
-        <span style="width:34px;height:1px;background:var(--accent);"></span>
-        <span style="font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);">Some of my clients</span>
-      </div>
       <h2 data-reveal style="margin:0;max-width:16ch;font-family:var(--font-display);text-transform:var(--disp-tt);letter-spacing:var(--disp-ls);font-weight:var(--disp-weight);line-height:1.02;font-size:clamp(32px,5.5vw,74px);">The people &amp; brands I get to work with</h2>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(16px,2.5vw,26px);margin-top:clamp(40px,6vh,72px);">
         <div data-fade style="border:1px solid var(--line);border-radius:10px;padding:clamp(22px,3vw,32px);background:var(--panel);display:flex;flex-direction:column;gap:10px;">

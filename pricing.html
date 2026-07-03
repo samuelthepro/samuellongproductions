@@ -13,6 +13,10 @@
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{margin:0;}
+  @media (max-width:480px){
+    nav a{font-size:11px !important;letter-spacing:.12em !important;}
+    nav img{height:40px !important;}
+  }
   :root{
     --bg:#08080a;--bg2:#101013;--panel:#15151a;--text:#f5f3ef;--muted:#9c9aa0;
     --line:rgba(255,255,255,.1);--accent:#d0021b;--glow:rgba(208,2,27,.5);
@@ -35,7 +39,7 @@
     <a href="index.html" style="text-decoration:none;color:inherit;display:flex;align-items:center;">
       <img src="uploads/logo.png" alt="Samuel Long Productions" style="height:46px;width:auto;display:block;">
     </a>
-    <div style="display:flex;align-items:center;gap:clamp(18px,3vw,34px);justify-content:center;">
+    <div style="display:flex;align-items:center;gap:clamp(12px,3vw,34px);justify-content:center;flex-wrap:wrap;">
       <a href="about.html" style="text-decoration:none;color:inherit;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">About</a>
       <a href="portfolio.html" style="text-decoration:none;color:inherit;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">Portfolio</a>
       <a href="pricing.html" style="text-decoration:none;color:#fff;font-size:12px;letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid var(--accent);padding-bottom:3px;">Pricing</a>
@@ -51,62 +55,41 @@
     <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,4,6,.6) 0%,rgba(4,4,6,.4) 45%,rgba(4,4,6,.95) 100%);"></div>
     <div style="position:absolute;inset:0;z-index:1;background:radial-gradient(110% 80% at 85% 100%,var(--glow) 0%,transparent 55%);opacity:.45;mix-blend-mode:screen;"></div>
     <div style="position:relative;z-index:2;max-width:1100px;">
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
-        <span style="width:34px;height:1px;background:var(--accent);box-shadow:0 0 12px var(--glow);"></span>
-        <span style="font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:#e9e6e1;">Info &amp; Packages</span>
-      </div>
       <h1 data-reveal style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.9;color:#fff;font-size:clamp(54px,11vw,150px);">Pricing</h1>
       <p data-reveal data-delay="160" style="margin:22px 0 0;max-width:640px;font-size:clamp(15px,1.7vw,19px);line-height:1.7;color:#e7e4df;font-weight:300;">Every project is unique, and scope varies with your needs. These packages are a starting point so you know what to expect — I always tailor the final scope to your project. My goal is simple: underpromise and overdeliver.</p>
     </div>
   </header>
 
-  <!-- CATEGORIES -->
-  <main style="position:relative;">
+  <!-- MEDIUM TOGGLE -->
+  <section style="padding:clamp(44px,7vh,68px) clamp(20px,5vw,64px) 0;background:var(--bg);">
+    <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px;">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+        <button id="tab-video" onclick="slpSetTab('video')" style="cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 22px var(--glow);">Video</button>
+        <button id="tab-photo" onclick="slpSetTab('photo')" style="cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid var(--line);box-shadow:none;">Photo</button>
+      </div>
+    </div>
+  </section>
 
-    <!-- 01 WEDDINGS -->
-    <section id="weddings" style="padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg);">
+  <!-- CATEGORIES -->
+  <main style="position:relative;margin-top:clamp(40px,7vh,64px);">
+
+    <!-- ===================== VIDEO PANEL ===================== -->
+    <div id="panel-video">
+
+    <!-- 01 WEDDINGS (VIDEO) -->
+    <section id="weddings-video" style="padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg);">
       <div style="max-width:1200px;margin:0 auto;">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,5vw,64px);align-items:center;margin-bottom:clamp(36px,6vh,64px);">
           <div data-fade style="overflow:hidden;border-radius:8px;aspect-ratio:16/11;background:var(--panel);">
-            <img loading="lazy" src="https://images-pw.pixieset.com/site/2YpDP0/yA9ml0/Cochrane_Wedding_426-f14e7ab0-1500.jpg" alt="Weddings" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <img loading="lazy" src="uploads/portfolio/cochrane-reception.jpg" alt="Wedding films" style="width:100%;height:100%;object-fit:cover;display:block;">
           </div>
           <div data-fade style="display:flex;flex-direction:column;gap:16px;">
             <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
               <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">01</span>
               <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(38px,6vw,76px);">Weddings</h2>
             </div>
-            <p style="margin:0;max-width:52ch;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Your wedding or engagement is a chapter worth remembering. These packages are a starting point — I'll build a custom experience around your day.</p>
-            <div style="font-family:var(--font-display);font-size:clamp(20px,2.2vw,28px);letter-spacing:.04em;color:var(--text);">From $250 photo · $1,800 video</div>
-          </div>
-        </div>
-
-        <div data-fade style="margin-top:clamp(28px,5vh,52px);">
-          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;">
-            <span style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);">Engagement Photography</span>
-            <span style="flex:1;height:1px;background:var(--line);"></span>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(14px,1.8vw,22px);">
-            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
-                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Essential</h3>
-                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$250</span>
-              </div>
-              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">A timeless option to announce your engagement. 30-minute session at one location, up to 15 fully edited high-res images via private online gallery.</p>
-            </article>
-            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
-                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Signature</h3>
-                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$375</span>
-              </div>
-              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">Our most popular option. 1-hour session at up to two locations, up to 30 fully edited images, a social-ready gallery, and personal printing rights.</p>
-            </article>
-            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
-                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Premium</h3>
-                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$550</span>
-              </div>
-              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">The complete experience. Two-hour session at multiple locations, two outfit changes, 50+ edited images, plus a 1–2 minute cinematic story video.</p>
-            </article>
+            <p style="margin:0;max-width:52ch;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">A cinematic film is the closest thing to living your wedding day twice. These packages are a starting point — I'll build a custom experience around your day.</p>
+            <div style="font-family:var(--font-display);font-size:clamp(20px,2.2vw,28px);letter-spacing:.04em;color:var(--text);">From $1,800</div>
           </div>
         </div>
 
@@ -142,69 +125,20 @@
       </div>
     </section>
 
-    <!-- 02 SENIORS -->
-    <section id="seniors" style="padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg2);">
+    <!-- 02 GREEK LIFE (VIDEO) -->
+    <section id="greek-video" style="padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg2);">
       <div style="max-width:1200px;margin:0 auto;">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,5vw,64px);align-items:center;margin-bottom:clamp(36px,6vh,64px);">
           <div data-fade style="overflow:hidden;border-radius:8px;aspect-ratio:16/11;background:var(--panel);">
-            <img loading="lazy" src="https://images-pw.pixieset.com/site/2YpDP0/vpP1xL/SK-Senior-34-a0f08b43-1500.jpg" alt="Seniors" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <img loading="lazy" src="https://images-pw.pixieset.com/site/2YpDP0/X40ODX/KD-Bid-2025-077-ff9347b0-1500.jpg" alt="Greek Life films" style="width:100%;height:100%;object-fit:cover;display:block;">
           </div>
           <div data-fade style="display:flex;flex-direction:column;gap:16px;">
             <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
               <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">02</span>
-              <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(38px,6vw,76px);">Seniors</h2>
-            </div>
-            <p style="margin:0;max-width:52ch;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Bold, editorial senior and family portraits that actually feel like you. Custom coverage and locations to preserve your story for years to come.</p>
-            <div style="font-family:var(--font-display);font-size:clamp(20px,2.2vw,28px);letter-spacing:.04em;color:var(--text);">From $200</div>
-          </div>
-        </div>
-
-        <div data-fade style="margin-top:clamp(28px,5vh,52px);">
-          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;">
-            <span style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);">Photography Sessions</span>
-            <span style="flex:1;height:1px;background:var(--line);"></span>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(14px,1.8vw,22px);">
-            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
-                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Essential Session</h3>
-                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$200</span>
-              </div>
-              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">A relaxed option for a handful of professional photos. 30-minute session at one location, 15+ fully edited high-res images via private online gallery.</p>
-            </article>
-            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
-                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Signature Session</h3>
-                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$300</span>
-              </div>
-              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">Our most popular option. 1-hour session at up to two locations, 30+ edited images in print-ready and social formats, plus one outfit change.</p>
-            </article>
-            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
-                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Premium Session</h3>
-                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$475</span>
-              </div>
-              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">A fully inclusive experience. 2-hour session at multiple locations, two outfit changes, 40+ edited images — also perfect for groups. Delivered via private gallery.</p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 03 GREEK LIFE -->
-    <section id="greek" style="padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg);">
-      <div style="max-width:1200px;margin:0 auto;">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,5vw,64px);align-items:center;margin-bottom:clamp(36px,6vh,64px);">
-          <div data-fade style="overflow:hidden;border-radius:8px;aspect-ratio:16/11;background:var(--panel);">
-            <img loading="lazy" src="https://images-pw.pixieset.com/site/2YpDP0/X40ODX/KD-Bid-2025-077-ff9347b0-1500.jpg" alt="Greek Life" style="width:100%;height:100%;object-fit:cover;display:block;">
-          </div>
-          <div data-fade style="display:flex;flex-direction:column;gap:16px;">
-            <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
-              <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">03</span>
               <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(38px,6vw,76px);">Greek Life</h2>
             </div>
             <p style="margin:0;max-width:52ch;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Whether it's the elegance of formals, the energy of socials, or recruitment campaigns, we deliver full-service media built for collegiate Greek organizations.</p>
-            <div style="font-family:var(--font-display);font-size:clamp(20px,2.2vw,28px);letter-spacing:.04em;color:var(--text);">From $200 photo · $500 video</div>
+            <div style="font-family:var(--font-display);font-size:clamp(20px,2.2vw,28px);letter-spacing:.04em;color:var(--text);">From $500</div>
           </div>
         </div>
 
@@ -267,83 +201,23 @@
             </article>
           </div>
         </div>
-
-        <div data-fade style="margin-top:clamp(28px,5vh,52px);">
-          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;">
-            <span style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);">Photography</span>
-            <span style="flex:1;height:1px;background:var(--line);"></span>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(14px,1.8vw,22px);">
-            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
-                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Pregame / Get-Together</h3>
-                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$200</span>
-              </div>
-              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">Capture the energy before the night begins. 1 photographer, 1 hour of coverage, quick-turnaround delivery. +$75/hr for additional time.</p>
-            </article>
-            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
-                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">House Event</h3>
-                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$400</span>
-              </div>
-              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">For casual gatherings, mixers, and house socials. 1 photographer, 2 hours of coverage, full photo library within one week. +$150/hr additional.</p>
-            </article>
-            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
-                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Date Party</h3>
-                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$1,200</span>
-              </div>
-              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">Comprehensive two-photographer coverage for every angle and candid moment. Professional editing and a full digital library for sharing.</p>
-            </article>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- 04 COMMERCIAL -->
-    <section id="commercial" style="padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg2);">
+    <!-- 03 COMMERCIAL (VIDEO) -->
+    <section id="commercial-video" style="padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg);">
       <div style="max-width:1200px;margin:0 auto;">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,5vw,64px);align-items:center;margin-bottom:clamp(36px,6vh,64px);">
           <div data-fade style="overflow:hidden;border-radius:8px;aspect-ratio:16/11;background:var(--panel);">
-            <img loading="lazy" src="https://images-pw.pixieset.com/site/2YpDP0/Wprm3o/2128-Jackson-Ave-Drone-2-f32d55fc-1500.jpg" alt="Commercial" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <img loading="lazy" src="uploads/portfolio/coleman-studio-guitar.jpg" alt="Commercial video production" style="width:100%;height:100%;object-fit:cover;display:block;">
           </div>
           <div data-fade style="display:flex;flex-direction:column;gap:16px;">
             <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
-              <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">04</span>
+              <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">03</span>
               <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(38px,6vw,76px);">Commercial</h2>
             </div>
             <p style="margin:0;max-width:52ch;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Your business deserves to be documented with professionalism and care — polished, high-quality content that makes a lasting impact on your brand.</p>
-            <div style="font-family:var(--font-display);font-size:clamp(20px,2.2vw,28px);letter-spacing:.04em;color:var(--text);">From $250 photo · $450 video</div>
-          </div>
-        </div>
-
-        <div data-fade style="margin-top:clamp(28px,5vh,52px);">
-          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;">
-            <span style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);">Photography</span>
-            <span style="flex:1;height:1px;background:var(--line);"></span>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(14px,1.8vw,22px);">
-            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
-                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Starter</h3>
-                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$250</span>
-              </div>
-              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">A 30-minute shoot at one location with 15 professionally edited images in high resolution, optimized for print and web.</p>
-            </article>
-            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
-                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Standard</h3>
-                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$600</span>
-              </div>
-              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">Our most popular option. Up to a 2-hour shoot at one or two locations with 40 edited images, a social-ready gallery, and full commercial usage rights.</p>
-            </article>
-            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
-                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Premium</h3>
-                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$950</span>
-              </div>
-              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">A half-day shoot (4–5 hrs) at multiple locations, unlimited looks/products, and 75+ edited images. Curated gallery and full commercial rights for print, web, and ads.</p>
-            </article>
+            <div style="font-family:var(--font-display);font-size:clamp(20px,2.2vw,28px);letter-spacing:.04em;color:var(--text);">From $450</div>
           </div>
         </div>
 
@@ -410,6 +284,209 @@
       </div>
     </section>
 
+    </div>
+
+    <!-- ===================== PHOTO PANEL ===================== -->
+    <div id="panel-photo" style="display:none;">
+
+    <!-- 01 WEDDINGS (PHOTO) -->
+    <section id="weddings" style="padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg);">
+      <div style="max-width:1200px;margin:0 auto;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,5vw,64px);align-items:center;margin-bottom:clamp(36px,6vh,64px);">
+          <div data-fade style="overflow:hidden;border-radius:8px;aspect-ratio:16/11;background:var(--panel);">
+            <img loading="lazy" src="https://images-pw.pixieset.com/site/2YpDP0/yA9ml0/Cochrane_Wedding_426-f14e7ab0-1500.jpg" alt="Weddings" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div data-fade style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
+              <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">01</span>
+              <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(38px,6vw,76px);">Weddings</h2>
+            </div>
+            <p style="margin:0;max-width:52ch;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Your wedding or engagement is a chapter worth remembering. These packages are a starting point — I'll build a custom experience around your day.</p>
+            <div style="font-family:var(--font-display);font-size:clamp(20px,2.2vw,28px);letter-spacing:.04em;color:var(--text);">From $250</div>
+          </div>
+        </div>
+
+        <div data-fade style="margin-top:clamp(28px,5vh,52px);">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;">
+            <span style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);">Engagement Photography</span>
+            <span style="flex:1;height:1px;background:var(--line);"></span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(14px,1.8vw,22px);">
+            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
+                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Essential</h3>
+                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$250</span>
+              </div>
+              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">A timeless option to announce your engagement. 30-minute session at one location, up to 15 fully edited high-res images via private online gallery.</p>
+            </article>
+            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
+                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Signature</h3>
+                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$375</span>
+              </div>
+              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">Our most popular option. 1-hour session at up to two locations, up to 30 fully edited images, a social-ready gallery, and personal printing rights.</p>
+            </article>
+            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
+                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Premium</h3>
+                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$550</span>
+              </div>
+              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">The complete experience. Two-hour session at multiple locations, two outfit changes, 50+ edited images, plus a 1–2 minute cinematic story video.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 SENIORS (PHOTO) -->
+    <section id="seniors" style="padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg2);">
+      <div style="max-width:1200px;margin:0 auto;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,5vw,64px);align-items:center;margin-bottom:clamp(36px,6vh,64px);">
+          <div data-fade style="overflow:hidden;border-radius:8px;aspect-ratio:16/11;background:var(--panel);">
+            <img loading="lazy" src="https://images-pw.pixieset.com/site/2YpDP0/vpP1xL/SK-Senior-34-a0f08b43-1500.jpg" alt="Seniors" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div data-fade style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
+              <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">02</span>
+              <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(38px,6vw,76px);">Seniors</h2>
+            </div>
+            <p style="margin:0;max-width:52ch;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Bold, editorial senior and family portraits that actually feel like you. Custom coverage and locations to preserve your story for years to come.</p>
+            <div style="font-family:var(--font-display);font-size:clamp(20px,2.2vw,28px);letter-spacing:.04em;color:var(--text);">From $200</div>
+          </div>
+        </div>
+
+        <div data-fade style="margin-top:clamp(28px,5vh,52px);">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;">
+            <span style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);">Photography Sessions</span>
+            <span style="flex:1;height:1px;background:var(--line);"></span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(14px,1.8vw,22px);">
+            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
+                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Essential Session</h3>
+                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$200</span>
+              </div>
+              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">A relaxed option for a handful of professional photos. 30-minute session at one location, 15+ fully edited high-res images via private online gallery.</p>
+            </article>
+            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
+                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Signature Session</h3>
+                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$300</span>
+              </div>
+              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">Our most popular option. 1-hour session at up to two locations, 30+ edited images in print-ready and social formats, plus one outfit change.</p>
+            </article>
+            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
+                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Premium Session</h3>
+                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$475</span>
+              </div>
+              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">A fully inclusive experience. 2-hour session at multiple locations, two outfit changes, 40+ edited images — also perfect for groups. Delivered via private gallery.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 GREEK LIFE (PHOTO) -->
+    <section id="greek" style="padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg);">
+      <div style="max-width:1200px;margin:0 auto;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,5vw,64px);align-items:center;margin-bottom:clamp(36px,6vh,64px);">
+          <div data-fade style="overflow:hidden;border-radius:8px;aspect-ratio:16/11;background:var(--panel);">
+            <img loading="lazy" src="https://images-pw.pixieset.com/site/2YpDP0/X40GDY/Lucky-Me-Pregame-2026-24-a737440b-1500.jpg" alt="Greek Life" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div data-fade style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
+              <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">03</span>
+              <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(38px,6vw,76px);">Greek Life</h2>
+            </div>
+            <p style="margin:0;max-width:52ch;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Whether it's the elegance of formals, the energy of socials, or recruitment campaigns, we deliver full-service media built for collegiate Greek organizations.</p>
+            <div style="font-family:var(--font-display);font-size:clamp(20px,2.2vw,28px);letter-spacing:.04em;color:var(--text);">From $200</div>
+          </div>
+        </div>
+
+        <div data-fade style="margin-top:clamp(28px,5vh,52px);">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;">
+            <span style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);">Photography</span>
+            <span style="flex:1;height:1px;background:var(--line);"></span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(14px,1.8vw,22px);">
+            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
+                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Pregame / Get-Together</h3>
+                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$200</span>
+              </div>
+              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">Capture the energy before the night begins. 1 photographer, 1 hour of coverage, quick-turnaround delivery. +$75/hr for additional time.</p>
+            </article>
+            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
+                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">House Event</h3>
+                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$400</span>
+              </div>
+              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">For casual gatherings, mixers, and house socials. 1 photographer, 2 hours of coverage, full photo library within one week. +$150/hr additional.</p>
+            </article>
+            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
+                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Date Party</h3>
+                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$1,200</span>
+              </div>
+              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">Comprehensive two-photographer coverage for every angle and candid moment. Professional editing and a full digital library for sharing.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 COMMERCIAL (PHOTO) -->
+    <section id="commercial" style="padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg2);">
+      <div style="max-width:1200px;margin:0 auto;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,5vw,64px);align-items:center;margin-bottom:clamp(36px,6vh,64px);">
+          <div data-fade style="overflow:hidden;border-radius:8px;aspect-ratio:16/11;background:var(--panel);">
+            <img loading="lazy" src="https://images-pw.pixieset.com/site/2YpDP0/Wprm3o/2128-Jackson-Ave-Drone-2-f32d55fc-1500.jpg" alt="Commercial" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div data-fade style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
+              <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">04</span>
+              <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(38px,6vw,76px);">Commercial</h2>
+            </div>
+            <p style="margin:0;max-width:52ch;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Your business deserves to be documented with professionalism and care — polished, high-quality content that makes a lasting impact on your brand.</p>
+            <div style="font-family:var(--font-display);font-size:clamp(20px,2.2vw,28px);letter-spacing:.04em;color:var(--text);">From $250</div>
+          </div>
+        </div>
+
+        <div data-fade style="margin-top:clamp(28px,5vh,52px);">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;">
+            <span style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);">Photography</span>
+            <span style="flex:1;height:1px;background:var(--line);"></span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(14px,1.8vw,22px);">
+            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
+                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Starter</h3>
+                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$250</span>
+              </div>
+              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">A 30-minute shoot at one location with 15 professionally edited images in high resolution, optimized for print and web.</p>
+            </article>
+            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
+                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Standard</h3>
+                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$600</span>
+              </div>
+              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">Our most popular option. Up to a 2-hour shoot at one or two locations with 40 edited images, a social-ready gallery, and full commercial usage rights.</p>
+            </article>
+            <article style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:10px;background:var(--panel);">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
+                <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1;font-size:clamp(22px,2.4vw,30px);max-width:11ch;">Premium</h3>
+                <span style="font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1;color:var(--accent);white-space:nowrap;">$950</span>
+              </div>
+              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;">A half-day shoot (4–5 hrs) at multiple locations, unlimited looks/products, and 75+ edited images. Curated gallery and full commercial rights for print, web, and ads.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    </div>
+
   </main>
 
   <!-- CUSTOM QUOTE -->
@@ -448,6 +525,26 @@
 </div>
 
 <script>
+function slpSetTab(t){
+  var base = 'cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;';
+  var on = 'color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 22px var(--glow);';
+  var off = 'color:var(--text);background:transparent;border:1px solid var(--line);box-shadow:none;';
+  document.getElementById('panel-video').style.display = (t === 'video') ? '' : 'none';
+  document.getElementById('panel-photo').style.display = (t === 'photo') ? '' : 'none';
+  document.getElementById('tab-video').style.cssText = base + (t === 'video' ? on : off);
+  document.getElementById('tab-photo').style.cssText = base + (t === 'photo' ? on : off);
+}
+(function(){
+  var h = (location.hash || '').replace('#','');
+  if (h === 'weddings' || h === 'seniors' || h === 'greek' || h === 'commercial') {
+    slpSetTab('photo');
+    var el = document.getElementById(h);
+    if (el) setTimeout(function(){ el.scrollIntoView(); }, 60);
+  } else if (h === 'weddings-video' || h === 'greek-video' || h === 'commercial-video') {
+    var elv = document.getElementById(h);
+    if (elv) setTimeout(function(){ elv.scrollIntoView(); }, 60);
+  }
+})();
 (function(){
   var progress = document.getElementById('progress');
   var els = [].slice.call(document.querySelectorAll('[data-reveal],[data-fade]'));

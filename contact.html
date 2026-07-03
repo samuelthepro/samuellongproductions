@@ -13,6 +13,10 @@
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{margin:0;}
+  @media (max-width:480px){
+    nav a{font-size:11px !important;letter-spacing:.12em !important;}
+    nav img{height:40px !important;}
+  }
   :root{
     --bg:#08080a;--bg2:#101013;--panel:#15151a;--text:#f5f3ef;--muted:#9c9aa0;
     --line:rgba(255,255,255,.1);--accent:#d0021b;--glow:rgba(208,2,27,.5);
@@ -43,7 +47,7 @@
     <a href="index.html" style="text-decoration:none;color:inherit;display:flex;align-items:center;">
       <img src="uploads/logo.png" alt="Samuel Long Productions" style="height:46px;width:auto;display:block;">
     </a>
-    <div style="display:flex;align-items:center;gap:clamp(18px,3vw,34px);justify-content:center;">
+    <div style="display:flex;align-items:center;gap:clamp(12px,3vw,34px);justify-content:center;flex-wrap:wrap;">
       <a href="about.html" style="text-decoration:none;color:inherit;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">About</a>
       <a href="portfolio.html" style="text-decoration:none;color:inherit;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">Portfolio</a>
       <a href="pricing.html" style="text-decoration:none;color:inherit;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">Pricing</a>
@@ -59,10 +63,6 @@
     <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,4,6,.6) 0%,rgba(4,4,6,.4) 45%,rgba(4,4,6,.95) 100%);"></div>
     <div style="position:absolute;inset:0;z-index:1;background:radial-gradient(110% 80% at 85% 100%,var(--glow) 0%,transparent 55%);opacity:.45;mix-blend-mode:screen;"></div>
     <div style="position:relative;z-index:2;max-width:1100px;">
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
-        <span style="width:34px;height:1px;background:var(--accent);box-shadow:0 0 12px var(--glow);"></span>
-        <span style="font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:#e9e6e1;">Let's work together</span>
-      </div>
       <h1 data-reveal style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.9;color:#fff;font-size:clamp(54px,11vw,150px);">Get in touch</h1>
       <p data-reveal data-delay="160" style="margin:22px 0 0;max-width:620px;font-size:clamp(15px,1.7vw,19px);line-height:1.7;color:#e7e4df;font-weight:300;">Tell me about your vision — the date, the location, what you're dreaming up — and I'll get back to you personally, usually within a day.</p>
     </div>
