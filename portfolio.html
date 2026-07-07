@@ -76,7 +76,8 @@
   <!-- HERO -->
   <header style="position:relative;min-height:64svh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(110px,16vh,150px) clamp(20px,5vw,64px) clamp(40px,7vh,70px);overflow:hidden;">
     <div style="position:absolute;inset:0;z-index:0;overflow:hidden;">
-      <video data-bg autoplay muted loop playsinline preload="auto" poster="uploads/video/cadillac-sunset-poster.jpg" src="uploads/video/cadillac-sunset-drone.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;"></video>
+      <video id="hero-bg-video" data-bg autoplay muted loop playsinline preload="auto" poster="uploads/video/cadillac-dusk-poster.jpg" src="uploads/video/cadillac-dusk-drone.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;"></video>
+      <div id="hero-bg-photo" style="display:none;position:absolute;inset:-4%;background-image:url('uploads/pixieset/Cochrane_Wedding_426-f14e7ab0-1500.jpg');background-size:cover;background-position:50% 40%;"></div>
     </div>
     <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,4,6,.55) 0%,rgba(4,4,6,.35) 45%,rgba(4,4,6,.95) 100%);"></div>
     <div style="position:absolute;inset:0;z-index:1;background:radial-gradient(110% 80% at 85% 100%,var(--glow) 0%,transparent 55%);opacity:.45;mix-blend-mode:screen;"></div>
@@ -429,6 +430,13 @@ function slpSetTab(t){
   document.getElementById('vcat-menu').style.display = (t === 'video') ? '' : 'none';
   document.getElementById('tab-video').style.cssText = base + (t === 'video' ? on : off);
   document.getElementById('tab-photo').style.cssText = base + (t === 'photo' ? on : off);
+  var bgVid = document.getElementById('hero-bg-video');
+  var bgPhoto = document.getElementById('hero-bg-photo');
+  if (bgVid && bgPhoto) {
+    bgVid.style.display = (t === 'video') ? '' : 'none';
+    bgPhoto.style.display = (t === 'photo') ? '' : 'none';
+    if (t === 'video') { bgVid.play().catch(function(){}); } else { bgVid.pause(); }
+  }
   if (t === 'photo') slpCat(window._slpCat || 'weddings', true);
   if (t === 'video') slpVCat(window._slpVCat || 'weddings', true);
 }
