@@ -76,7 +76,7 @@
   <!-- HERO -->
   <header style="position:relative;min-height:64svh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(110px,16vh,150px) clamp(20px,5vw,64px) clamp(40px,7vh,70px);overflow:hidden;">
     <div style="position:absolute;inset:0;z-index:0;overflow:hidden;">
-      <video id="hero-bg-video" data-bg autoplay muted loop playsinline preload="auto" poster="uploads/video/cadillac-dusk-poster.jpg" src="uploads/video/cadillac-dusk-drone.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;"></video>
+      <video id="hero-bg-video" data-bg autoplay muted loop playsinline preload="auto" poster="uploads/video/wedding-hero-poster.jpg" src="uploads/video/wedding-hero-loop.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;"></video>
       <div id="hero-bg-photo" style="display:none;position:absolute;inset:-4%;background-image:url('uploads/pixieset/Cochrane_Wedding_426-f14e7ab0-1500.jpg');background-size:cover;background-position:50% 40%;"></div>
     </div>
     <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,4,6,.55) 0%,rgba(4,4,6,.35) 45%,rgba(4,4,6,.95) 100%);"></div>
@@ -132,14 +132,7 @@
           </div>
         </div>
         <div style="display:grid;gap:clamp(28px,4vh,44px);">
-          <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
-            <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/wedding-promo-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
-                <source src="uploads/video/wedding-promo.mp4" type="video/mp4">
-              </video>
-            </div>
-            <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Wedding films — Samuel Long Productions</p>
-          </div>
+          <!-- Kendall & Steven full film goes here when it's finished -->
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
               <video controls preload="metadata" playsinline poster="uploads/video/wedding-film-1-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
@@ -521,6 +514,9 @@ function slpVCat(id, noScroll){
   var h = (location.hash || '').replace('#','');
   if (h.indexOf('video-') === 0 && SLP_VCATS.indexOf(h.slice(6)) !== -1) { slpSetTab('video'); slpVCat(h.slice(6)); }
   else if (SLP_CATS.indexOf(h) !== -1) { slpSetTab('photo'); slpCat(h); }
+  // Nudge the hero loop in browsers that skip the autoplay attribute
+  var bgv = document.getElementById('hero-bg-video');
+  if (bgv && bgv.style.display !== 'none' && bgv.paused) bgv.play().catch(function(){});
 })();
 </script>
 </body>
