@@ -192,6 +192,7 @@
   <nav id="vcat-menu" aria-label="Video portfolio categories" style="background:var(--bg);padding:clamp(18px,3vh,26px) clamp(20px,5vw,64px);border-top:1px solid var(--line);">
     <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
       <button id="vcat-weddings" class="cat-btn" onclick="slpVCat('weddings')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 18px var(--glow);">Weddings</button>
+      <button id="vcat-seniors" class="cat-btn" onclick="slpVCat('seniors')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Seniors</button>
       <button id="vcat-greek" class="cat-btn" onclick="slpVCat('greek')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Greek Life</button>
       <button id="vcat-commercial" class="cat-btn" onclick="slpVCat('commercial')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Commercial</button>
     </div>
@@ -249,13 +250,43 @@
       </div>
     </section>
 
-    <!-- V02 GREEK LIFE -->
-    <section id="video-greek" style="display:none;padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg2);">
+    <!-- V02 SENIORS -->
+    <section id="video-seniors" style="display:none;padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg2);">
       <div style="max-width:1280px;margin:0 auto;">
         <div data-fade style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:clamp(30px,5vh,52px);">
           <div style="max-width:60ch;">
             <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:14px;">
               <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">02</span>
+              <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(40px,7vw,88px);">Seniors</h2>
+            </div>
+            <p style="margin:0;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Senior year and school spirit in motion — hype films, sports highlights, and performances from schools across the Jackson metro and Mississippi.</p>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;">
+            <a href="pricing.html#seniors" style="text-decoration:none;color:var(--text);border:1px solid var(--line);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;">Senior pricing</a>
+            <a href="contact.html" style="text-decoration:none;color:#fff;background:var(--accent);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;box-shadow:0 0 22px var(--glow);">Book Seniors</a>
+          </div>
+        </div>
+        <div style="display:grid;gap:clamp(28px,4vh,44px);">
+          <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
+            <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
+              <video controls preload="metadata" playsinline poster="uploads/video/encore-preseason-hype-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+                <source src="uploads/video/encore-preseason-hype.mp4" type="video/mp4">
+              </video>
+            </div>
+            <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Encore show choir — preseason hype film</p>
+          </div>
+          <!-- Jackson Prep football films get embedded here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- V03 GREEK LIFE -->
+    <section id="video-greek" style="display:none;padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg);">
+      <div style="max-width:1280px;margin:0 auto;">
+        <div data-fade style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:clamp(30px,5vh,52px);">
+          <div style="max-width:60ch;">
+            <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:14px;">
+              <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">03</span>
               <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(40px,7vw,88px);">Greek Life</h2>
             </div>
             <p style="margin:0;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Recruitment videos, bid day recaps, socials and game day edits — all the energy of the chapter, kept.</p>
@@ -282,7 +313,7 @@
         <div data-fade style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:clamp(30px,5vh,52px);">
           <div style="max-width:60ch;">
             <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:14px;">
-              <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">03</span>
+              <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">04</span>
               <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(40px,7vw,88px);">Commercial</h2>
             </div>
             <p style="margin:0;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Brand films, real estate and FAA-certified aerial work — on the ground and in the air — that makes your business look the part.</p>
@@ -300,14 +331,6 @@
               </video>
             </div>
             <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Southern Outdoor Mobility — brand campaign on the Pearl River</p>
-          </div>
-          <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
-            <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/encore-preseason-hype-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
-                <source src="uploads/video/encore-preseason-hype.mp4" type="video/mp4">
-              </video>
-            </div>
-            <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Encore show choir — preseason hype film</p>
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
@@ -519,7 +542,7 @@
 
 <script>
 var SLP_CATS = ['weddings','seniors','greek','commercial'];
-var SLP_VCATS = ['weddings','greek','commercial'];
+var SLP_VCATS = ['weddings','seniors','greek','commercial'];
 function slpPauseVideos(){
   [].slice.call(document.querySelectorAll('video:not([data-bg])')).forEach(function(v){ v.pause(); });
 }
