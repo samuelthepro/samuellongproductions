@@ -1,6 +1,6 @@
 # Class Notes Archive
 
-Archive of 23 Granola recordings captured between August 11, 2026 and September 02, 2026. Each file contains the Granola AI summary followed by the full verbatim transcript.
+Archive of 24 Granola recordings captured between August 11, 2026 and September 02, 2026. Each file contains the Granola AI summary followed by the full verbatim transcript.
 
 Recordings are grouped by course. Course assignment was inferred from lecture content and the recurring MWF time slot of each recording (8:00, 9:00, and 10:00 AM), so double-check a folder if a file looks misplaced.
 
@@ -37,6 +37,7 @@ Folder: `intro-quantum-computing/`
 | 2026-08-26 09:59 AM | [Vector spaces and subspaces](intro-quantum-computing/2026-08-26-vector-spaces-and-subspaces.md) | ~3,152 words |
 | 2026-08-28 10:02 AM | [Vector space basis concepts](intro-quantum-computing/2026-08-28-vector-space-basis-concepts.md) | ~2,861 words |
 | 2026-08-31 10:08 AM | [Orthogonality and vector length](intro-quantum-computing/2026-08-31-orthogonality-and-vector-length.md) | ~2,681 words |
+| 2026-09-02 10:01 AM | [Quantum computing concepts overview](intro-quantum-computing/2026-09-02-quantum-computing-concepts-overview.md) | ~2,867 words |
 
 ## Smart Manufacturing / Industry 4.0 (CME)
 
