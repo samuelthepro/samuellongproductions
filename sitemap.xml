@@ -8,7 +8,7 @@
   </url>
   <url>
     <loc>https://www.samuellongproductions.com/portfolio.html</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <video:video>
@@ -19,11 +19,18 @@
       <video:duration>244</video:duration>
     </video:video>
     <video:video>
-      <video:thumbnail_loc>https://www.samuellongproductions.com/uploads/video/wedding-film-1-poster.jpg</video:thumbnail_loc>
-      <video:title>Mississippi Wedding Highlight Film, Samuel Long Productions</video:title>
-      <video:description>Cinematic wedding highlight film with bridal party, ceremony and reception in 4K by Samuel Long Productions, wedding videography for Oxford, Jackson and all of Mississippi.</video:description>
-      <video:content_loc>https://www.samuellongproductions.com/uploads/video/wedding-film-1.mp4</video:content_loc>
-      <video:duration>42</video:duration>
+      <video:thumbnail_loc>https://www.samuellongproductions.com/uploads/video/clayton-isabelle-ceremony-poster.jpg</video:thumbnail_loc>
+      <video:title>Wedding Ceremony Film: Bride's Entrance, Samuel Long Productions</video:title>
+      <video:description>The bride's entrance from a multi-camera wedding ceremony film by Samuel Long Productions, a wedding videographer serving Oxford, Jackson and all of Mississippi, cut for the couple's wedding video book.</video:description>
+      <video:content_loc>https://www.samuellongproductions.com/uploads/video/clayton-isabelle-ceremony.mp4</video:content_loc>
+      <video:duration>57</video:duration>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://www.samuellongproductions.com/uploads/video/jackson-prep-hype-2026-poster.jpg</video:thumbnail_loc>
+      <video:title>Jackson Prep Football: 2026 Hype Film</video:title>
+      <video:description>2026 senior hype film for Jackson Prep football by Samuel Long Productions, sports highlight and hype videography in the Jackson metro, Mississippi.</video:description>
+      <video:content_loc>https://www.samuellongproductions.com/uploads/video/jackson-prep-hype-2026.mp4</video:content_loc>
+      <video:duration>150</video:duration>
     </video:video>
     <video:video>
       <video:thumbnail_loc>https://www.samuellongproductions.com/uploads/video/wedding-film-2-poster.jpg</video:thumbnail_loc>
