@@ -46,6 +46,7 @@
   }
 }
 </script>
+<script defer src="site.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -141,7 +142,7 @@
       <!-- RIGHT: form -->
       <div data-fade style="background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:clamp(24px,3vw,40px);">
         <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" style="display:flex;flex-direction:column;gap:20px;">
-          <!-- Web3Forms access key — delivers submissions to samuel@samuellongproductions.com -->
+          <!-- Web3Forms access key: delivers submissions to samuel@samuellongproductions.com -->
           <input type="hidden" name="access_key" value="c4396b96-84f7-4a70-b1d2-cedc13dba09a">
           <input type="hidden" name="subject" value="New inquiry from samuellongproductions.com">
           <input type="hidden" name="from_name" value="Samuel Long Productions Website">
@@ -172,12 +173,38 @@
             </select>
           </div>
           <div class="field">
+            <label for="organization">Organization or chapter <span style="text-transform:none;letter-spacing:0;">(optional)</span></label>
+            <input id="organization" type="text" name="organization" placeholder="Company, school or chapter" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="guests">Expected guest count <span style="text-transform:none;letter-spacing:0;">(optional)</span></label>
+            <input id="guests" type="number" name="guests" min="1" step="1" inputmode="numeric" placeholder="For events">
+          </div>
+          <div class="field">
             <label for="event_date">Event / shoot date <span style="text-transform:none;letter-spacing:0;">(optional)</span></label>
             <input id="event_date" type="date" name="event_date">
           </div>
           <div class="field">
             <label for="message">Tell me about your project</label>
-            <textarea id="message" name="message" placeholder="A few details about what you have in mind, the location, expected guest count for group events, and anything you're hoping for…" required></textarea>
+            <textarea id="message" name="message" placeholder="A few details about what you have in mind, the location, and anything you're hoping for…" required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="heard_about">How did you hear about me? <span style="text-transform:none;letter-spacing:0;">(optional)</span></label>
+            <select id="heard_about" name="heard_about">
+              <option value="" selected>Select one…</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Google search">Google search</option>
+              <option value="ChatGPT">ChatGPT</option>
+              <option value="Gemini or Google AI Mode">Gemini or Google AI Mode</option>
+              <option value="Perplexity">Perplexity</option>
+              <option value="Microsoft Copilot">Microsoft Copilot</option>
+              <option value="Claude">Claude</option>
+              <option value="Another AI assistant">Another AI assistant</option>
+              <option value="Friend or referral">Friend or referral</option>
+              <option value="QR card">QR card</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
 
           <button type="submit" style="align-self:flex-start;cursor:pointer;border:none;color:#fff;background:var(--accent);padding:16px 38px;border-radius:999px;font-family:var(--font-body);font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 0 30px var(--glow);">Send message</button>
@@ -195,9 +222,11 @@
         <img src="uploads/logo.png" alt="Samuel Long Productions" style="height:76px;width:auto;display:block;">
       </a>
       <div style="display:flex;flex-wrap:wrap;gap:22px;">
+        <a href="pricing.html" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Pricing</a>
         <a href="https://www.instagram.com/samuellongproductions/" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Instagram</a>
         <a href="https://www.youtube.com/@Samuellongproductions" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">YouTube</a>
         <a href="https://www.linkedin.com/in/samuellong22/" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">LinkedIn</a>
+        <a href="privacy.html" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Privacy</a>
       </div>
     </div>
     <div style="max-width:1200px;margin:34px auto 0;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
@@ -261,18 +290,19 @@
     .then(function(res){ return res.json(); })
     .then(function(json){
       if (json.success) {
+        if (window.slp) window.slp.track('lead', { type: data.project_type || 'unspecified', source: window.slp.source() });
         form.style.display = 'none';
         status.style.color = 'var(--text)';
-        status.innerHTML = "<strong style='font-family:var(--font-display);font-size:26px;letter-spacing:.02em;text-transform:uppercase;color:#fff;display:block;margin-bottom:8px;'>Thank you — message sent.</strong>I've received your note and will be in touch personally, usually within a day.";
+        status.innerHTML = "<strong style='font-family:var(--font-display);font-size:26px;letter-spacing:.02em;text-transform:uppercase;color:#fff;display:block;margin-bottom:8px;'>Thank you. Message sent.</strong>I've received your note and will be in touch personally, usually within a day.";
       } else {
         status.style.color = '#ffb3a0';
-        status.innerHTML = (json.message || 'Something went wrong') + " — please email <a href='mailto:samuel@samuellongproductions.com' style='color:#fff;'>samuel@samuellongproductions.com</a> directly.";
+        status.innerHTML = (json.message || 'Something went wrong') + ". Please email <a href='mailto:samuel@samuellongproductions.com' style='color:#fff;'>samuel@samuellongproductions.com</a> directly.";
         btn.disabled = false; btn.style.opacity = '1';
       }
     })
     .catch(function(){
       status.style.color = '#ffb3a0';
-      status.innerHTML = "Network error — please email <a href='mailto:samuel@samuellongproductions.com' style='color:#fff;'>samuel@samuellongproductions.com</a> directly.";
+      status.innerHTML = "Network error. Please email <a href='mailto:samuel@samuellongproductions.com' style='color:#fff;'>samuel@samuellongproductions.com</a> directly.";
       btn.disabled = false; btn.style.opacity = '1';
     });
   });
