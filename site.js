@@ -3,7 +3,7 @@
    Every inquiry sent through the contact form carries where the visitor came from, even when
    analytics is blocked. Umami (cookieless) loads only when UMAMI_ID is set below. */
 (function () {
-  var UMAMI_ID = '';
+  var UMAMI_ID = 'ffe994d4-a7d7-4e8d-bc6c-d866c0c4e996';
   var HOST = 'www.samuellongproductions.com';
 
   // Visit any page with ?optout=1 once per browser to keep your own visits out of Umami (?optout=0 undoes it).
