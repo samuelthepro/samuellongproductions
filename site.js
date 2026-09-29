@@ -103,7 +103,7 @@
   };
 
   // ---------- Contact form ----------
-  var TYPES = { weddings: 'Weddings', wedding: 'Weddings', seniors: 'Seniors', senior: 'Seniors', greek: 'Greek Life', commercial: 'Commercial', other: 'Other' };
+  var TYPES = { weddings: 'Weddings', wedding: 'Weddings', seniors: 'Seniors', senior: 'Seniors', greek: 'Greek Life', events: 'Events', event: 'Events', commercial: 'Commercial', other: 'Other' };
 
   function setupForm() {
     var form = document.getElementById('contactForm');
