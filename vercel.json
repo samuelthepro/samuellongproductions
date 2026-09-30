@@ -1,0 +1,35 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": false,
+  "redirects": [
+    { "source": "/:path*", "has": [{ "type": "host", "value": "samuellongproductions.vercel.app" }], "destination": "https://www.samuellongproductions.com/:path*", "permanent": true },
+    { "source": "/about/", "destination": "/about.html", "permanent": true },
+    { "source": "/contact/", "destination": "/contact.html", "permanent": true },
+    { "source": "/services", "destination": "/pricing.html", "permanent": true },
+    { "source": "/services/", "destination": "/pricing.html", "permanent": true },
+    { "source": "/wedding", "destination": "/weddings.html", "permanent": true },
+    { "source": "/wedding/", "destination": "/weddings.html", "permanent": true },
+    { "source": "/sportsprice", "destination": "/seniors.html", "permanent": true },
+    { "source": "/sportsprice/", "destination": "/seniors.html", "permanent": true },
+    { "source": "/rush", "destination": "/sorority-recruitment-videos.html?utm_source=qr-card&utm_medium=print&utm_campaign=rush-2027", "permanent": false },
+    { "source": "/rush/", "destination": "/sorority-recruitment-videos.html?utm_source=qr-card&utm_medium=print&utm_campaign=rush-2027", "permanent": false },
+    { "source": "/:page([a-z0-9-]+)", "destination": "/:page.html", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
+    },
+    {
+      "source": "/uploads/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }
+      ]
+    }
+  ]
+}
