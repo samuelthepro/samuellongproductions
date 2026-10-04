@@ -269,7 +269,7 @@
   <!-- HERO -->
   <header style="position:relative;min-height:64svh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(110px,16vh,150px) clamp(20px,5vw,64px) clamp(40px,7vh,70px);overflow:hidden;">
     <div style="position:absolute;inset:0;z-index:0;overflow:hidden;">
-      <video id="hero-bg-video" data-bg autoplay muted loop playsinline preload="auto" poster="uploads/video/portfolio-hero-poster.jpg" src="uploads/video/portfolio-hero-loop.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;"></video>
+      <video id="hero-bg-video" data-bg muted loop playsinline preload="metadata" aria-label="Background reel of portfolio footage, no sound" poster="uploads/video/portfolio-hero-poster.jpg" src="uploads/video/portfolio-hero-loop.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;"></video>
       <div id="hero-bg-photo" style="display:none;position:absolute;inset:-4%;background-image:url('uploads/pixieset/Cochrane_Wedding_426-f14e7ab0-1500.jpg');background-size:cover;background-position:50% 40%;"></div>
     </div>
     <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,4,6,.55) 0%,rgba(4,4,6,.35) 45%,rgba(4,4,6,.95) 100%);"></div>
@@ -282,6 +282,10 @@
         <button id="tab-photo" onclick="slpSetTab('photo')" style="cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.35);box-shadow:none;">Photo</button>
       </div>
     </div>
+    <button id="hero-bg-toggle" type="button" onclick="slpBgToggle()" aria-label="Play background video" style="position:absolute;right:clamp(20px,5vw,64px);bottom:clamp(16px,3vh,28px);z-index:3;display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;cursor:pointer;color:#fff;background:rgba(8,8,10,.55);border:1px solid rgba(255,255,255,.35);border-radius:999px;backdrop-filter:blur(6px);">
+      <svg data-icon="pause" aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="currentColor" style="display:none;"><rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/></svg>
+      <svg data-icon="play" aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5v11a.6.6 0 0 0 .9.5l9-5.5a.6.6 0 0 0 0-1l-9-5.5a.6.6 0 0 0-.9.5z"/></svg>
+    </button>
   </header>
 
   <!-- CATEGORY MENU (photo) -->
@@ -329,15 +333,16 @@
         <div style="display:grid;gap:clamp(28px,4vh,44px);">
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/wedding-film-3-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Kendall and Steven wedding highlight film" poster="uploads/video/wedding-film-3-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/wedding-film-3.mp4" type="video/mp4">
+                <track kind="captions" src="uploads/video/wedding-film-3.vtt" srclang="en" label="English">
               </video>
             </div>
             <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Kendall &amp; Steven, Samuel Long Productions</p>
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/wedding-film-2-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Julie and Brent wedding highlight film" poster="uploads/video/wedding-film-2-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/wedding-film-2.mp4" type="video/mp4">
               </video>
             </div>
@@ -345,8 +350,9 @@
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/clayton-isabelle-ceremony-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Clayton and Isabelle ceremony film, bride's entrance" poster="uploads/video/clayton-isabelle-ceremony-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/clayton-isabelle-ceremony.mp4" type="video/mp4">
+                <track kind="captions" src="uploads/video/clayton-isabelle-ceremony.vtt" srclang="en" label="English">
               </video>
             </div>
             <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Clayton &amp; Isabelle, Ceremony Film, Samuel Long Productions</p>
@@ -375,15 +381,16 @@
         <div style="display:grid;gap:clamp(28px,4vh,44px);">
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/jackson-prep-hype-2026-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Jackson Prep football 2026 hype film" poster="uploads/video/jackson-prep-hype-2026-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/jackson-prep-hype-2026.mp4" type="video/mp4">
+                <track kind="captions" src="uploads/video/jackson-prep-hype-2026.vtt" srclang="en" label="English">
               </video>
             </div>
             <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Jackson Prep football, 2026 hype film</p>
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/jackson-prep-hype-2025-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Jackson Prep 2025 hype film: football, cheer and dance" poster="uploads/video/jackson-prep-hype-2025-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/jackson-prep-hype-2025.mp4" type="video/mp4">
               </video>
             </div>
@@ -391,7 +398,7 @@
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/jackson-prep-hype-2024-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Jackson Prep 2024 hype film: football and cheer" poster="uploads/video/jackson-prep-hype-2024-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/jackson-prep-hype-2024.mp4" type="video/mp4">
               </video>
             </div>
@@ -399,7 +406,7 @@
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/coming-back-home-hype-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Jackson Academy football hype film" poster="uploads/video/coming-back-home-hype-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/coming-back-home-hype.mp4" type="video/mp4">
               </video>
             </div>
@@ -407,7 +414,7 @@
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/encore-preseason-hype-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Jackson Academy Encore show choir preseason hype film" poster="uploads/video/encore-preseason-hype-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/encore-preseason-hype.mp4" type="video/mp4">
               </video>
             </div>
@@ -436,32 +443,36 @@
         <div style="display:grid;gap:clamp(28px,4vh,44px);">
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/chi-o-greek-day-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Chi Omega Greek Day recruitment film, Ole Miss" poster="uploads/video/chi-o-greek-day-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/chi-o-greek-day.mp4" type="video/mp4">
+                <track kind="captions" src="uploads/video/chi-o-greek-day.vtt" srclang="en" label="English">
               </video>
             </div>
             <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Chi Omega Greek Day, Ole Miss Recruitment Film</p>
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/chi-o-sisterhood-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Chi Omega Sisterhood recruitment film, Ole Miss" poster="uploads/video/chi-o-sisterhood-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/chi-o-sisterhood.mp4" type="video/mp4">
+                <track kind="captions" src="uploads/video/chi-o-sisterhood.vtt" srclang="en" label="English">
               </video>
             </div>
             <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Chi Omega Sisterhood, Ole Miss Recruitment Film</p>
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/greek-life-promo-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Chi Omega Philanthropy film, Ole Miss" poster="uploads/video/greek-life-promo-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/greek-life-promo.mp4" type="video/mp4">
+                <track kind="captions" src="uploads/video/greek-life-promo.vtt" srclang="en" label="English">
               </video>
             </div>
             <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Chi Omega Philanthropy, Ole Miss Sorority Film</p>
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/ddd-philanthropy-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Tri Delta Philanthropy film, Ole Miss" poster="uploads/video/ddd-philanthropy-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/ddd-philanthropy.mp4" type="video/mp4">
+                <track kind="captions" src="uploads/video/ddd-philanthropy.vtt" srclang="en" label="English">
               </video>
             </div>
             <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Tri Delta Philanthropy, Ole Miss Sorority Film</p>
@@ -489,15 +500,16 @@
         <div style="display:grid;gap:clamp(28px,4vh,44px);">
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/southern-outdoor-mobility-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Southern Outdoor Mobility brand campaign" poster="uploads/video/southern-outdoor-mobility-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/southern-outdoor-mobility.mp4" type="video/mp4">
+                <track kind="captions" src="uploads/video/southern-outdoor-mobility.vtt" srclang="en" label="English">
               </video>
             </div>
             <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Southern Outdoor Mobility, brand campaign on the Pearl River</p>
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/lee-michaels-renaissance-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Lee Michaels Fine Jewelry brand film" poster="uploads/video/lee-michaels-renaissance-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/lee-michaels-renaissance.mp4" type="video/mp4">
               </video>
             </div>
@@ -505,7 +517,7 @@
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/commercial-promo-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Arlington at Colony Park promo film" poster="uploads/video/commercial-promo-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/commercial-promo.mp4" type="video/mp4">
               </video>
             </div>
@@ -513,7 +525,7 @@
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/property-film-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Real estate and property film with drone aerials" poster="uploads/video/property-film-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/property-film.mp4" type="video/mp4">
               </video>
             </div>
@@ -714,6 +726,23 @@
 <script>
 var SLP_CATS = ['weddings','seniors','greek','commercial'];
 var SLP_VCATS = ['weddings','seniors','greek','commercial'];
+// The hero loop stays paused when the visitor asks for reduced motion or presses pause
+var SLP_BG_HOLD = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+function slpBgToggle(){
+  var v = document.getElementById('hero-bg-video');
+  if (!v) return;
+  if (v.paused) { SLP_BG_HOLD = false; v.play().catch(function(){}); }
+  else { SLP_BG_HOLD = true; v.pause(); }
+}
+function slpBgSync(){
+  var v = document.getElementById('hero-bg-video');
+  var b = document.getElementById('hero-bg-toggle');
+  if (!v || !b) return;
+  var playing = !v.paused;
+  b.setAttribute('aria-label', playing ? 'Pause background video' : 'Play background video');
+  b.querySelector('[data-icon="pause"]').style.display = playing ? '' : 'none';
+  b.querySelector('[data-icon="play"]').style.display = playing ? 'none' : '';
+}
 function slpPauseVideos(){
   [].slice.call(document.querySelectorAll('video:not([data-bg])')).forEach(function(v){ v.pause(); });
 }
@@ -730,10 +759,12 @@ function slpSetTab(t){
   document.getElementById('tab-photo').style.cssText = base + (t === 'photo' ? on : off);
   var bgVid = document.getElementById('hero-bg-video');
   var bgPhoto = document.getElementById('hero-bg-photo');
+  var bgBtn = document.getElementById('hero-bg-toggle');
   if (bgVid && bgPhoto) {
     bgVid.style.display = (t === 'video') ? '' : 'none';
     bgPhoto.style.display = (t === 'photo') ? '' : 'none';
-    if (t === 'video') { bgVid.play().catch(function(){}); } else { bgVid.pause(); }
+    if (bgBtn) bgBtn.style.display = (t === 'video') ? 'flex' : 'none';
+    if (t === 'video') { if (!SLP_BG_HOLD) bgVid.play().catch(function(){}); } else { bgVid.pause(); }
   }
   if (t === 'photo') slpCat(window._slpCat || 'weddings', true);
   if (t === 'video') slpVCat(window._slpVCat || 'weddings', true);
@@ -819,9 +850,14 @@ function slpVCat(id, noScroll){
   var h = (location.hash || '').replace('#','');
   if (h.indexOf('video-') === 0 && SLP_VCATS.indexOf(h.slice(6)) !== -1) { slpSetTab('video'); slpVCat(h.slice(6)); }
   else if (SLP_CATS.indexOf(h) !== -1) { slpSetTab('photo'); slpCat(h); }
-  // Nudge the hero loop in browsers that skip the autoplay attribute
+  // Start the hero loop from script (no autoplay attribute) so reduced motion can keep it still
   var bgv = document.getElementById('hero-bg-video');
-  if (bgv && bgv.style.display !== 'none' && bgv.paused) bgv.play().catch(function(){});
+  if (bgv) {
+    bgv.addEventListener('play', slpBgSync);
+    bgv.addEventListener('pause', slpBgSync);
+    if (!SLP_BG_HOLD && bgv.style.display !== 'none' && bgv.paused) bgv.play().catch(function(){});
+    slpBgSync();
+  }
 })();
 </script>
 </body>
