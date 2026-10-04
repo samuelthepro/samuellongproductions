@@ -73,6 +73,7 @@
   .field input,.field select,.field textarea{background:#0e0e12;border:1px solid var(--line);border-radius:8px;padding:14px 16px;color:var(--text);font-size:15px;outline:none;transition:border-color .2s ease,box-shadow .2s ease;width:100%;}
   .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(208,2,27,.15);}
   .field textarea{resize:vertical;min-height:150px;}
+  .field .hint{margin:0;font-size:12px;line-height:1.5;color:var(--muted);}
   ::placeholder{color:#8a888e;}
   select option{color:#111;}
   .skip{position:absolute;left:12px;top:-200px;z-index:10001;padding:12px 18px;border-radius:8px;background:#fff;color:#08080a;font-family:var(--font-body);font-size:14px;font-weight:600;text-decoration:none;}
@@ -161,15 +162,16 @@
 
           <div class="field">
             <label for="name">Name</label>
-            <input id="name" type="text" name="name" placeholder="Your name" required>
+            <input id="name" type="text" name="name" placeholder="Your name" maxlength="100" required>
           </div>
           <div class="field">
             <label for="email">Email</label>
-            <input id="email" type="email" name="email" placeholder="you@email.com" required>
+            <input id="email" type="email" name="email" placeholder="you@email.com" maxlength="200" required>
           </div>
           <div class="field">
             <label for="phone">Phone <span style="text-transform:none;letter-spacing:0;">(optional)</span></label>
-            <input id="phone" type="tel" name="phone" placeholder="(000) 000-0000">
+            <input id="phone" type="tel" name="phone" placeholder="(000) 000-0000" maxlength="40" aria-describedby="phone_hint">
+            <p id="phone_hint" class="hint">Only used to reply about your inquiry. No marketing texts.</p>
           </div>
           <div class="field">
             <label for="project_type">What's it for?</label>
@@ -185,7 +187,7 @@
           </div>
           <div class="field">
             <label for="organization">Organization or chapter <span style="text-transform:none;letter-spacing:0;">(optional)</span></label>
-            <input id="organization" type="text" name="organization" placeholder="Company, school or chapter" autocomplete="organization">
+            <input id="organization" type="text" name="organization" placeholder="Company, school or chapter" autocomplete="organization" maxlength="150">
           </div>
           <div class="field">
             <label for="guests">Expected guest count <span style="text-transform:none;letter-spacing:0;">(optional)</span></label>
@@ -197,7 +199,7 @@
           </div>
           <div class="field">
             <label for="message">Tell me about your project</label>
-            <textarea id="message" name="message" placeholder="A few details about what you have in mind, the location, and anything you're hoping for…" required></textarea>
+            <textarea id="message" name="message" placeholder="A few details about what you have in mind, the location, and anything you're hoping for…" maxlength="5000" required></textarea>
           </div>
 
           <div class="field">
@@ -290,12 +292,23 @@
   // Contact form -> Web3Forms (emails samuel@samuellongproductions.com)
   var form = document.getElementById('contactForm');
   var status = document.getElementById('formStatus');
+  // Error text is built from DOM nodes so nothing from the API response is parsed as HTML
+  function showEmailFallback(lead, tail){
+    var link = document.createElement('a');
+    link.href = 'mailto:samuel@samuellongproductions.com';
+    link.style.color = '#fff';
+    link.textContent = 'samuel@samuellongproductions.com';
+    status.style.color = '#ffb3a0';
+    status.textContent = '';
+    status.appendChild(document.createTextNode(lead + ' Please email '));
+    status.appendChild(link);
+    status.appendChild(document.createTextNode(' ' + tail));
+  }
   form.addEventListener('submit', function(e){
     e.preventDefault();
     var key = form.querySelector('[name="access_key"]').value;
     if (key === 'YOUR_WEB3FORMS_ACCESS_KEY' || !key) {
-      status.style.color = '#ffb3a0';
-      status.innerHTML = "This form isn't connected yet. Please email <a href='mailto:samuel@samuellongproductions.com' style='color:#fff;'>samuel@samuellongproductions.com</a> directly for now.";
+      showEmailFallback("This form isn't connected yet.", 'directly for now.');
       return;
     }
     var btn = form.querySelector('button[type="submit"]');
@@ -316,14 +329,12 @@
         status.style.color = 'var(--text)';
         status.innerHTML = "<strong style='font-family:var(--font-display);font-size:26px;letter-spacing:.02em;text-transform:uppercase;color:#fff;display:block;margin-bottom:8px;'>Thank you. Message sent.</strong>I've received your note and will be in touch personally, usually within a day.";
       } else {
-        status.style.color = '#ffb3a0';
-        status.innerHTML = (json.message || 'Something went wrong') + ". Please email <a href='mailto:samuel@samuellongproductions.com' style='color:#fff;'>samuel@samuellongproductions.com</a> directly.";
+        showEmailFallback(String(json.message || 'Something went wrong').replace(/[.\s]+$/, '') + '.', 'directly.');
         btn.disabled = false; btn.style.opacity = '1';
       }
     })
     .catch(function(){
-      status.style.color = '#ffb3a0';
-      status.innerHTML = "Network error. Please email <a href='mailto:samuel@samuellongproductions.com' style='color:#fff;'>samuel@samuellongproductions.com</a> directly.";
+      showEmailFallback('Network error.', 'directly.');
       btn.disabled = false; btn.style.opacity = '1';
     });
   });
