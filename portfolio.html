@@ -245,9 +245,18 @@
   .wordmark{font-family:var(--font-display);color:#fff;text-transform:uppercase;display:inline-block;line-height:1;}
   .wordmark .wm1{display:block;font-size:1em;letter-spacing:.04em;}
   .wordmark .wm2{display:block;font-size:.46em;letter-spacing:.34em;margin-top:3px;}
+  .skip{position:absolute;left:12px;top:-200px;z-index:10001;padding:12px 18px;border-radius:8px;background:#fff;color:#08080a;font-family:var(--font-body);font-size:14px;font-weight:600;text-decoration:none;}
+  .skip:focus{top:12px;outline:2px solid var(--accent);outline-offset:2px;}
+  #main{scroll-margin-top:100px;}
+  a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;}
+  }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div style="background:var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh;overflow-x:hidden;position:relative;">
 
   <div style="position:fixed;inset:0;z-index:9000;pointer-events:none;mix-blend-mode:overlay;opacity:.06;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);"></div>
@@ -278,8 +287,8 @@
       <h1 data-reveal style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.9;color:#fff;font-size:clamp(54px,11vw,150px);">Portfolio</h1>
       <p data-reveal data-delay="120" style="margin:22px 0 0;max-width:640px;font-size:clamp(15px,1.7vw,19px);line-height:1.7;color:#e7e4df;font-weight:300;">Wedding films, senior portraits, Ole Miss Greek Life photo and video for sororities and fraternities, and commercial work across Mississippi.</p>
       <div data-reveal data-delay="240" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;">
-        <button id="tab-video" onclick="slpSetTab('video')" style="cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 22px var(--glow);">Video</button>
-        <button id="tab-photo" onclick="slpSetTab('photo')" style="cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.35);box-shadow:none;">Photo</button>
+        <button id="tab-video" type="button" aria-pressed="true" onclick="slpSetTab('video')" style="cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 22px var(--glow);">Video</button>
+        <button id="tab-photo" type="button" aria-pressed="false" onclick="slpSetTab('photo')" style="cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.35);box-shadow:none;">Photo</button>
       </div>
     </div>
     <button id="hero-bg-toggle" type="button" onclick="slpBgToggle()" aria-label="Play background video" style="position:absolute;right:clamp(20px,5vw,64px);bottom:clamp(16px,3vh,28px);z-index:3;display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;cursor:pointer;color:#fff;background:rgba(8,8,10,.55);border:1px solid rgba(255,255,255,.35);border-radius:999px;backdrop-filter:blur(6px);">
@@ -291,25 +300,25 @@
   <!-- CATEGORY MENU (photo) -->
   <nav id="cat-menu" aria-label="Photo portfolio categories" style="display:none;background:var(--bg);padding:clamp(18px,3vh,26px) clamp(20px,5vw,64px);border-top:1px solid var(--line);">
     <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
-      <button id="cat-weddings" class="cat-btn" onclick="slpCat('weddings')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 18px var(--glow);">Weddings</button>
-      <button id="cat-seniors" class="cat-btn" onclick="slpCat('seniors')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Seniors</button>
-      <button id="cat-greek" class="cat-btn" onclick="slpCat('greek')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Greek Life</button>
-      <button id="cat-commercial" class="cat-btn" onclick="slpCat('commercial')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Commercial</button>
+      <button id="cat-weddings" type="button" aria-pressed="true" class="cat-btn" onclick="slpCat('weddings')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 18px var(--glow);">Weddings</button>
+      <button id="cat-seniors" type="button" aria-pressed="false" class="cat-btn" onclick="slpCat('seniors')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Seniors</button>
+      <button id="cat-greek" type="button" aria-pressed="false" class="cat-btn" onclick="slpCat('greek')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Greek Life</button>
+      <button id="cat-commercial" type="button" aria-pressed="false" class="cat-btn" onclick="slpCat('commercial')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Commercial</button>
     </div>
   </nav>
 
   <!-- CATEGORY MENU (video) -->
   <nav id="vcat-menu" aria-label="Video portfolio categories" style="background:var(--bg);padding:clamp(18px,3vh,26px) clamp(20px,5vw,64px);border-top:1px solid var(--line);">
     <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
-      <button id="vcat-weddings" class="cat-btn" onclick="slpVCat('weddings')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 18px var(--glow);">Weddings</button>
-      <button id="vcat-seniors" class="cat-btn" onclick="slpVCat('seniors')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Seniors</button>
-      <button id="vcat-greek" class="cat-btn" onclick="slpVCat('greek')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Greek Life</button>
-      <button id="vcat-commercial" class="cat-btn" onclick="slpVCat('commercial')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Commercial</button>
+      <button id="vcat-weddings" type="button" aria-pressed="true" class="cat-btn" onclick="slpVCat('weddings')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 18px var(--glow);">Weddings</button>
+      <button id="vcat-seniors" type="button" aria-pressed="false" class="cat-btn" onclick="slpVCat('seniors')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Seniors</button>
+      <button id="vcat-greek" type="button" aria-pressed="false" class="cat-btn" onclick="slpVCat('greek')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Greek Life</button>
+      <button id="vcat-commercial" type="button" aria-pressed="false" class="cat-btn" onclick="slpVCat('commercial')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Commercial</button>
     </div>
   </nav>
 
   <!-- CATEGORY GALLERIES -->
-  <main>
+  <main id="main">
 
     <!-- VIDEO PANEL -->
     <div id="panel-video">
@@ -726,8 +735,9 @@
 <script>
 var SLP_CATS = ['weddings','seniors','greek','commercial'];
 var SLP_VCATS = ['weddings','seniors','greek','commercial'];
+var SLP_REDUCE = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 // The hero loop stays paused when the visitor asks for reduced motion or presses pause
-var SLP_BG_HOLD = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+var SLP_BG_HOLD = SLP_REDUCE;
 function slpBgToggle(){
   var v = document.getElementById('hero-bg-video');
   if (!v) return;
@@ -757,6 +767,8 @@ function slpSetTab(t){
   document.getElementById('vcat-menu').style.display = (t === 'video') ? '' : 'none';
   document.getElementById('tab-video').style.cssText = base + (t === 'video' ? on : off);
   document.getElementById('tab-photo').style.cssText = base + (t === 'photo' ? on : off);
+  document.getElementById('tab-video').setAttribute('aria-pressed', t === 'video' ? 'true' : 'false');
+  document.getElementById('tab-photo').setAttribute('aria-pressed', t === 'photo' ? 'true' : 'false');
   var bgVid = document.getElementById('hero-bg-video');
   var bgPhoto = document.getElementById('hero-bg-photo');
   var bgBtn = document.getElementById('hero-bg-toggle');
@@ -782,7 +794,7 @@ function slpScrollToMenu(menuId){
   var navH = navEl ? navEl.offsetHeight : 90;
   var y = Math.max(0, menu.getBoundingClientRect().top + window.scrollY - navH - 6);
   var startY = window.scrollY;
-  window.scrollTo({top: y, behavior: 'smooth'});
+  window.scrollTo({top: y, behavior: SLP_REDUCE ? 'auto' : 'smooth'});
   setTimeout(function(){
     if (Math.abs(window.scrollY - startY) < 4 && Math.abs(window.scrollY - y) > 4) window.scrollTo({top: y, behavior: 'instant'});
   }, 500);
@@ -794,7 +806,7 @@ function slpCat(id, noScroll){
     var sec = document.getElementById(c);
     if (sec) sec.style.display = (c === id) ? '' : 'none';
     var btn = document.getElementById('cat-' + c);
-    if (btn) btn.style.cssText = slpCatStyle(c === id);
+    if (btn) { btn.style.cssText = slpCatStyle(c === id); btn.setAttribute('aria-pressed', c === id ? 'true' : 'false'); }
   });
   var shown = document.getElementById(id);
   if (shown) [].slice.call(shown.querySelectorAll('[data-fade],[data-reveal]')).forEach(function(e){ e.style.opacity = '1'; e.style.transform = 'none'; });
@@ -808,7 +820,7 @@ function slpVCat(id, noScroll){
     var sec = document.getElementById('video-' + c);
     if (sec) sec.style.display = (c === id) ? '' : 'none';
     var btn = document.getElementById('vcat-' + c);
-    if (btn) btn.style.cssText = slpCatStyle(c === id);
+    if (btn) { btn.style.cssText = slpCatStyle(c === id); btn.setAttribute('aria-pressed', c === id ? 'true' : 'false'); }
   });
   var shown = document.getElementById('video-' + id);
   if (shown) [].slice.call(shown.querySelectorAll('[data-fade],[data-reveal]')).forEach(function(e){ e.style.opacity = '1'; e.style.transform = 'none'; });
@@ -817,7 +829,8 @@ function slpVCat(id, noScroll){
 (function(){
   var progress = document.getElementById('progress');
   var els = [].slice.call(document.querySelectorAll('[data-reveal],[data-fade]'));
-  if ('IntersectionObserver' in window) {
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if ('IntersectionObserver' in window && !reduceMotion) {
     els.forEach(function(el){
       var d = parseInt(el.getAttribute('data-delay') || '0', 10);
       el.style.opacity = '0';

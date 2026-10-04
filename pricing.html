@@ -84,9 +84,18 @@
   .wordmark .wm1{display:block;font-size:1em;letter-spacing:.04em;}
   .wordmark .wm2{display:block;font-size:.46em;letter-spacing:.34em;margin-top:3px;}
   @keyframes slpKenP{0%{transform:scale(1.02);}100%{transform:scale(1.14);}}
+  .skip{position:absolute;left:12px;top:-200px;z-index:10001;padding:12px 18px;border-radius:8px;background:#fff;color:#08080a;font-family:var(--font-body);font-size:14px;font-weight:600;text-decoration:none;}
+  .skip:focus{top:12px;outline:2px solid var(--accent);outline-offset:2px;}
+  #main{scroll-margin-top:100px;}
+  a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;}
+  }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div style="background:var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh;overflow-x:hidden;position:relative;">
 
   <div style="position:fixed;inset:0;z-index:9000;pointer-events:none;mix-blend-mode:overlay;opacity:.06;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);"></div>
@@ -122,14 +131,14 @@
   <section style="padding:clamp(44px,7vh,68px) clamp(20px,5vw,64px) 0;background:var(--bg);">
     <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px;">
       <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-        <button id="tab-video" onclick="slpSetTab('video')" style="cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 22px var(--glow);">Video</button>
-        <button id="tab-photo" onclick="slpSetTab('photo')" style="cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid var(--line);box-shadow:none;">Photo</button>
+        <button id="tab-video" type="button" aria-pressed="true" onclick="slpSetTab('video')" style="cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 22px var(--glow);">Video</button>
+        <button id="tab-photo" type="button" aria-pressed="false" onclick="slpSetTab('photo')" style="cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid var(--line);box-shadow:none;">Photo</button>
       </div>
     </div>
   </section>
 
   <!-- CATEGORIES -->
-  <main style="position:relative;margin-top:clamp(40px,7vh,64px);">
+  <main id="main" style="position:relative;margin-top:clamp(40px,7vh,64px);">
 
     <!-- ===================== VIDEO PANEL ===================== -->
     <div id="panel-video">
@@ -665,6 +674,8 @@ function slpSetTab(t){
   document.getElementById('panel-photo').style.display = (t === 'photo') ? '' : 'none';
   document.getElementById('tab-video').style.cssText = base + (t === 'video' ? on : off);
   document.getElementById('tab-photo').style.cssText = base + (t === 'photo' ? on : off);
+  document.getElementById('tab-video').setAttribute('aria-pressed', t === 'video' ? 'true' : 'false');
+  document.getElementById('tab-photo').setAttribute('aria-pressed', t === 'photo' ? 'true' : 'false');
 }
 (function(){
   var h = (location.hash || '').replace('#','');
@@ -680,7 +691,8 @@ function slpSetTab(t){
 (function(){
   var progress = document.getElementById('progress');
   var els = [].slice.call(document.querySelectorAll('[data-reveal],[data-fade]'));
-  if ('IntersectionObserver' in window) {
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if ('IntersectionObserver' in window && !reduceMotion) {
     els.forEach(function(el){
       var d = parseInt(el.getAttribute('data-delay') || '0', 10);
       el.style.opacity = '0';

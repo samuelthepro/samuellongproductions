@@ -57,9 +57,18 @@
   section[id]{scroll-margin-top:100px;}
   @keyframes slpKenP{0%{transform:scale(1.02);}100%{transform:scale(1.14);}}
   @media (prefers-reduced-motion:reduce){ .ken{animation:none !important;} }
+  .skip{position:absolute;left:12px;top:-200px;z-index:10001;padding:12px 18px;border-radius:8px;background:#fff;color:#08080a;font-family:var(--font-body);font-size:14px;font-weight:600;text-decoration:none;}
+  .skip:focus{top:12px;outline:2px solid var(--accent);outline-offset:2px;}
+  #main{scroll-margin-top:100px;}
+  a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;}
+  }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div style="background:var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh;overflow-x:hidden;position:relative;">
 
   <div style="position:fixed;inset:0;z-index:9000;pointer-events:none;mix-blend-mode:overlay;opacity:.06;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);"></div>
@@ -78,6 +87,7 @@
     </div>
   </nav>
 
+  <main id="main">
   <header style="padding:clamp(120px,18vh,170px) clamp(20px,5vw,64px) clamp(28px,5vh,48px);">
     <div style="max-width:900px;margin:0 auto;">
       <h1 data-reveal style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.9;color:#fff;font-size:clamp(44px,9vw,120px);">Privacy</h1>
@@ -129,6 +139,7 @@
       <p data-reveal style="margin:0 0 16px;max-width:68ch;font-size:clamp(15px,1.6vw,17px);line-height:1.75;color:var(--muted);font-weight:300;">Email <a href="mailto:samuel@samuellongproductions.com" style="color:var(--text);text-decoration:underline;text-underline-offset:3px;">samuel@samuellongproductions.com</a> with any question about this page or to ask me to delete an inquiry you sent. Samuel Long Productions is based in Oxford and Madison, Mississippi.</p>
     </div>
   </section>
+  </main>
 
   <!-- FOOTER -->
   <footer style="background:var(--bg);padding:clamp(48px,8vh,80px) clamp(20px,5vw,64px) 40px;border-top:1px solid var(--line);">
@@ -164,7 +175,8 @@
 (function(){
   var progress = document.getElementById('progress');
   var els = [].slice.call(document.querySelectorAll('[data-reveal],[data-fade]'));
-  if ('IntersectionObserver' in window) {
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if ('IntersectionObserver' in window && !reduceMotion) {
     els.forEach(function(el){
       var d = parseInt(el.getAttribute('data-delay') || '0', 10);
       el.style.opacity = '0';
