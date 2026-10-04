@@ -16,13 +16,15 @@
 <meta property="og:description" content="Cinematic 4K wedding films, editorial senior portraits, and Ole Miss sorority and fraternity photo and video (recruitment, bid day, parents weekend, formals, game day) across Oxford and the Jackson metro, Mississippi.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.samuellongproductions.com/">
-<meta property="og:image" content="https://www.samuellongproductions.com/uploads/SamuelLongTSGVol12.jpg">
+<meta property="og:image" content="https://www.samuellongproductions.com/uploads/og/index.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Samuel Long Productions">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Wedding Videographer, Senior Portrait & Ole Miss Greek Life Photographer | Oxford & Jackson, MS">
 <meta name="twitter:description" content="Cinematic 4K wedding films, editorial senior portraits, and Ole Miss sorority and fraternity photo and video (recruitment, bid day, parents weekend, formals, game day) across Oxford and the Jackson metro, Mississippi.">
-<meta name="twitter:image" content="https://www.samuellongproductions.com/uploads/SamuelLongTSGVol12.jpg">
+<meta name="twitter:image" content="https://www.samuellongproductions.com/uploads/og/index.jpg">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -251,9 +253,18 @@
   .wordmark .wm2{display:block;font-size:.46em;letter-spacing:.34em;margin-top:3px;}
   @keyframes slpKen{0%{transform:scale(1.02) translate3d(0,0,0);}100%{transform:scale(1.16) translate3d(0,-2%,0);}}
   @keyframes slpCue{0%,100%{transform:translateY(0);opacity:.4;}50%{transform:translateY(7px);opacity:1;}}
+  .skip{position:absolute;left:12px;top:-200px;z-index:10001;padding:12px 18px;border-radius:8px;background:#fff;color:#08080a;font-family:var(--font-body);font-size:14px;font-weight:600;text-decoration:none;}
+  .skip:focus{top:12px;outline:2px solid var(--accent);outline-offset:2px;}
+  #main{scroll-margin-top:100px;}
+  a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;}
+  }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div style="background:var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh;overflow-x:hidden;position:relative;">
 
   <div style="position:fixed;inset:0;z-index:9000;pointer-events:none;mix-blend-mode:overlay;opacity:calc(.06 * var(--grain));background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);"></div>
@@ -272,6 +283,7 @@
     </div>
   </nav>
 
+  <main id="main">
   <!-- HERO -->
   <header id="top" style="position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;padding:clamp(96px,14vh,140px) clamp(20px,5vw,64px) clamp(48px,8vh,90px);overflow:hidden;">
     <div style="position:absolute;inset:0;z-index:0;overflow:hidden;">
@@ -429,6 +441,7 @@
       </div>
     </div>
   </section>
+  </main>
 
   <!-- FOOTER -->
   <footer style="background:var(--bg);padding:clamp(48px,8vh,80px) clamp(20px,5vw,64px) 40px;border-top:1px solid var(--line);">
@@ -442,6 +455,7 @@
         <a href="https://www.youtube.com/@Samuellongproductions" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">YouTube</a>
         <a href="https://www.linkedin.com/in/samuellong22/" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">LinkedIn</a>
         <a href="privacy.html" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Privacy</a>
+        <a href="terms.html" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Terms</a>
       </div>
     </div>
     <nav aria-label="Services" data-services style="max-width:1200px;margin:30px auto 0;display:flex;flex-wrap:wrap;gap:14px 22px;">
@@ -465,7 +479,8 @@
   var nav = document.getElementById('nav');
   var progress = document.getElementById('progress');
   var els = [].slice.call(document.querySelectorAll('[data-reveal],[data-fade]'));
-  if ('IntersectionObserver' in window) {
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if ('IntersectionObserver' in window && !reduceMotion) {
     els.forEach(function(el){
       var d = parseInt(el.getAttribute('data-delay') || '0', 10);
       el.style.opacity = '0';

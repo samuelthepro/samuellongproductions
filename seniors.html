@@ -157,9 +157,18 @@
   section[id]{scroll-margin-top:100px;}
   @keyframes slpKenP{0%{transform:scale(1.02);}100%{transform:scale(1.14);}}
   @media (prefers-reduced-motion:reduce){ .ken{animation:none !important;} }
+  .skip{position:absolute;left:12px;top:-200px;z-index:10001;padding:12px 18px;border-radius:8px;background:#fff;color:#08080a;font-family:var(--font-body);font-size:14px;font-weight:600;text-decoration:none;}
+  .skip:focus{top:12px;outline:2px solid var(--accent);outline-offset:2px;}
+  #main{scroll-margin-top:100px;}
+  a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;}
+  }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div style="background:var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh;overflow-x:hidden;position:relative;">
 
   <div style="position:fixed;inset:0;z-index:9000;pointer-events:none;mix-blend-mode:overlay;opacity:.06;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);"></div>
@@ -178,7 +187,7 @@
     </div>
   </nav>
 
-  <main>
+  <main id="main">
   <header style="position:relative;min-height:78svh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(120px,18vh,170px) clamp(20px,5vw,64px) clamp(44px,8vh,80px);overflow:hidden;">
     <div style="position:absolute;inset:0;z-index:0;overflow:hidden;">
       <img class="ken" src="uploads/pixieset/SK-Senior-5-347fb8af-1500.jpg" alt="Senior in a pink gown smiling from white porch stairs framed by leafy green branches" width="1500" height="2250" fetchpriority="high" decoding="async" style="position:absolute;inset:-4%;width:108%;height:108%;object-fit:cover;object-position:center 40%;animation:slpKenP 24s ease-in-out infinite alternate;">
@@ -243,7 +252,7 @@
       <p data-reveal data-delay="120" style="margin:0 0 clamp(28px,4vh,44px);max-width:62ch;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">These are team hype films I made for Jackson Prep and Jackson Academy football, plus a preseason film for the Jackson Academy Encore show choir. The options below work for one senior athlete, a team or a school program. For a reel about just your senior, Highlight is cut from game film you already have.</p>
         <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
           <div style="border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#000;">
-            <video controls preload="none" playsinline poster="uploads/video/jackson-prep-hype-2025-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+            <video controls preload="none" playsinline aria-label="Jackson Prep 2025 hype film: football, cheer and dance" poster="uploads/video/jackson-prep-hype-2025-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
               <source src="uploads/video/jackson-prep-hype-2025.mp4" type="video/mp4">
             </video>
           </div>
@@ -252,7 +261,7 @@
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,3vw,36px);margin-top:clamp(28px,4vh,44px);">
         <div data-fade style="width:100%;">
           <div style="border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#000;">
-            <video controls preload="none" playsinline poster="uploads/video/coming-back-home-hype-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+            <video controls preload="none" playsinline aria-label="Jackson Academy football hype film" poster="uploads/video/coming-back-home-hype-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
               <source src="uploads/video/coming-back-home-hype.mp4" type="video/mp4">
             </video>
           </div>
@@ -260,7 +269,7 @@
         </div>
         <div data-fade style="width:100%;">
           <div style="border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#000;">
-            <video controls preload="none" playsinline poster="uploads/video/jackson-prep-hype-2024-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+            <video controls preload="none" playsinline aria-label="Jackson Prep 2024 hype film: football and cheer" poster="uploads/video/jackson-prep-hype-2024-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
               <source src="uploads/video/jackson-prep-hype-2024.mp4" type="video/mp4">
             </video>
           </div>
@@ -268,7 +277,7 @@
         </div>
         <div data-fade style="width:100%;">
           <div style="border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#000;">
-            <video controls preload="none" playsinline poster="uploads/video/encore-preseason-hype-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+            <video controls preload="none" playsinline aria-label="Jackson Academy Encore show choir preseason hype film" poster="uploads/video/encore-preseason-hype-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
               <source src="uploads/video/encore-preseason-hype.mp4" type="video/mp4">
             </video>
           </div>
@@ -376,6 +385,7 @@
         <a href="https://www.youtube.com/@Samuellongproductions" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">YouTube</a>
         <a href="https://www.linkedin.com/in/samuellong22/" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">LinkedIn</a>
         <a href="privacy.html" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Privacy</a>
+        <a href="terms.html" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Terms</a>
       </div>
     </div>
     <nav aria-label="Services" data-services style="max-width:1200px;margin:30px auto 0;display:flex;flex-wrap:wrap;gap:14px 22px;">
@@ -398,7 +408,8 @@
 (function(){
   var progress = document.getElementById('progress');
   var els = [].slice.call(document.querySelectorAll('[data-reveal],[data-fade]'));
-  if ('IntersectionObserver' in window) {
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if ('IntersectionObserver' in window && !reduceMotion) {
     els.forEach(function(el){
       var d = parseInt(el.getAttribute('data-delay') || '0', 10);
       el.style.opacity = '0';

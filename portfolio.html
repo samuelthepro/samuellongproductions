@@ -245,9 +245,18 @@
   .wordmark{font-family:var(--font-display);color:#fff;text-transform:uppercase;display:inline-block;line-height:1;}
   .wordmark .wm1{display:block;font-size:1em;letter-spacing:.04em;}
   .wordmark .wm2{display:block;font-size:.46em;letter-spacing:.34em;margin-top:3px;}
+  .skip{position:absolute;left:12px;top:-200px;z-index:10001;padding:12px 18px;border-radius:8px;background:#fff;color:#08080a;font-family:var(--font-body);font-size:14px;font-weight:600;text-decoration:none;}
+  .skip:focus{top:12px;outline:2px solid var(--accent);outline-offset:2px;}
+  #main{scroll-margin-top:100px;}
+  a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;}
+  }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div style="background:var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh;overflow-x:hidden;position:relative;">
 
   <div style="position:fixed;inset:0;z-index:9000;pointer-events:none;mix-blend-mode:overlay;opacity:.06;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);"></div>
@@ -269,7 +278,7 @@
   <!-- HERO -->
   <header style="position:relative;min-height:64svh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(110px,16vh,150px) clamp(20px,5vw,64px) clamp(40px,7vh,70px);overflow:hidden;">
     <div style="position:absolute;inset:0;z-index:0;overflow:hidden;">
-      <video id="hero-bg-video" data-bg autoplay muted loop playsinline preload="auto" poster="uploads/video/portfolio-hero-poster.jpg" src="uploads/video/portfolio-hero-loop.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;"></video>
+      <video id="hero-bg-video" data-bg muted loop playsinline preload="metadata" aria-label="Background reel of portfolio footage, no sound" poster="uploads/video/portfolio-hero-poster.jpg" src="uploads/video/portfolio-hero-loop.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;"></video>
       <div id="hero-bg-photo" style="display:none;position:absolute;inset:-4%;background-image:url('uploads/pixieset/Cochrane_Wedding_426-f14e7ab0-1500.jpg');background-size:cover;background-position:50% 40%;"></div>
     </div>
     <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,4,6,.55) 0%,rgba(4,4,6,.35) 45%,rgba(4,4,6,.95) 100%);"></div>
@@ -278,34 +287,38 @@
       <h1 data-reveal style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.9;color:#fff;font-size:clamp(54px,11vw,150px);">Portfolio</h1>
       <p data-reveal data-delay="120" style="margin:22px 0 0;max-width:640px;font-size:clamp(15px,1.7vw,19px);line-height:1.7;color:#e7e4df;font-weight:300;">Wedding films, senior portraits, Ole Miss Greek Life photo and video for sororities and fraternities, and commercial work across Mississippi.</p>
       <div data-reveal data-delay="240" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;">
-        <button id="tab-video" onclick="slpSetTab('video')" style="cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 22px var(--glow);">Video</button>
-        <button id="tab-photo" onclick="slpSetTab('photo')" style="cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.35);box-shadow:none;">Photo</button>
+        <button id="tab-video" type="button" aria-pressed="true" onclick="slpSetTab('video')" style="cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 22px var(--glow);">Video</button>
+        <button id="tab-photo" type="button" aria-pressed="false" onclick="slpSetTab('photo')" style="cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.35);box-shadow:none;">Photo</button>
       </div>
     </div>
+    <button id="hero-bg-toggle" type="button" onclick="slpBgToggle()" aria-label="Play background video" style="position:absolute;right:clamp(20px,5vw,64px);bottom:clamp(16px,3vh,28px);z-index:3;display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;cursor:pointer;color:#fff;background:rgba(8,8,10,.55);border:1px solid rgba(255,255,255,.35);border-radius:999px;backdrop-filter:blur(6px);">
+      <svg data-icon="pause" aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="currentColor" style="display:none;"><rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/></svg>
+      <svg data-icon="play" aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5v11a.6.6 0 0 0 .9.5l9-5.5a.6.6 0 0 0 0-1l-9-5.5a.6.6 0 0 0-.9.5z"/></svg>
+    </button>
   </header>
 
   <!-- CATEGORY MENU (photo) -->
   <nav id="cat-menu" aria-label="Photo portfolio categories" style="display:none;background:var(--bg);padding:clamp(18px,3vh,26px) clamp(20px,5vw,64px);border-top:1px solid var(--line);">
     <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
-      <button id="cat-weddings" class="cat-btn" onclick="slpCat('weddings')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 18px var(--glow);">Weddings</button>
-      <button id="cat-seniors" class="cat-btn" onclick="slpCat('seniors')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Seniors</button>
-      <button id="cat-greek" class="cat-btn" onclick="slpCat('greek')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Greek Life</button>
-      <button id="cat-commercial" class="cat-btn" onclick="slpCat('commercial')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Commercial</button>
+      <button id="cat-weddings" type="button" aria-pressed="true" class="cat-btn" onclick="slpCat('weddings')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 18px var(--glow);">Weddings</button>
+      <button id="cat-seniors" type="button" aria-pressed="false" class="cat-btn" onclick="slpCat('seniors')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Seniors</button>
+      <button id="cat-greek" type="button" aria-pressed="false" class="cat-btn" onclick="slpCat('greek')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Greek Life</button>
+      <button id="cat-commercial" type="button" aria-pressed="false" class="cat-btn" onclick="slpCat('commercial')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Commercial</button>
     </div>
   </nav>
 
   <!-- CATEGORY MENU (video) -->
   <nav id="vcat-menu" aria-label="Video portfolio categories" style="background:var(--bg);padding:clamp(18px,3vh,26px) clamp(20px,5vw,64px);border-top:1px solid var(--line);">
     <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
-      <button id="vcat-weddings" class="cat-btn" onclick="slpVCat('weddings')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 18px var(--glow);">Weddings</button>
-      <button id="vcat-seniors" class="cat-btn" onclick="slpVCat('seniors')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Seniors</button>
-      <button id="vcat-greek" class="cat-btn" onclick="slpVCat('greek')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Greek Life</button>
-      <button id="vcat-commercial" class="cat-btn" onclick="slpVCat('commercial')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Commercial</button>
+      <button id="vcat-weddings" type="button" aria-pressed="true" class="cat-btn" onclick="slpVCat('weddings')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 18px var(--glow);">Weddings</button>
+      <button id="vcat-seniors" type="button" aria-pressed="false" class="cat-btn" onclick="slpVCat('seniors')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Seniors</button>
+      <button id="vcat-greek" type="button" aria-pressed="false" class="cat-btn" onclick="slpVCat('greek')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Greek Life</button>
+      <button id="vcat-commercial" type="button" aria-pressed="false" class="cat-btn" onclick="slpVCat('commercial')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Commercial</button>
     </div>
   </nav>
 
   <!-- CATEGORY GALLERIES -->
-  <main>
+  <main id="main">
 
     <!-- VIDEO PANEL -->
     <div id="panel-video">
@@ -329,15 +342,16 @@
         <div style="display:grid;gap:clamp(28px,4vh,44px);">
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/wedding-film-3-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Kendall and Steven wedding highlight film" poster="uploads/video/wedding-film-3-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/wedding-film-3.mp4" type="video/mp4">
+                <track kind="captions" src="uploads/video/wedding-film-3.vtt" srclang="en" label="English">
               </video>
             </div>
             <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Kendall &amp; Steven, Samuel Long Productions</p>
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/wedding-film-2-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Julie and Brent wedding highlight film" poster="uploads/video/wedding-film-2-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/wedding-film-2.mp4" type="video/mp4">
               </video>
             </div>
@@ -345,8 +359,9 @@
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/clayton-isabelle-ceremony-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Clayton and Isabelle ceremony film, bride's entrance" poster="uploads/video/clayton-isabelle-ceremony-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/clayton-isabelle-ceremony.mp4" type="video/mp4">
+                <track kind="captions" src="uploads/video/clayton-isabelle-ceremony.vtt" srclang="en" label="English">
               </video>
             </div>
             <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Clayton &amp; Isabelle, Ceremony Film, Samuel Long Productions</p>
@@ -375,15 +390,16 @@
         <div style="display:grid;gap:clamp(28px,4vh,44px);">
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/jackson-prep-hype-2026-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Jackson Prep football 2026 hype film" poster="uploads/video/jackson-prep-hype-2026-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/jackson-prep-hype-2026.mp4" type="video/mp4">
+                <track kind="captions" src="uploads/video/jackson-prep-hype-2026.vtt" srclang="en" label="English">
               </video>
             </div>
             <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Jackson Prep football, 2026 hype film</p>
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/jackson-prep-hype-2025-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Jackson Prep 2025 hype film: football, cheer and dance" poster="uploads/video/jackson-prep-hype-2025-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/jackson-prep-hype-2025.mp4" type="video/mp4">
               </video>
             </div>
@@ -391,7 +407,7 @@
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/jackson-prep-hype-2024-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Jackson Prep 2024 hype film: football and cheer" poster="uploads/video/jackson-prep-hype-2024-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/jackson-prep-hype-2024.mp4" type="video/mp4">
               </video>
             </div>
@@ -399,7 +415,7 @@
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/coming-back-home-hype-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Jackson Academy football hype film" poster="uploads/video/coming-back-home-hype-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/coming-back-home-hype.mp4" type="video/mp4">
               </video>
             </div>
@@ -407,7 +423,7 @@
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/encore-preseason-hype-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Jackson Academy Encore show choir preseason hype film" poster="uploads/video/encore-preseason-hype-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/encore-preseason-hype.mp4" type="video/mp4">
               </video>
             </div>
@@ -436,32 +452,36 @@
         <div style="display:grid;gap:clamp(28px,4vh,44px);">
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/chi-o-greek-day-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Chi Omega Greek Day recruitment film, Ole Miss" poster="uploads/video/chi-o-greek-day-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/chi-o-greek-day.mp4" type="video/mp4">
+                <track kind="captions" src="uploads/video/chi-o-greek-day.vtt" srclang="en" label="English">
               </video>
             </div>
             <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Chi Omega Greek Day, Ole Miss Recruitment Film</p>
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/chi-o-sisterhood-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Chi Omega Sisterhood recruitment film, Ole Miss" poster="uploads/video/chi-o-sisterhood-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/chi-o-sisterhood.mp4" type="video/mp4">
+                <track kind="captions" src="uploads/video/chi-o-sisterhood.vtt" srclang="en" label="English">
               </video>
             </div>
             <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Chi Omega Sisterhood, Ole Miss Recruitment Film</p>
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/greek-life-promo-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Chi Omega Philanthropy film, Ole Miss" poster="uploads/video/greek-life-promo-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/greek-life-promo.mp4" type="video/mp4">
+                <track kind="captions" src="uploads/video/greek-life-promo.vtt" srclang="en" label="English">
               </video>
             </div>
             <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Chi Omega Philanthropy, Ole Miss Sorority Film</p>
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/ddd-philanthropy-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Tri Delta Philanthropy film, Ole Miss" poster="uploads/video/ddd-philanthropy-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/ddd-philanthropy.mp4" type="video/mp4">
+                <track kind="captions" src="uploads/video/ddd-philanthropy.vtt" srclang="en" label="English">
               </video>
             </div>
             <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Tri Delta Philanthropy, Ole Miss Sorority Film</p>
@@ -489,15 +509,16 @@
         <div style="display:grid;gap:clamp(28px,4vh,44px);">
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/southern-outdoor-mobility-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Southern Outdoor Mobility brand campaign" poster="uploads/video/southern-outdoor-mobility-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/southern-outdoor-mobility.mp4" type="video/mp4">
+                <track kind="captions" src="uploads/video/southern-outdoor-mobility.vtt" srclang="en" label="English">
               </video>
             </div>
             <p style="margin:14px 0 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Southern Outdoor Mobility, brand campaign on the Pearl River</p>
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/lee-michaels-renaissance-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Lee Michaels Fine Jewelry brand film" poster="uploads/video/lee-michaels-renaissance-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/lee-michaels-renaissance.mp4" type="video/mp4">
               </video>
             </div>
@@ -505,7 +526,7 @@
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/commercial-promo-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Arlington at Colony Park promo film" poster="uploads/video/commercial-promo-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/commercial-promo.mp4" type="video/mp4">
               </video>
             </div>
@@ -513,7 +534,7 @@
           </div>
           <div data-fade style="max-width:1000px;margin:0 auto;width:100%;">
             <div style="border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5);">
-              <video controls preload="metadata" playsinline poster="uploads/video/property-film-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
+              <video controls preload="metadata" playsinline aria-label="Real estate and property film with drone aerials" poster="uploads/video/property-film-poster.jpg" style="width:100%;aspect-ratio:16/9;display:block;background:#000;">
                 <source src="uploads/video/property-film.mp4" type="video/mp4">
               </video>
             </div>
@@ -648,7 +669,7 @@
           <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" src="uploads/pixieset/Mandi_Stanley_3.02.26PM-3f59da37-1500.jpeg" alt="Keynote speaker presenting to a full ballroom at a professional conference" style="width:100%;height:auto;display:block;"></div>
           <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" src="uploads/pixieset/DJI_0344-2ffbe2fa-1500.jpg" alt="FAA Part 107 certified drone aerial photography in Mississippi" style="width:100%;height:auto;display:block;"></div>
           <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" src="uploads/pixieset/P1230162-f118a4de-1500.jpg" alt="Commercial video production behind the scenes in Mississippi" style="width:100%;height:auto;display:block;"></div>
-          <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" src="uploads/pixieset/tempImage2gQJ8M-0641a164-1500.png" alt="Commercial brand content by Samuel Long Productions" style="width:100%;height:auto;display:block;"></div>
+          <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" src="uploads/pixieset/tempImage2gQJ8M-0641a164-1500.jpg" alt="Commercial brand content by Samuel Long Productions" style="width:100%;height:auto;display:block;"></div>
           <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" src="uploads/portfolio/coleman-studio-guitar.jpg" alt="Recording studio session, guitarist at the microphone" style="width:100%;height:auto;display:block;"></div>
           <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" src="uploads/portfolio/countryside-aerial.jpg" alt="Drone aerial view of rural countryside with homes, hay bales and a pond" style="width:100%;height:auto;display:block;"></div>
           <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" src="uploads/portfolio/coleman-studio-console.jpg" alt="Producer at the mixing console" style="width:100%;height:auto;display:block;"></div>
@@ -693,6 +714,7 @@
         <a href="https://www.youtube.com/@Samuellongproductions" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">YouTube</a>
         <a href="https://www.linkedin.com/in/samuellong22/" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">LinkedIn</a>
         <a href="privacy.html" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Privacy</a>
+        <a href="terms.html" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Terms</a>
       </div>
     </div>
     <nav aria-label="Services" data-services style="max-width:1200px;margin:30px auto 0;display:flex;flex-wrap:wrap;gap:14px 22px;">
@@ -714,6 +736,24 @@
 <script>
 var SLP_CATS = ['weddings','seniors','greek','commercial'];
 var SLP_VCATS = ['weddings','seniors','greek','commercial'];
+var SLP_REDUCE = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+// The hero loop stays paused when the visitor asks for reduced motion or presses pause
+var SLP_BG_HOLD = SLP_REDUCE;
+function slpBgToggle(){
+  var v = document.getElementById('hero-bg-video');
+  if (!v) return;
+  if (v.paused) { SLP_BG_HOLD = false; v.play().catch(function(){}); }
+  else { SLP_BG_HOLD = true; v.pause(); }
+}
+function slpBgSync(){
+  var v = document.getElementById('hero-bg-video');
+  var b = document.getElementById('hero-bg-toggle');
+  if (!v || !b) return;
+  var playing = !v.paused;
+  b.setAttribute('aria-label', playing ? 'Pause background video' : 'Play background video');
+  b.querySelector('[data-icon="pause"]').style.display = playing ? '' : 'none';
+  b.querySelector('[data-icon="play"]').style.display = playing ? 'none' : '';
+}
 function slpPauseVideos(){
   [].slice.call(document.querySelectorAll('video:not([data-bg])')).forEach(function(v){ v.pause(); });
 }
@@ -728,12 +768,16 @@ function slpSetTab(t){
   document.getElementById('vcat-menu').style.display = (t === 'video') ? '' : 'none';
   document.getElementById('tab-video').style.cssText = base + (t === 'video' ? on : off);
   document.getElementById('tab-photo').style.cssText = base + (t === 'photo' ? on : off);
+  document.getElementById('tab-video').setAttribute('aria-pressed', t === 'video' ? 'true' : 'false');
+  document.getElementById('tab-photo').setAttribute('aria-pressed', t === 'photo' ? 'true' : 'false');
   var bgVid = document.getElementById('hero-bg-video');
   var bgPhoto = document.getElementById('hero-bg-photo');
+  var bgBtn = document.getElementById('hero-bg-toggle');
   if (bgVid && bgPhoto) {
     bgVid.style.display = (t === 'video') ? '' : 'none';
     bgPhoto.style.display = (t === 'photo') ? '' : 'none';
-    if (t === 'video') { bgVid.play().catch(function(){}); } else { bgVid.pause(); }
+    if (bgBtn) bgBtn.style.display = (t === 'video') ? 'flex' : 'none';
+    if (t === 'video') { if (!SLP_BG_HOLD) bgVid.play().catch(function(){}); } else { bgVid.pause(); }
   }
   if (t === 'photo') slpCat(window._slpCat || 'weddings', true);
   if (t === 'video') slpVCat(window._slpVCat || 'weddings', true);
@@ -751,7 +795,7 @@ function slpScrollToMenu(menuId){
   var navH = navEl ? navEl.offsetHeight : 90;
   var y = Math.max(0, menu.getBoundingClientRect().top + window.scrollY - navH - 6);
   var startY = window.scrollY;
-  window.scrollTo({top: y, behavior: 'smooth'});
+  window.scrollTo({top: y, behavior: SLP_REDUCE ? 'auto' : 'smooth'});
   setTimeout(function(){
     if (Math.abs(window.scrollY - startY) < 4 && Math.abs(window.scrollY - y) > 4) window.scrollTo({top: y, behavior: 'instant'});
   }, 500);
@@ -763,7 +807,7 @@ function slpCat(id, noScroll){
     var sec = document.getElementById(c);
     if (sec) sec.style.display = (c === id) ? '' : 'none';
     var btn = document.getElementById('cat-' + c);
-    if (btn) btn.style.cssText = slpCatStyle(c === id);
+    if (btn) { btn.style.cssText = slpCatStyle(c === id); btn.setAttribute('aria-pressed', c === id ? 'true' : 'false'); }
   });
   var shown = document.getElementById(id);
   if (shown) [].slice.call(shown.querySelectorAll('[data-fade],[data-reveal]')).forEach(function(e){ e.style.opacity = '1'; e.style.transform = 'none'; });
@@ -777,7 +821,7 @@ function slpVCat(id, noScroll){
     var sec = document.getElementById('video-' + c);
     if (sec) sec.style.display = (c === id) ? '' : 'none';
     var btn = document.getElementById('vcat-' + c);
-    if (btn) btn.style.cssText = slpCatStyle(c === id);
+    if (btn) { btn.style.cssText = slpCatStyle(c === id); btn.setAttribute('aria-pressed', c === id ? 'true' : 'false'); }
   });
   var shown = document.getElementById('video-' + id);
   if (shown) [].slice.call(shown.querySelectorAll('[data-fade],[data-reveal]')).forEach(function(e){ e.style.opacity = '1'; e.style.transform = 'none'; });
@@ -786,7 +830,8 @@ function slpVCat(id, noScroll){
 (function(){
   var progress = document.getElementById('progress');
   var els = [].slice.call(document.querySelectorAll('[data-reveal],[data-fade]'));
-  if ('IntersectionObserver' in window) {
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if ('IntersectionObserver' in window && !reduceMotion) {
     els.forEach(function(el){
       var d = parseInt(el.getAttribute('data-delay') || '0', 10);
       el.style.opacity = '0';
@@ -819,9 +864,14 @@ function slpVCat(id, noScroll){
   var h = (location.hash || '').replace('#','');
   if (h.indexOf('video-') === 0 && SLP_VCATS.indexOf(h.slice(6)) !== -1) { slpSetTab('video'); slpVCat(h.slice(6)); }
   else if (SLP_CATS.indexOf(h) !== -1) { slpSetTab('photo'); slpCat(h); }
-  // Nudge the hero loop in browsers that skip the autoplay attribute
+  // Start the hero loop from script (no autoplay attribute) so reduced motion can keep it still
   var bgv = document.getElementById('hero-bg-video');
-  if (bgv && bgv.style.display !== 'none' && bgv.paused) bgv.play().catch(function(){});
+  if (bgv) {
+    bgv.addEventListener('play', slpBgSync);
+    bgv.addEventListener('pause', slpBgSync);
+    if (!SLP_BG_HOLD && bgv.style.display !== 'none' && bgv.paused) bgv.play().catch(function(){});
+    slpBgSync();
+  }
 })();
 </script>
 </body>
