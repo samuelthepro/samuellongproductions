@@ -1,12 +1,14 @@
 /* site.js: first-touch attribution and engagement events for samuellongproductions.com.
    Cookieless. Attribution lives in sessionStorage for the current tab only (see privacy.html).
    Every inquiry sent through the contact form carries where the visitor came from, even when
-   analytics is blocked. Umami (cookieless) loads only when UMAMI_ID is set below. */
+   analytics is blocked. Umami (cookieless) loads only when UMAMI_ID is set below, and Vercel
+   Web Analytics (also cookieless) loads alongside it; both skip Do Not Track and ?optout=1. */
 (function () {
   var UMAMI_ID = 'ffe994d4-a7d7-4e8d-bc6c-d866c0c4e996';
   var HOST = 'www.samuellongproductions.com';
 
-  // Visit any page with ?optout=1 once per browser to keep your own visits out of Umami (?optout=0 undoes it).
+  // Visit any page with ?optout=1 once per browser to keep your own visits out of Umami and
+  // Vercel Web Analytics (?optout=0 undoes it).
   try {
     var opt = new URLSearchParams(location.search).get('optout');
     if (opt === '1') localStorage.setItem('umami.disabled', '1');
@@ -17,6 +19,7 @@
   var queue = [];
   function ready() { return window.umami && typeof window.umami.track === 'function'; }
   function track(name, data) {
+    if (window.va) { try { window.va('event', { name: name, data: data }); } catch (e) {} }
     if (!UMAMI_ID) return;
     if (!ready()) { queue.push([name, data]); return; }
     try { window.umami.track(name, data); } catch (e) {}
@@ -33,6 +36,22 @@
       q.forEach(function (it) { try { window.umami.track(it[0], it[1]); } catch (e) {} });
     };
     document.head.appendChild(s);
+  }
+
+  // ---------- Vercel Web Analytics ----------
+  // Page views and the same events as Umami, counted in the Vercel dashboard (project
+  // samuellongproductions). Same rules: production host only, no Do Not Track, no ?optout=1.
+  var skipVa = false;
+  try {
+    skipVa = localStorage.getItem('umami.disabled') === '1' ||
+      navigator.doNotTrack === '1' || window.doNotTrack === '1';
+  } catch (e) {}
+  if (location.hostname === HOST && !skipVa) {
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    var v = document.createElement('script');
+    v.defer = true;
+    v.src = '/_vercel/insights/script.js';
+    document.head.appendChild(v);
   }
 
   // ---------- Attribution ----------
