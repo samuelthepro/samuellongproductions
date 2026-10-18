@@ -152,6 +152,8 @@
 
       <!-- RIGHT: form -->
       <div data-fade style="background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:clamp(24px,3vw,40px);">
+        <!-- Shown by site.js when the visitor came from slpmedia.pro (?from=slpmedia-*, ?package= or the referrer) -->
+        <p id="slp-media-note" hidden style="margin:0 0 22px;padding:14px 18px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;font-size:14px;line-height:1.65;color:var(--muted);font-weight:300;"><span style="color:var(--text);">Booking SLP Media?</span> You're in the right place. SLP Media is the event photography team of Samuel Long Productions LLC, and every event is booked through this form. Samuel replies within 24 hours.<span id="slp-media-package" style="display:block;margin-top:6px;color:var(--text);"></span></p>
         <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" style="display:flex;flex-direction:column;gap:20px;">
           <!-- Web3Forms access key: delivers submissions to samuel@samuellongproductions.com -->
           <input type="hidden" name="access_key" value="c4396b96-84f7-4a70-b1d2-cedc13dba09a">
@@ -180,7 +182,7 @@
               <option value="Weddings">Weddings</option>
               <option value="Seniors">Seniors / Portraits</option>
               <option value="Greek Life">Greek Life (sorority / fraternity / chapter event)</option>
-              <option value="Events">Event (party, gala, conference)</option>
+              <option value="Events">Event (parents weekend, gala, banquet, conference)</option>
               <option value="Commercial">Commercial / Brand</option>
               <option value="Other">Something else</option>
             </select>

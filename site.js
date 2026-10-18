@@ -72,8 +72,18 @@
     var ref = document.referrer || '';
     var refHost = '';
     try { refHost = ref ? new URL(ref).hostname.replace(/^www\./, '') : ''; } catch (e) {}
+    var via = (p.get('via') || '').replace(/[^a-z0-9.:=_-]/gi, '').slice(0, 80);
     var cls, detail = '';
-    if (utm[0]) {
+    if (via && (refHost === 'slpmedia.pro' || /^slpmedia/.test(p.get('from') || ''))) {
+      // slpmedia.pro passes along where its own visit started, so a lead an
+      // AI assistant or a search sent to SLP Media still counts that way here
+      detail = 'slpmedia.pro via ' + via;
+      if (AI.test(via)) cls = 'ai-assistant';
+      else if (SEARCH.test(via)) cls = 'search';
+      else if (SOCIAL.test(via)) cls = 'social';
+      else if (/^src=/.test(via)) cls = 'campaign';
+      else cls = 'referral';
+    } else if (utm[0]) {
       detail = utm.filter(Boolean).join(' / ');
       if (AI_UTM.test(utm[0])) cls = 'ai-assistant';
       else if (/qr|print/i.test(utm[0] + ' ' + utm[1])) cls = 'qr-card';
@@ -122,7 +132,9 @@
   };
 
   // ---------- Contact form ----------
-  var TYPES = { weddings: 'Weddings', wedding: 'Weddings', seniors: 'Seniors', senior: 'Seniors', greek: 'Greek Life', events: 'Events', event: 'Events', commercial: 'Commercial', other: 'Other' };
+  var TYPES = { weddings: 'Weddings', wedding: 'Weddings', seniors: 'Seniors', senior: 'Seniors', greek: 'Greek Life', events: 'Events', event: 'Events', campus: 'Events', gala: 'Events', large: 'Events', commercial: 'Commercial', other: 'Other' };
+  // SLP Media's packages (slpmedia.pro/packages), by the ids its links carry in ?package=
+  var PACKAGES = { photos: 'Photos, $500', 'photos-selfsearch': 'Photos + SelfSearch AI, $1,200', 'full-team': 'Full team, $2,500', bigger: 'Bigger than the Full team package' };
 
   function setupForm() {
     var form = document.getElementById('contactForm');
@@ -134,6 +146,8 @@
 
     var fromParam = (params.get('from') || '').replace(/[^a-z0-9-]/gi, '').slice(0, 60);
     if (fromParam) set('slp_cta', fromParam);
+    var srcParam = (params.get('src') || '').replace(/[^a-z0-9-]/gi, '').slice(0, 60);
+    if (!fromParam && srcParam) set('slp_cta', 'src-' + srcParam);
 
     function hidden(name) {
       var el = form.querySelector('input[name="' + name + '"]');
@@ -145,6 +159,29 @@
       }
       return el;
     }
+
+    // SLP Media (slpmedia.pro) books its events here. Its date check sends
+    // ?date= and ?guests=, its package links send ?package=, and a visitor
+    // who came from there sees the note above the form: same team, one form.
+    var date = params.get('date') || params.get('event_date') || '';
+    var dateInput = form.querySelector('#event_date');
+    if (dateInput && /^\d{4}-\d{2}-\d{2}$/.test(date) && !dateInput.value) dateInput.value = date;
+    var guests = parseInt(params.get('guests') || '', 10);
+    var guestsInput = form.querySelector('#guests');
+    if (guestsInput && guests > 0 && guests <= 20000 && !guestsInput.value) guestsInput.value = guests;
+    var pkg = PACKAGES[(params.get('package') || '').toLowerCase()] || '';
+    if (pkg) hidden('package').value = pkg;
+    var refHost = '';
+    try { refHost = document.referrer ? new URL(document.referrer).hostname.replace(/^www\./, '') : ''; } catch (e) {}
+    var slpMedia = /^slpmedia/.test(fromParam) || !!pkg || refHost === 'slpmedia.pro';
+    var note = document.getElementById('slp-media-note');
+    if (note && slpMedia) {
+      note.hidden = false;
+      var line = document.getElementById('slp-media-package');
+      if (line && pkg) line.textContent = 'Package you picked: ' + pkg + '. Say so in the message if you want a different one.';
+      if (select && !select.value) select.value = 'Events';
+    }
+
     function fill() {
       hidden('lead_source').value = sourceLabel();
       hidden('lead_landing_page').value = att.landing;
@@ -157,7 +194,7 @@
       hidden('assistant_named').value = named || '(none)';
       var type = select && select.value ? select.value : 'unspecified';
       var subj = form.querySelector('input[name="subject"]');
-      if (subj) subj.value = 'New inquiry: ' + type + ' (via ' + att.cls + ')';
+      if (subj) subj.value = 'New inquiry: ' + type + (slpMedia ? ', SLP Media' : '') + ' (via ' + att.cls + ')';
     }
     fill();
 
