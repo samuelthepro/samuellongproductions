@@ -52,7 +52,10 @@
     { "@type": "ImageObject", "contentUrl": "https://www.samuellongproductions.com/uploads/pixieset/Delta_Psi_2_13_8187-Enhanced-NR-d5e50007-1500.jpg", "name": "Delta Psi fraternity date party photography at Ole Miss, Oxford MS", "width": 1500, "height": 2250 },
     { "@type": "ImageObject", "contentUrl": "https://www.samuellongproductions.com/uploads/pixieset/Lucky-Me-Pregame-2026-18-0b407973-1500.jpg", "name": "Kappa Delta pregame and sorority social event photography at Ole Miss, Oxford, Mississippi", "width": 1500, "height": 2250 },
     { "@type": "ImageObject", "contentUrl": "https://www.samuellongproductions.com/uploads/pixieset/Lucky-Me-Pregame-2026-6-f9f7fb80-1500.jpg", "name": "Kappa Delta sorority social event photography at Ole Miss by a Greek life photographer in Oxford MS", "width": 1500, "height": 2250 },
-    { "@type": "ImageObject", "contentUrl": "https://www.samuellongproductions.com/uploads/pixieset/Lucky-Me-Pregame-2026-39-ac8a1548-1500.jpg", "name": "Candid Kappa Delta pregame moment at Ole Miss, Greek life event photographer in Oxford, MS", "width": 1500, "height": 2250 }
+    { "@type": "ImageObject", "contentUrl": "https://www.samuellongproductions.com/uploads/pixieset/Lucky-Me-Pregame-2026-39-ac8a1548-1500.jpg", "name": "Candid Kappa Delta pregame moment at Ole Miss, Greek life event photographer in Oxford, MS", "width": 1500, "height": 2250 },
+    { "@type": "ImageObject", "contentUrl": "https://www.samuellongproductions.com/uploads/portfolio/kkg-parents-weekend-group-backdrop.jpg", "name": "Kappa Kappa Gamma parents weekend 2026 at Ole Miss, chapter event photography by SLP Media in Oxford, MS", "width": 1600, "height": 1066 },
+    { "@type": "ImageObject", "contentUrl": "https://www.samuellongproductions.com/uploads/portfolio/kkg-parents-weekend-friends-walking.jpg", "name": "Friends arriving at Kappa Kappa Gamma parents weekend at Harrison's, Greek life event photography in Oxford, MS", "width": 1066, "height": 1600 },
+    { "@type": "ImageObject", "contentUrl": "https://www.samuellongproductions.com/uploads/portfolio/oxford-21st-birthday-friends-banner.jpg", "name": "21st birthday party photography in Oxford, Mississippi, friends in front of a custom banner", "width": 899, "height": 1600 }
   ],
   "video": [
     {
@@ -224,6 +227,7 @@
   ]
 }
 </script>
+<script>(function(){var h=(location.hash||"").replace("#","");var c=["weddings","seniors","greek","commercial"];var deep=c.indexOf(h)!==-1||(h.indexOf("video-")===0&&c.indexOf(h.slice(6))!==-1);if(!deep)document.documentElement.className+=" is-choosing";})();</script>
 <script defer src="site.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -255,6 +259,21 @@
   /* Hero: title plus one line, short enough that the bar and the first piece share the first screen */
   .hero{min-height:min(56svh,620px);padding:clamp(120px,16vh,160px) var(--gutter) clamp(36px,6vh,60px);}
   .hero-copy{position:relative;z-index:2;max-width:1100px;}
+  /* Arrival chooser: opened without a deep link, the hero asks Photo or Video and the rest waits.
+     A deep link (#greek, #video-greek) skips it; the bar's switch is the way across afterwards. */
+  .hero-ask,.hero-choice{display:none;}
+  html.is-choosing .hero{min-height:100svh;justify-content:center;padding-bottom:clamp(60px,10vh,110px);}
+  html.is-choosing .hero-sub{display:none;}
+  html.is-choosing .hero-ask{display:block;}
+  html.is-choosing .hero-choice{display:flex;}
+  html.is-choosing #wf-anchor,html.is-choosing #wayfinder,html.is-choosing #main,html.is-choosing #book-cta{display:none !important;}
+  .hero-ask{margin:16px 0 0;max-width:560px;font-size:clamp(15px,1.7vw,19px);line-height:1.6;color:#e7e4df;font-weight:300;}
+  .hero-choice{gap:14px;margin-top:28px;flex-wrap:wrap;}
+  .choice{flex:1 1 240px;max-width:360px;cursor:pointer;text-align:left;font-family:var(--font-body);color:#fff;background:rgba(8,8,10,.55);border:1px solid rgba(255,255,255,.35);border-radius:16px;padding:20px 22px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background-color .2s,border-color .2s,color .2s;}
+  .choice:hover,.choice:focus-visible{background:#f5f3ef;color:#08080a;border-color:#f5f3ef;}
+  .choice strong{display:block;font-family:var(--font-display);font-weight:400;text-transform:uppercase;letter-spacing:.03em;font-size:clamp(34px,4vw,52px);line-height:1;}
+  .choice span{display:block;margin-top:8px;font-size:13px;line-height:1.5;color:var(--muted);}
+  .choice:hover span,.choice:focus-visible span{color:#3a3a40;}
   /* Wayfinder bar: category tabs, Video | Photo switch, Book button */
   #wayfinder{position:sticky;top:var(--nav-h);z-index:7000;background:rgba(8,8,10,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
   #wayfinder.is-stuck{box-shadow:0 12px 32px rgba(0,0,0,.45);}
@@ -299,6 +318,10 @@
     :root{--sec-pad:clamp(32px,4.5vh,48px);}
     .hero{min-height:min(46svh,420px);padding:118px var(--gutter) 26px;}
     .hero-copy{padding-right:56px;}
+    html.is-choosing .hero{min-height:100svh;padding-top:118px;padding-bottom:84px;}
+    html.is-choosing .hero-copy{padding-right:0;}
+    .choice{flex:1 1 100%;max-width:none;padding:16px 18px;}
+    .hero-choice{margin-top:22px;gap:10px;}
     .sec-head{margin-bottom:24px;}
     .sec-cta{margin-top:18px;}
   }
@@ -338,7 +361,12 @@
     <div style="position:absolute;inset:0;z-index:1;background:radial-gradient(110% 80% at 85% 100%,var(--glow) 0%,transparent 55%);opacity:.45;mix-blend-mode:screen;"></div>
     <div class="hero-copy">
       <h1 data-reveal style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.9;color:#fff;font-size:clamp(54px,11vw,150px);">Portfolio</h1>
-      <p data-reveal data-delay="120" style="margin:16px 0 0;max-width:560px;font-size:clamp(15px,1.7vw,19px);line-height:1.6;color:#e7e4df;font-weight:300;">Wedding films, senior portraits, Ole Miss Greek Life and commercial work across Mississippi.</p>
+      <p data-reveal data-delay="120" class="hero-sub" style="margin:16px 0 0;max-width:560px;font-size:clamp(15px,1.7vw,19px);line-height:1.6;color:#e7e4df;font-weight:300;">Wedding films, senior portraits, Ole Miss Greek Life and commercial work across Mississippi.</p>
+      <p class="hero-ask" id="hero-ask">Photo or video? Pick one. You can switch at the top of the page any time.</p>
+      <div class="hero-choice" role="group" aria-label="Photo or video">
+        <button type="button" class="choice" onclick="slpChoose('photo')"><strong>Photo</strong><span>Weddings, seniors, Greek Life and commercial photography</span></button>
+        <button type="button" class="choice" onclick="slpChoose('video')"><strong>Video</strong><span>Wedding films, recruitment films, hype films and brand work</span></button>
+      </div>
     </div>
     <button id="hero-bg-toggle" type="button" onclick="slpBgToggle()" aria-label="Play background video" style="position:absolute;right:clamp(20px,5vw,64px);bottom:clamp(16px,3vh,28px);z-index:3;display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;cursor:pointer;color:#fff;background:rgba(8,8,10,.55);border:1px solid rgba(255,255,255,.35);border-radius:999px;backdrop-filter:blur(6px);">
       <svg data-icon="pause" aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="currentColor" style="display:none;"><rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/></svg>
@@ -651,15 +679,23 @@
           </div>
         </div>
         <div data-fade style="columns:clamp(180px,23vw,280px);column-gap:14px;">
+          <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" decoding="async" src="uploads/portfolio/kkg-parents-weekend-friends-walking.jpg" alt="Four friends walking in under string lights at Kappa Kappa Gamma parents weekend at Harrison's, Greek life event photography in Oxford, MS" width="1066" height="1600" style="width:100%;height:auto;display:block;"></div>
           <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" src="uploads/pixieset/KD-Bid-2025-077-ff9347b0-1500.jpg" alt="Kappa Delta bid day 2025 at Ole Miss, sorority bid day photography in Oxford, Mississippi" width="1500" height="2250" style="width:100%;height:auto;display:block;"></div>
-          <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" src="uploads/pixieset/KD-Bid-2025-118-c4ba6105-1500.jpg" alt="New members celebrating on Kappa Delta bid day 2025 at Ole Miss, Greek life photography in Oxford, MS" width="1500" height="1000" style="width:100%;height:auto;display:block;"></div>
+          <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" decoding="async" src="uploads/portfolio/oxford-21st-birthday-portrait.jpg" alt="Birthday girl seated in front of a hand-painted 21st birthday banner at a party in Oxford, MS" width="899" height="1600" style="width:100%;height:auto;display:block;"></div>
+          <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" decoding="async" src="uploads/portfolio/kkg-parents-weekend-sisters-backdrop.jpg" alt="Two Kappa Kappa Gamma sisters at the balloon backdrop during parents weekend at Ole Miss" width="1600" height="1066" style="width:100%;height:auto;display:block;"></div>
           <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" src="uploads/pixieset/Lucky-Me-Pregame-2026-24-a737440b-1500.jpg" alt="Kappa Delta sorority pregame party photography at Ole Miss, Oxford MS" width="1500" height="2250" style="width:100%;height:auto;display:block;"></div>
+          <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" decoding="async" src="uploads/portfolio/kkg-parents-weekend-family-backdrop.jpg" alt="Family of three at the Kappa Kappa Gamma parents weekend backdrop, Ole Miss, Oxford MS" width="899" height="1600" style="width:100%;height:auto;display:block;"></div>
+          <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" src="uploads/pixieset/KD-Bid-2025-118-c4ba6105-1500.jpg" alt="New members celebrating on Kappa Delta bid day 2025 at Ole Miss, Greek life photography in Oxford, MS" width="1500" height="1000" style="width:100%;height:auto;display:block;"></div>
+          <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" decoding="async" src="uploads/portfolio/oxford-21st-birthday-friends-banner.jpg" alt="Three friends in front of a custom 21st birthday banner and balloon garland, party photography in Oxford, Mississippi" width="899" height="1600" style="width:100%;height:auto;display:block;"></div>
           <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" src="uploads/pixieset/Delta_Psi_2_13_8187-Enhanced-NR-d5e50007-1500.jpg" alt="Delta Psi fraternity date party photography at Ole Miss, Oxford MS" width="1500" height="2250" style="width:100%;height:auto;display:block;"></div>
+          <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" decoding="async" src="uploads/portfolio/kkg-parents-weekend-friends-night.jpg" alt="Three friends under string lights at Kappa Kappa Gamma parents weekend, Oxford, Mississippi" width="1066" height="1600" style="width:100%;height:auto;display:block;"></div>
           <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" src="uploads/pixieset/Lucky-Me-Pregame-2026-18-0b407973-1500.jpg" alt="Kappa Delta pregame and sorority social event photography at Ole Miss, Oxford, Mississippi" width="1500" height="2250" style="width:100%;height:auto;display:block;"></div>
+          <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" decoding="async" src="uploads/portfolio/oxford-21st-birthday-shotbook.jpg" alt="Birthday girl opening her shot book with a friend at her 21st birthday party in Oxford, MS" width="899" height="1600" style="width:100%;height:auto;display:block;"></div>
           <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" src="uploads/pixieset/Lucky-Me-Pregame-2026-6-f9f7fb80-1500.jpg" alt="Kappa Delta sorority social event photography at Ole Miss by a Greek life photographer in Oxford MS" width="1500" height="2250" style="width:100%;height:auto;display:block;"></div>
+          <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" decoding="async" src="uploads/portfolio/oxford-21st-birthday-trio.jpg" alt="Three friends at a 21st birthday party in Oxford, Mississippi" width="899" height="1600" style="width:100%;height:auto;display:block;"></div>
           <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" src="uploads/pixieset/Lucky-Me-Pregame-2026-39-ac8a1548-1500.jpg" alt="Candid Kappa Delta pregame moment at Ole Miss, Greek life event photographer in Oxford, MS" width="1500" height="2250" style="width:100%;height:auto;display:block;"></div>
         </div>
-        <!-- SLP Media: chapter events of 200+ guests are photographed by the event team. Placeholder photos, swap for picks. -->
+        <!-- SLP Media: chapter events of 200+ guests are photographed by the event team. Frames from Kappa Kappa Gamma parents weekend 2026. -->
         <div data-fade class="slpm">
           <div class="slpm-copy">
             <p class="slpm-eyebrow">Chapter events, 200+ guests</p>
@@ -667,10 +703,10 @@
             <a class="slpm-cta" href="https://slpmedia.pro/?src=slp-portfolio-greek" target="_blank" rel="noopener">See SLP Media</a>
           </div>
           <div class="slpm-grid">
-            <img loading="lazy" decoding="async" src="uploads/pixieset/DJI_0344-2ffbe2fa-1500.jpg" width="1500" height="844" alt="Drone view of white sailcloth tents full of guests on a lawn at a large event">
-            <img loading="lazy" decoding="async" src="uploads/pixieset/Lucky-Me-Pregame-2026-39-ac8a1548-1500.jpg" width="1500" height="2250" alt="Two friends posing under a rainbow paper chain before a party in Oxford">
-            <img loading="lazy" decoding="async" src="uploads/portfolio/garden-party-stage.jpg" width="1066" height="1600" alt="Guitarist singing on a tented stage while guests mingle on the lawn at a garden party">
-            <img loading="lazy" decoding="async" src="uploads/pixieset/Cochrane_Wedding_454-8671c432-1500.jpg" width="1500" height="1000" alt="Couple slow dancing on a crowded dance floor lit in green and blue at an evening event">
+            <img loading="lazy" decoding="async" src="uploads/portfolio/kkg-parents-weekend-group-backdrop.jpg" width="1600" height="1066" alt="Family group with balloon garland at the Kappa Kappa Gamma parents weekend backdrop at Harrison's, a chapter event photographed by SLP Media">
+            <img loading="lazy" decoding="async" src="uploads/portfolio/kkg-parents-weekend-lawn.jpg" width="1066" height="1600" alt="Two friends on the lawn at Harrison's during Kappa Kappa Gamma parents weekend, the Oxford water tower behind them">
+            <img loading="lazy" decoding="async" src="uploads/portfolio/kkg-parents-weekend-family.jpg" width="1066" height="1600" alt="Mom, daughter and dad under string lights at Kappa Kappa Gamma parents weekend at Ole Miss">
+            <img loading="lazy" decoding="async" src="uploads/portfolio/kkg-parents-weekend-friends-backdrop.jpg" width="1066" height="1600" alt="Three friends hugging at the Kappa Kappa Gamma backdrop during parents weekend, Oxford MS">
           </div>
         </div>
       </div>
@@ -711,7 +747,7 @@
   </main>
 
   <!-- BOOKING CTA -->
-  <section style="position:relative;min-height:70svh;display:flex;align-items:center;padding:clamp(80px,14vh,150px) clamp(20px,5vw,64px);overflow:hidden;border-top:1px solid var(--line);">
+  <section id="book-cta" style="position:relative;min-height:70svh;display:flex;align-items:center;padding:clamp(80px,14vh,150px) clamp(20px,5vw,64px);overflow:hidden;border-top:1px solid var(--line);">
     <div style="position:absolute;inset:0;z-index:0;background-image:url('uploads/pixieset/ES6A9951-c6273fc5-1500.jpg');background-size:cover;background-position:center;"></div>
     <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(4,4,6,.94) 0%,rgba(4,4,6,.7) 52%,rgba(4,4,6,.4) 100%);"></div>
     <div style="position:absolute;inset:0;z-index:1;background:radial-gradient(90% 70% at 14% 65%,var(--glow) 0%,transparent 55%);opacity:.5;mix-blend-mode:screen;"></div>
@@ -889,13 +925,36 @@ function slpPick(cat){ slpShow(window._slpTab, cat, { push: true }); }
 function slpSetTab(t){ slpShow(t, window._slpCat, { push: true }); }
 function slpCat(id, noScroll){ slpShow('photo', id, { push: true, noScroll: !!noScroll }); }
 function slpVCat(id, noScroll){ slpShow('video', id, { push: true, noScroll: !!noScroll }); }
+// Arrival chooser. portfolio.html?cat=greek preselects the category the chooser then opens.
+function slpPreCat(){
+  try { var c = new URLSearchParams(location.search).get('cat'); return SLP_CATS.indexOf(c) !== -1 ? c : null; } catch (e) { return null; }
+}
+function slpGateOpen(){
+  var cat = slpPreCat();
+  var ask = document.getElementById('hero-ask');
+  if (ask) ask.textContent = (cat ? SLP_LABELS[cat] + ': photo or video?' : 'Photo or video?') + ' Pick one. You can switch at the top of the page any time.';
+  document.documentElement.classList.add('is-choosing');
+}
+function slpGateClose(){
+  document.documentElement.classList.remove('is-choosing');
+  var sub = document.querySelector('.hero-sub');
+  if (sub) { sub.style.opacity = '1'; sub.style.transform = 'none'; }
+  slpMeasure();
+}
+function slpChoose(mode){
+  slpGateClose();
+  slpShow(mode, slpPreCat() || window._slpCat || 'weddings', { push: true });
+  if (window.slp && window.slp.track) window.slp.track('portfolio-choice', { mode: mode === 'photo' ? 'photo' : 'video' });
+}
 // Hash router: #greek opens the Greek Life photos, #video-greek the films (printed QR cards use these).
-// Returns true when the hash named a section.
+// Without a hash the chooser opens (also when back lands on the clean URL). Returns true for a deep link.
 function slpRoute(){
   var h = (location.hash || '').replace('#','');
-  if (h.indexOf('video-') === 0 && SLP_VCATS.indexOf(h.slice(6)) !== -1) { slpShow('video', h.slice(6), { instant: true }); return true; }
-  if (SLP_CATS.indexOf(h) !== -1) { slpShow('photo', h, { instant: true }); return true; }
-  slpShow('video', 'weddings', { noScroll: true });
+  if (h.indexOf('video-') === 0 && SLP_VCATS.indexOf(h.slice(6)) !== -1) { slpGateClose(); slpShow('video', h.slice(6), { instant: true }); return true; }
+  if (SLP_CATS.indexOf(h) !== -1) { slpGateClose(); slpShow('photo', h, { instant: true }); return true; }
+  slpShow('video', slpPreCat() || 'weddings', { noScroll: true });
+  slpGateOpen();
+  if (window.scrollY > 0) window.scrollTo({ top: 0, behavior: 'instant' });
   return false;
 }
 (function(){
