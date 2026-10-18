@@ -259,16 +259,15 @@
   /* Hero: title plus one line, short enough that the bar and the first piece share the first screen */
   .hero{min-height:min(56svh,620px);padding:clamp(120px,16vh,160px) var(--gutter) clamp(36px,6vh,60px);}
   .hero-copy{position:relative;z-index:2;max-width:1100px;}
-  /* Arrival chooser: opened without a deep link, the hero asks Photo or Video and the rest waits.
-     A deep link (#greek, #video-greek) skips it; the bar's switch is the way across afterwards. */
+  /* Arrival chooser: opened without a deep link, the hero fills the first screen and asks Photo or Video.
+     The bar and the galleries stay rendered below it (crawlers and anyone who scrolls see the full page);
+     a deep link (#greek, #video-greek) skips it, and the bar's switch is the way across afterwards. */
   .hero-ask,.hero-choice{display:none;}
   html.is-choosing .hero{min-height:100svh;justify-content:center;padding-bottom:clamp(60px,10vh,110px);}
-  html.is-choosing .hero-sub{display:none;}
   html.is-choosing .hero-ask{display:block;}
   html.is-choosing .hero-choice{display:flex;}
-  html.is-choosing #wf-anchor,html.is-choosing #wayfinder,html.is-choosing #main,html.is-choosing #book-cta{display:none !important;}
-  .hero-ask{margin:16px 0 0;max-width:560px;font-size:clamp(15px,1.7vw,19px);line-height:1.6;color:#e7e4df;font-weight:300;}
-  .hero-choice{gap:14px;margin-top:28px;flex-wrap:wrap;}
+  .hero-ask{margin:22px 0 0;max-width:560px;font-size:clamp(15px,1.7vw,19px);line-height:1.6;color:#fff;font-weight:500;}
+  .hero-choice{gap:14px;margin-top:18px;flex-wrap:wrap;}
   .choice{flex:1 1 240px;max-width:360px;cursor:pointer;text-align:left;font-family:var(--font-body);color:#fff;background:rgba(8,8,10,.55);border:1px solid rgba(255,255,255,.35);border-radius:16px;padding:20px 22px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background-color .2s,border-color .2s,color .2s;}
   .choice:hover,.choice:focus-visible{background:#f5f3ef;color:#08080a;border-color:#f5f3ef;}
   .choice strong{display:block;font-family:var(--font-display);font-weight:400;text-transform:uppercase;letter-spacing:.03em;font-size:clamp(34px,4vw,52px);line-height:1;}
@@ -321,7 +320,7 @@
     html.is-choosing .hero{min-height:100svh;padding-top:118px;padding-bottom:84px;}
     html.is-choosing .hero-copy{padding-right:0;}
     .choice{flex:1 1 100%;max-width:none;padding:16px 18px;}
-    .hero-choice{margin-top:22px;gap:10px;}
+    .hero-choice{margin-top:14px;gap:10px;}
     .sec-head{margin-bottom:24px;}
     .sec-cta{margin-top:18px;}
   }
@@ -362,7 +361,7 @@
     <div class="hero-copy">
       <h1 data-reveal style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.9;color:#fff;font-size:clamp(54px,11vw,150px);">Portfolio</h1>
       <p data-reveal data-delay="120" class="hero-sub" style="margin:16px 0 0;max-width:560px;font-size:clamp(15px,1.7vw,19px);line-height:1.6;color:#e7e4df;font-weight:300;">Wedding films, senior portraits, Ole Miss Greek Life and commercial work across Mississippi.</p>
-      <p class="hero-ask" id="hero-ask">Photo or video? Pick one. You can switch at the top of the page any time.</p>
+      <p class="hero-ask" id="hero-ask">Photo or video? Pick one to start. You can switch at the top of the page any time.</p>
       <div class="hero-choice" role="group" aria-label="Photo or video">
         <button type="button" class="choice" onclick="slpChoose('photo')"><strong>Photo</strong><span>Weddings, seniors, Greek Life and commercial photography</span></button>
         <button type="button" class="choice" onclick="slpChoose('video')"><strong>Video</strong><span>Wedding films, recruitment films, hype films and brand work</span></button>
@@ -757,7 +756,7 @@
       <h2 data-reveal style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.9;color:#fff;font-size:clamp(48px,10vw,140px);">Let's book your shoot</h2>
       <p data-reveal data-delay="160" style="margin:22px 0 0;max-width:52ch;font-size:clamp(16px,1.8vw,20px);line-height:1.6;color:#e7e4df;font-weight:300;">Loved what you saw? Tell me about your vision and let's get a date on the calendar. I reply to every inquiry personally, usually within a day.</p>
       <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;">
-        <a href="contact.html" style="text-decoration:none;color:#fff;background:var(--accent);padding:17px 38px;border-radius:999px;font-size:14px;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 0 34px var(--glow);">Contact &amp; book</a>
+        <a id="cta-book" href="contact.html?type=weddings&amp;from=portfolio-closing-weddings-video" style="text-decoration:none;color:#fff;background:var(--accent);padding:17px 38px;border-radius:999px;font-size:14px;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 0 34px var(--glow);">Book Weddings</a>
         <a href="https://www.instagram.com/samuellongproductions/" style="text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.35);padding:17px 38px;border-radius:999px;font-size:14px;letter-spacing:.16em;text-transform:uppercase;">@samuellongproductions</a>
       </div>
     </div>
@@ -853,6 +852,12 @@ function slpWayfinderSync(instant){
     book.textContent = 'Book ' + SLP_LABELS[cat];
     book.setAttribute('href', slpBookHref(cat, tab));
   }
+  // The closing CTA at the foot of the page follows the same category and mode
+  var cta = document.getElementById('cta-book');
+  if (cta) {
+    cta.textContent = 'Book ' + SLP_LABELS[cat];
+    cta.setAttribute('href', 'contact.html?type=' + cat + '&from=portfolio-closing-' + cat + '-' + tab);
+  }
   // Keep the active category tab in view when the row scrolls (phones)
   var row = document.getElementById('wf-tabs'), active = document.getElementById('wf-' + cat);
   if (row && active && row.scrollWidth > row.clientWidth + 1) {
@@ -934,7 +939,7 @@ function slpPreCat(){
 function slpGateOpen(){
   var cat = slpPreCat();
   var ask = document.getElementById('hero-ask');
-  if (ask) ask.textContent = (cat ? SLP_LABELS[cat] + ': photo or video?' : 'Photo or video?') + ' Pick one. You can switch at the top of the page any time.';
+  if (ask) ask.textContent = (cat ? SLP_LABELS[cat] + ': photo or video?' : 'Photo or video?') + ' Pick one to start. You can switch at the top of the page any time.';
   document.documentElement.classList.add('is-choosing');
 }
 function slpGateClose(){
