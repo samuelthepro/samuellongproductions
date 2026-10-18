@@ -235,7 +235,6 @@
   @media (max-width:480px){
     nav a{font-size:11px !important;letter-spacing:.12em !important;}
     nav img{height:40px !important;}
-    .cat-btn{flex:1 1 calc(50% - 5px);}
   }
   :root{
     --bg:#08080a;--bg2:#101013;--panel:#15151a;--text:#f5f3ef;--muted:#9c9aa0;
@@ -247,8 +246,62 @@
   .wordmark .wm2{display:block;font-size:.46em;letter-spacing:.34em;margin-top:3px;}
   .skip{position:absolute;left:12px;top:-200px;z-index:10001;padding:12px 18px;border-radius:8px;background:#fff;color:#08080a;font-family:var(--font-body);font-size:14px;font-weight:600;text-decoration:none;}
   .skip:focus{top:12px;outline:2px solid var(--accent);outline-offset:2px;}
-  #main{scroll-margin-top:100px;}
+  #main{scroll-margin-top:calc(var(--nav-h) + var(--wf-h));}
   a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+  /* Layout tokens: the gutter matches every section's side padding; --nav-h and --wf-h are
+     measured by script (slpMeasure) so the wayfinder bar sticks exactly under the fixed nav */
+  :root{--gutter:clamp(20px,5vw,64px);--nav-h:104px;--wf-h:60px;--sec-pad:clamp(64px,11vh,120px);}
+  main section{scroll-margin-top:calc(var(--nav-h) + var(--wf-h));}
+  /* Hero: title plus one line, short enough that the bar and the first piece share the first screen */
+  .hero{min-height:min(56svh,620px);padding:clamp(120px,16vh,160px) var(--gutter) clamp(36px,6vh,60px);}
+  .hero-copy{position:relative;z-index:2;max-width:1100px;}
+  /* Wayfinder bar: category tabs, Video | Photo switch, Book button */
+  #wayfinder{position:sticky;top:var(--nav-h);z-index:7000;background:rgba(8,8,10,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  #wayfinder.is-stuck{box-shadow:0 12px 32px rgba(0,0,0,.45);}
+  .wf-in{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px var(--gutter);}
+  .wf-tabs{position:relative;display:flex;gap:6px;flex:1 1 auto;min-width:0;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;}
+  .wf-tabs::-webkit-scrollbar{display:none;}
+  .wf-tab{flex:0 0 auto;cursor:pointer;font-family:var(--font-body);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);background:transparent;border:1px solid transparent;border-radius:999px;padding:10px 16px;white-space:nowrap;transition:color .2s,background-color .2s,border-color .2s;}
+  .wf-tab:hover{color:var(--text);}
+  .wf-tab[aria-pressed="true"]{color:#08080a;background:#f5f3ef;border-color:#f5f3ef;}
+  .wf-side{flex:0 0 auto;display:flex;align-items:center;gap:12px;}
+  .wf-mode{display:inline-flex;padding:3px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.04);}
+  .wf-mode button{cursor:pointer;font-family:var(--font-body);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);background:transparent;border:0;border-radius:999px;padding:8px 16px;transition:color .2s,background-color .2s;}
+  .wf-mode button:hover{color:var(--text);}
+  .wf-mode button[aria-pressed="true"]{color:#08080a;background:#f5f3ef;}
+  .wf-book{text-decoration:none;color:#fff;background:var(--accent);padding:11px 20px;border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;box-shadow:0 0 18px var(--glow);}
+  /* Section headers: title, one sentence, one red Book button and one quiet pricing link */
+  .sec-head{max-width:68ch;margin-bottom:clamp(28px,5vh,48px);}
+  .sec-head h2{margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(40px,7vw,88px);}
+  .sec-head p{margin:12px 0 0;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;}
+  .sec-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;margin-top:22px;}
+  .btn-book{text-decoration:none;color:#fff;background:var(--accent);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;box-shadow:0 0 22px var(--glow);}
+  .link-quiet{color:var(--muted);font-size:13px;letter-spacing:.03em;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(255,255,255,.3);}
+  .link-quiet:hover{color:var(--text);text-decoration-color:var(--text);}
+  /* SLP Media card at the end of the Greek Life photos */
+  .slpm{margin-top:clamp(28px,4vh,44px);display:grid;grid-template-columns:1.1fr 1fr;border:1px solid var(--line);border-radius:12px;background:var(--panel);overflow:hidden;}
+  .slpm-copy{padding:clamp(28px,4vw,52px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;}
+  .slpm-eyebrow{margin:0 0 14px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);}
+  .slpm-text{margin:0;max-width:34ch;font-size:clamp(17px,1.9vw,22px);line-height:1.55;color:var(--text);font-weight:300;}
+  .slpm-cta{margin-top:26px;display:inline-block;text-decoration:none;color:var(--text);border:1px solid rgba(255,255,255,.35);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;}
+  .slpm-cta:hover{border-color:#fff;color:#fff;}
+  .slpm-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--bg);}
+  .slpm-grid img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;display:block;}
+  @media (max-width:859px){
+    .wf-in{flex-wrap:wrap;gap:6px 12px;padding:7px var(--gutter);}
+    .wf-tabs{flex:0 0 calc(100% + 2 * var(--gutter));width:calc(100% + 2 * var(--gutter));margin:0 calc(-1 * var(--gutter));padding:0 var(--gutter);}
+    .wf-tab{padding:8px 14px;}
+    .wf-side{flex:1 1 100%;justify-content:space-between;}
+    .slpm{grid-template-columns:1fr;}
+    .slpm-grid{order:-1;}
+  }
+  @media (max-width:640px){
+    :root{--sec-pad:clamp(32px,4.5vh,48px);}
+    .hero{min-height:min(46svh,420px);padding:118px var(--gutter) 26px;}
+    .hero-copy{padding-right:56px;}
+    .sec-head{margin-bottom:24px;}
+    .sec-cta{margin-top:18px;}
+  }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto !important;}
     *,*::before,*::after{animation:none !important;transition:none !important;}
@@ -257,7 +310,7 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div style="background:var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh;overflow-x:hidden;position:relative;">
+<div style="background:var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh;overflow-x:hidden;overflow-x:clip;position:relative;">
 
   <div style="position:fixed;inset:0;z-index:9000;pointer-events:none;mix-blend-mode:overlay;opacity:.06;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);"></div>
 
@@ -271,25 +324,21 @@
       <a href="about.html" style="text-decoration:none;color:inherit;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">About</a>
       <a href="portfolio.html" style="text-decoration:none;color:inherit;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">Portfolio</a>
       <a href="pricing.html" style="text-decoration:none;color:inherit;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">Pricing</a>
-      <a href="contact.html" style="text-decoration:none;color:#fff;font-size:11px;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);padding:7px 15px;border-radius:999px;">Contact</a>
+      <a href="contact.html" style="text-decoration:none;color:#fff;font-size:11px;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);padding:7px 15px;border-radius:999px;">Book</a>
     </div>
   </nav>
 
   <!-- HERO -->
-  <header style="position:relative;min-height:64svh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(110px,16vh,150px) clamp(20px,5vw,64px) clamp(40px,7vh,70px);overflow:hidden;">
+  <header class="hero" style="position:relative;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;">
     <div style="position:absolute;inset:0;z-index:0;overflow:hidden;">
       <video id="hero-bg-video" data-bg muted loop playsinline preload="metadata" aria-label="Background reel of portfolio footage, no sound" poster="uploads/video/portfolio-hero-poster.jpg" src="uploads/video/portfolio-hero-loop.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;"></video>
       <div id="hero-bg-photo" style="display:none;position:absolute;inset:-4%;background-image:url('uploads/pixieset/Cochrane_Wedding_426-f14e7ab0-1500.jpg');background-size:cover;background-position:50% 40%;"></div>
     </div>
     <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,4,6,.55) 0%,rgba(4,4,6,.35) 45%,rgba(4,4,6,.95) 100%);"></div>
     <div style="position:absolute;inset:0;z-index:1;background:radial-gradient(110% 80% at 85% 100%,var(--glow) 0%,transparent 55%);opacity:.45;mix-blend-mode:screen;"></div>
-    <div style="position:relative;z-index:2;max-width:1100px;">
+    <div class="hero-copy">
       <h1 data-reveal style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.9;color:#fff;font-size:clamp(54px,11vw,150px);">Portfolio</h1>
-      <p data-reveal data-delay="120" style="margin:22px 0 0;max-width:640px;font-size:clamp(15px,1.7vw,19px);line-height:1.7;color:#e7e4df;font-weight:300;">Wedding films, senior portraits, Ole Miss Greek Life photo and video for sororities and fraternities, and commercial work across Mississippi.</p>
-      <div data-reveal data-delay="240" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;">
-        <button id="tab-video" type="button" aria-pressed="true" onclick="slpSetTab('video')" style="cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 22px var(--glow);">Video</button>
-        <button id="tab-photo" type="button" aria-pressed="false" onclick="slpSetTab('photo')" style="cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.35);box-shadow:none;">Photo</button>
-      </div>
+      <p data-reveal data-delay="120" style="margin:16px 0 0;max-width:560px;font-size:clamp(15px,1.7vw,19px);line-height:1.6;color:#e7e4df;font-weight:300;">Wedding films, senior portraits, Ole Miss Greek Life and commercial work across Mississippi.</p>
     </div>
     <button id="hero-bg-toggle" type="button" onclick="slpBgToggle()" aria-label="Play background video" style="position:absolute;right:clamp(20px,5vw,64px);bottom:clamp(16px,3vh,28px);z-index:3;display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;cursor:pointer;color:#fff;background:rgba(8,8,10,.55);border:1px solid rgba(255,255,255,.35);border-radius:999px;backdrop-filter:blur(6px);">
       <svg data-icon="pause" aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="currentColor" style="display:none;"><rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/></svg>
@@ -297,23 +346,23 @@
     </button>
   </header>
 
-  <!-- CATEGORY MENU (photo) -->
-  <nav id="cat-menu" aria-label="Photo portfolio categories" style="display:none;background:var(--bg);padding:clamp(18px,3vh,26px) clamp(20px,5vw,64px);border-top:1px solid var(--line);">
-    <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
-      <button id="cat-weddings" type="button" aria-pressed="true" class="cat-btn" onclick="slpCat('weddings')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 18px var(--glow);">Weddings</button>
-      <button id="cat-seniors" type="button" aria-pressed="false" class="cat-btn" onclick="slpCat('seniors')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Seniors</button>
-      <button id="cat-greek" type="button" aria-pressed="false" class="cat-btn" onclick="slpCat('greek')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Greek Life</button>
-      <button id="cat-commercial" type="button" aria-pressed="false" class="cat-btn" onclick="slpCat('commercial')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Commercial</button>
-    </div>
-  </nav>
-
-  <!-- CATEGORY MENU (video) -->
-  <nav id="vcat-menu" aria-label="Video portfolio categories" style="background:var(--bg);padding:clamp(18px,3vh,26px) clamp(20px,5vw,64px);border-top:1px solid var(--line);">
-    <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
-      <button id="vcat-weddings" type="button" aria-pressed="true" class="cat-btn" onclick="slpVCat('weddings')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 18px var(--glow);">Weddings</button>
-      <button id="vcat-seniors" type="button" aria-pressed="false" class="cat-btn" onclick="slpVCat('seniors')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Seniors</button>
-      <button id="vcat-greek" type="button" aria-pressed="false" class="cat-btn" onclick="slpVCat('greek')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Greek Life</button>
-      <button id="vcat-commercial" type="button" aria-pressed="false" class="cat-btn" onclick="slpVCat('commercial')" style="cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);">Commercial</button>
+  <!-- WAYFINDER: one bar for the category, Video | Photo, and Book. It sticks under the nav. -->
+  <div id="wf-anchor" aria-hidden="true"></div>
+  <nav id="wayfinder" aria-label="Portfolio categories and booking">
+    <div class="wf-in">
+      <div id="wf-tabs" class="wf-tabs" role="group" aria-label="Category">
+        <button id="wf-weddings" class="wf-tab" type="button" aria-pressed="true" onclick="slpPick('weddings')">Weddings</button>
+        <button id="wf-seniors" class="wf-tab" type="button" aria-pressed="false" onclick="slpPick('seniors')">Seniors</button>
+        <button id="wf-greek" class="wf-tab" type="button" aria-pressed="false" onclick="slpPick('greek')">Greek Life</button>
+        <button id="wf-commercial" class="wf-tab" type="button" aria-pressed="false" onclick="slpPick('commercial')">Commercial</button>
+      </div>
+      <div class="wf-side">
+        <div class="wf-mode" role="group" aria-label="Video or photo">
+          <button id="tab-video" type="button" aria-pressed="true" onclick="slpSetTab('video')">Video</button>
+          <button id="tab-photo" type="button" aria-pressed="false" onclick="slpSetTab('photo')">Photo</button>
+        </div>
+        <a id="wf-book" class="wf-book" href="contact.html?type=weddings&amp;from=portfolio-weddings-video">Book Weddings</a>
+      </div>
     </div>
   </nav>
 
@@ -323,20 +372,15 @@
     <!-- VIDEO PANEL -->
     <div id="panel-video">
 
-    <!-- V01 WEDDINGS -->
-    <section id="video-weddings" style="padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg);">
+    <!-- VIDEO: WEDDINGS -->
+    <section id="video-weddings" style="padding:var(--sec-pad) var(--gutter);border-top:1px solid var(--line);background:var(--bg);">
       <div style="max-width:1280px;margin:0 auto;">
-        <div data-fade style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:clamp(30px,5vh,52px);">
-          <div style="max-width:60ch;">
-            <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:14px;">
-              <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">01</span>
-              <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(40px,7vw,88px);">Weddings</h2>
-            </div>
-            <p style="margin:0;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Cinematic wedding films from Oxford to the Jackson metro. Every glance, every vow, edited to feel the way the day felt. See <a href="weddings.html" style="color:var(--text);text-decoration:underline;text-underline-offset:3px;">how I film a wedding and what it costs</a>.</p>
-          </div>
-          <div style="display:flex;flex-wrap:wrap;gap:12px;">
-            <a href="pricing.html#weddings-video" style="text-decoration:none;color:var(--text);border:1px solid var(--line);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;">Wedding pricing</a>
-            <a href="contact.html" style="text-decoration:none;color:#fff;background:var(--accent);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;box-shadow:0 0 22px var(--glow);">Book Weddings</a>
+        <div data-fade class="sec-head">
+          <h2>Wedding films</h2>
+          <p>Cinematic wedding films from Oxford to the Jackson metro, edited to feel the way the day felt.</p>
+          <div class="sec-cta">
+            <a class="btn-book" href="contact.html?type=weddings&amp;from=portfolio-weddings-video">Book Weddings</a>
+            <a class="link-quiet" href="pricing.html#weddings-video">Wedding video pricing</a>
           </div>
         </div>
         <div style="display:grid;gap:clamp(28px,4vh,44px);">
@@ -371,20 +415,15 @@
       </div>
     </section>
 
-    <!-- V02 SENIORS -->
-    <section id="video-seniors" style="display:none;padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg2);">
+    <!-- VIDEO: SENIORS -->
+    <section id="video-seniors" style="display:none;padding:var(--sec-pad) var(--gutter);border-top:1px solid var(--line);background:var(--bg2);">
       <div style="max-width:1280px;margin:0 auto;">
-        <div data-fade style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:clamp(30px,5vh,52px);">
-          <div style="max-width:60ch;">
-            <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:14px;">
-              <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">02</span>
-              <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(40px,7vw,88px);">Seniors</h2>
-            </div>
-            <p style="margin:0;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Senior year and school spirit in motion: hype films, sports highlights, and performances from schools across the Jackson metro and Mississippi. More on <a href="seniors.html" style="color:var(--text);text-decoration:underline;text-underline-offset:3px;">senior hype films and portraits</a>.</p>
-          </div>
-          <div style="display:flex;flex-wrap:wrap;gap:12px;">
-            <a href="pricing.html#seniors-video" style="text-decoration:none;color:var(--text);border:1px solid var(--line);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;">Senior pricing</a>
-            <a href="contact.html" style="text-decoration:none;color:#fff;background:var(--accent);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;box-shadow:0 0 22px var(--glow);">Book Seniors</a>
+        <div data-fade class="sec-head">
+          <h2>Senior films</h2>
+          <p>Hype films, sports highlights and performances for schools across the Jackson metro and Mississippi.</p>
+          <div class="sec-cta">
+            <a class="btn-book" href="contact.html?type=seniors&amp;from=portfolio-seniors-video">Book Seniors</a>
+            <a class="link-quiet" href="pricing.html#seniors-video">Senior video pricing</a>
           </div>
         </div>
         <div style="display:grid;gap:clamp(28px,4vh,44px);">
@@ -433,20 +472,15 @@
       </div>
     </section>
 
-    <!-- V03 GREEK LIFE -->
-    <section id="video-greek" style="display:none;padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg);">
+    <!-- VIDEO: GREEK LIFE -->
+    <section id="video-greek" style="display:none;padding:var(--sec-pad) var(--gutter);border-top:1px solid var(--line);background:var(--bg);">
       <div style="max-width:1280px;margin:0 auto;">
-        <div data-fade style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:clamp(30px,5vh,52px);">
-          <div style="max-width:60ch;">
-            <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:14px;">
-              <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">03</span>
-              <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(40px,7vw,88px);">Greek Life</h2>
-            </div>
-            <p style="margin:0;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Recruitment films for Ole Miss sororities (Sisterhood, Philanthropy and Greek Day), plus bid day recaps, formals, date parties and game day edits. All the energy of the chapter, kept. See <a href="sorority-recruitment-videos.html" style="color:var(--text);text-decoration:underline;text-underline-offset:3px;">recruitment films and packages for Ole Miss chapters</a>.</p>
-          </div>
-          <div style="display:flex;flex-wrap:wrap;gap:12px;">
-            <a href="pricing.html#greek-video" style="text-decoration:none;color:var(--text);border:1px solid var(--line);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;">Greek life pricing</a>
-            <a href="contact.html" style="text-decoration:none;color:#fff;background:var(--accent);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;box-shadow:0 0 22px var(--glow);">Book Greek Life</a>
+        <div data-fade class="sec-head">
+          <h2>Greek Life films</h2>
+          <p>Recruitment films for Ole Miss sororities, plus bid day recaps, formals, date parties and game day edits.</p>
+          <div class="sec-cta">
+            <a class="btn-book" href="contact.html?type=greek&amp;from=portfolio-greek-video">Book Greek Life</a>
+            <a class="link-quiet" href="pricing.html#greek-video">Greek Life video pricing</a>
           </div>
         </div>
         <div style="display:grid;gap:clamp(28px,4vh,44px);">
@@ -490,20 +524,15 @@
       </div>
     </section>
 
-    <!-- V03 COMMERCIAL -->
-    <section id="video-commercial" style="display:none;padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg);">
+    <!-- VIDEO: COMMERCIAL -->
+    <section id="video-commercial" style="display:none;padding:var(--sec-pad) var(--gutter);border-top:1px solid var(--line);background:var(--bg);">
       <div style="max-width:1280px;margin:0 auto;">
-        <div data-fade style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:clamp(30px,5vh,52px);">
-          <div style="max-width:60ch;">
-            <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:14px;">
-              <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">04</span>
-              <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(40px,7vw,88px);">Commercial</h2>
-            </div>
-            <p style="margin:0;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Brand films, real estate and FAA-certified aerial work that makes your business look the part, on the ground and in the air. See <a href="commercial.html" style="color:var(--text);text-decoration:underline;text-underline-offset:3px;">commercial, drone and retainer work</a>.</p>
-          </div>
-          <div style="display:flex;flex-wrap:wrap;gap:12px;">
-            <a href="pricing.html#commercial-video" style="text-decoration:none;color:var(--text);border:1px solid var(--line);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;">Commercial pricing</a>
-            <a href="contact.html" style="text-decoration:none;color:#fff;background:var(--accent);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;box-shadow:0 0 22px var(--glow);">Book Commercial</a>
+        <div data-fade class="sec-head">
+          <h2>Commercial films</h2>
+          <p>Brand films, real estate and FAA-certified aerial work that makes your business look the part, on the ground and in the air.</p>
+          <div class="sec-cta">
+            <a class="btn-book" href="contact.html?type=commercial&amp;from=portfolio-commercial-video">Book Commercial</a>
+            <a class="link-quiet" href="pricing.html#commercial-video">Commercial video pricing</a>
           </div>
         </div>
         <div style="display:grid;gap:clamp(28px,4vh,44px);">
@@ -549,20 +578,15 @@
     <!-- PHOTO PANEL -->
     <div id="panel-photo" style="display:none;">
 
-    <!-- 01 WEDDINGS -->
-    <section id="weddings" style="padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg);">
+    <!-- PHOTO: WEDDINGS -->
+    <section id="weddings" style="padding:var(--sec-pad) var(--gutter);border-top:1px solid var(--line);background:var(--bg);">
       <div style="max-width:1280px;margin:0 auto;">
-        <div data-fade style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:clamp(30px,5vh,52px);">
-          <div style="max-width:60ch;">
-            <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:14px;">
-              <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">01</span>
-              <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(40px,7vw,88px);">Weddings</h2>
-            </div>
-            <p style="margin:0;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Cinematic films and timeless photography for weddings and engagements in Oxford, Jackson, and across Mississippi. Every glance, every tear, kept forever.</p>
-          </div>
-          <div style="display:flex;flex-wrap:wrap;gap:12px;">
-            <a href="pricing.html#weddings" style="text-decoration:none;color:var(--text);border:1px solid var(--line);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;">Wedding pricing</a>
-            <a href="contact.html" style="text-decoration:none;color:#fff;background:var(--accent);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;box-shadow:0 0 22px var(--glow);">Book Weddings</a>
+        <div data-fade class="sec-head">
+          <h2>Wedding photos</h2>
+          <p>Timeless wedding and engagement photography in Oxford, Jackson and across Mississippi.</p>
+          <div class="sec-cta">
+            <a class="btn-book" href="contact.html?type=weddings&amp;from=portfolio-weddings-photo">Book Weddings</a>
+            <a class="link-quiet" href="pricing.html#weddings">Wedding photo pricing</a>
           </div>
         </div>
         <div data-fade style="columns:clamp(180px,23vw,280px);column-gap:14px;">
@@ -584,20 +608,15 @@
       </div>
     </section>
 
-    <!-- 02 SENIORS -->
-    <section id="seniors" style="display:none;padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg2);">
+    <!-- PHOTO: SENIORS -->
+    <section id="seniors" style="display:none;padding:var(--sec-pad) var(--gutter);border-top:1px solid var(--line);background:var(--bg2);">
       <div style="max-width:1280px;margin:0 auto;">
-        <div data-fade style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:clamp(30px,5vh,52px);">
-          <div style="max-width:60ch;">
-            <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:14px;">
-              <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">02</span>
-              <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(40px,7vw,88px);">Seniors</h2>
-            </div>
-            <p style="margin:0;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Bold, editorial senior and family portraits at the Grove, the Walk of Champions, and anywhere from Ole Miss to the Jackson metro, that actually feel like you, not the same shot everyone else has. See <a href="seniors.html" style="color:var(--text);text-decoration:underline;text-underline-offset:3px;">senior sessions and what they cost</a>.</p>
-          </div>
-          <div style="display:flex;flex-wrap:wrap;gap:12px;">
-            <a href="pricing.html#seniors" style="text-decoration:none;color:var(--text);border:1px solid var(--line);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;">Senior pricing</a>
-            <a href="contact.html" style="text-decoration:none;color:#fff;background:var(--accent);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;box-shadow:0 0 22px var(--glow);">Book Seniors</a>
+        <div data-fade class="sec-head">
+          <h2>Senior photos</h2>
+          <p>Bold, editorial senior and family portraits at the Grove, the Walk of Champions and anywhere from Ole Miss to the Jackson metro.</p>
+          <div class="sec-cta">
+            <a class="btn-book" href="contact.html?type=seniors&amp;from=portfolio-seniors-photo">Book Seniors</a>
+            <a class="link-quiet" href="pricing.html#seniors">Senior photo pricing</a>
           </div>
         </div>
         <div data-fade style="columns:clamp(180px,23vw,280px);column-gap:14px;">
@@ -620,20 +639,15 @@
       </div>
     </section>
 
-    <!-- 03 GREEK LIFE -->
-    <section id="greek" style="display:none;padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg);">
+    <!-- PHOTO: GREEK LIFE -->
+    <section id="greek" style="display:none;padding:var(--sec-pad) var(--gutter);border-top:1px solid var(--line);background:var(--bg);">
       <div style="max-width:1280px;margin:0 auto;">
-        <div data-fade style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:clamp(30px,5vh,52px);">
-          <div style="max-width:60ch;">
-            <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:14px;">
-              <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">03</span>
-              <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(40px,7vw,88px);">Greek Life</h2>
-            </div>
-            <p style="margin:0;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Bid day, parents weekend, formals, date parties, pregames and game day for Ole Miss sororities and fraternities. For large chapter events I bring on additional photographers. All the energy of the chapter, captured. More on <a href="greek-life.html" style="color:var(--text);text-decoration:underline;text-underline-offset:3px;">Greek life photo and video at Ole Miss</a>.</p>
-          </div>
-          <div style="display:flex;flex-wrap:wrap;gap:12px;">
-            <a href="pricing.html#greek" style="text-decoration:none;color:var(--text);border:1px solid var(--line);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;">Greek life pricing</a>
-            <a href="contact.html" style="text-decoration:none;color:#fff;background:var(--accent);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;box-shadow:0 0 22px var(--glow);">Book Greek Life</a>
+        <div data-fade class="sec-head">
+          <h2>Greek Life photos</h2>
+          <p>Bid day, parents weekend, formals, date parties, pregames and game day for Ole Miss sororities and fraternities.</p>
+          <div class="sec-cta">
+            <a class="btn-book" href="contact.html?type=greek&amp;from=portfolio-greek-photo">Book Greek Life</a>
+            <a class="link-quiet" href="pricing.html#greek">Greek Life photo pricing</a>
           </div>
         </div>
         <div data-fade style="columns:clamp(180px,23vw,280px);column-gap:14px;">
@@ -645,23 +659,32 @@
           <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" src="uploads/pixieset/Lucky-Me-Pregame-2026-6-f9f7fb80-1500.jpg" alt="Kappa Delta sorority social event photography at Ole Miss by a Greek life photographer in Oxford MS" width="1500" height="2250" style="width:100%;height:auto;display:block;"></div>
           <div style="break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;background:var(--panel);"><img loading="lazy" src="uploads/pixieset/Lucky-Me-Pregame-2026-39-ac8a1548-1500.jpg" alt="Candid Kappa Delta pregame moment at Ole Miss, Greek life event photographer in Oxford, MS" width="1500" height="2250" style="width:100%;height:auto;display:block;"></div>
         </div>
+        <!-- SLP Media: chapter events of 200+ guests are photographed by the event team. Placeholder photos, swap for picks. -->
+        <div data-fade class="slpm">
+          <div class="slpm-copy">
+            <p class="slpm-eyebrow">Chapter events, 200+ guests</p>
+            <p class="slpm-text">Parents weekend, bid day and formals are photographed by SLP Media, my event photography team. Every guest finds their own photos with a selfie.</p>
+            <a class="slpm-cta" href="https://slpmedia.pro/?src=slp-portfolio-greek" target="_blank" rel="noopener">See SLP Media</a>
+          </div>
+          <div class="slpm-grid">
+            <img loading="lazy" decoding="async" src="uploads/pixieset/DJI_0344-2ffbe2fa-1500.jpg" width="1500" height="844" alt="Drone view of white sailcloth tents full of guests on a lawn at a large event">
+            <img loading="lazy" decoding="async" src="uploads/pixieset/Lucky-Me-Pregame-2026-39-ac8a1548-1500.jpg" width="1500" height="2250" alt="Two friends posing under a rainbow paper chain before a party in Oxford">
+            <img loading="lazy" decoding="async" src="uploads/portfolio/garden-party-stage.jpg" width="1066" height="1600" alt="Guitarist singing on a tented stage while guests mingle on the lawn at a garden party">
+            <img loading="lazy" decoding="async" src="uploads/pixieset/Cochrane_Wedding_454-8671c432-1500.jpg" width="1500" height="1000" alt="Couple slow dancing on a crowded dance floor lit in green and blue at an evening event">
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- 04 COMMERCIAL -->
-    <section id="commercial" style="display:none;padding:clamp(64px,11vh,120px) clamp(20px,5vw,64px);border-top:1px solid var(--line);background:var(--bg2);">
+    <!-- PHOTO: COMMERCIAL -->
+    <section id="commercial" style="display:none;padding:var(--sec-pad) var(--gutter);border-top:1px solid var(--line);background:var(--bg2);">
       <div style="max-width:1280px;margin:0 auto;">
-        <div data-fade style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:clamp(30px,5vh,52px);">
-          <div style="max-width:60ch;">
-            <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:14px;">
-              <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,32px);color:var(--accent);">04</span>
-              <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(40px,7vw,88px);">Commercial</h2>
-            </div>
-            <p style="margin:0;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Aerial, real estate and brand work that makes your business look the part, on the ground and in the air.</p>
-          </div>
-          <div style="display:flex;flex-wrap:wrap;gap:12px;">
-            <a href="pricing.html#commercial" style="text-decoration:none;color:var(--text);border:1px solid var(--line);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;">Commercial pricing</a>
-            <a href="contact.html" style="text-decoration:none;color:#fff;background:var(--accent);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;box-shadow:0 0 22px var(--glow);">Book Commercial</a>
+        <div data-fade class="sec-head">
+          <h2>Commercial photos</h2>
+          <p>Aerial, real estate and brand photography that makes your business look the part, on the ground and in the air.</p>
+          <div class="sec-cta">
+            <a class="btn-book" href="contact.html?type=commercial&amp;from=portfolio-commercial-photo">Book Commercial</a>
+            <a class="link-quiet" href="pricing.html#commercial">Commercial photo pricing</a>
           </div>
         </div>
         <div data-fade style="columns:clamp(180px,23vw,280px);column-gap:14px;">
@@ -737,9 +760,15 @@
 <script>
 var SLP_CATS = ['weddings','seniors','greek','commercial'];
 var SLP_VCATS = ['weddings','seniors','greek','commercial'];
+var SLP_LABELS = { weddings: 'Weddings', seniors: 'Seniors', greek: 'Greek Life', commercial: 'Commercial' };
 var SLP_REDUCE = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 // The hero loop stays paused when the visitor asks for reduced motion or presses pause
 var SLP_BG_HOLD = SLP_REDUCE;
+// One category is open at a time in one mode (video or photo). The wayfinder bar, both Book
+// buttons and the URL hash (#greek for photos, #video-greek for films) all follow that pair.
+window._slpTab = 'video';
+window._slpCat = 'weddings';
+window._slpVCat = 'weddings';
 function slpBgToggle(){
   var v = document.getElementById('hero-bg-video');
   if (!v) return;
@@ -758,75 +787,116 @@ function slpBgSync(){
 function slpPauseVideos(){
   [].slice.call(document.querySelectorAll('video:not([data-bg])')).forEach(function(v){ v.pause(); });
 }
-function slpSetTab(t){
-  var base = 'cursor:pointer;font-family:var(--font-body);padding:14px clamp(26px,6vw,42px);border-radius:999px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;';
-  var on = 'color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 22px var(--glow);';
-  var off = 'color:#fff;background:transparent;border:1px solid rgba(255,255,255,.35);box-shadow:none;';
+function slpNavHeight(){
+  var navEl = document.querySelector('nav');
+  return navEl ? navEl.offsetHeight : 104;
+}
+// The fixed nav's height sets where the bar sticks; the bar's height sets where sections scroll to
+function slpMeasure(){
+  var root = document.documentElement.style;
+  root.setProperty('--nav-h', slpNavHeight() + 'px');
+  var wf = document.getElementById('wayfinder');
+  if (wf) root.setProperty('--wf-h', wf.offsetHeight + 'px');
+}
+function slpBookHref(cat, tab){
+  return 'contact.html?type=' + cat + '&from=portfolio-' + cat + '-' + tab;
+}
+function slpWayfinderSync(instant){
+  var tab = window._slpTab, cat = window._slpCat;
+  SLP_CATS.forEach(function(c){
+    var b = document.getElementById('wf-' + c);
+    if (b) b.setAttribute('aria-pressed', c === cat ? 'true' : 'false');
+  });
+  var tv = document.getElementById('tab-video'), tp = document.getElementById('tab-photo');
+  if (tv) tv.setAttribute('aria-pressed', tab === 'video' ? 'true' : 'false');
+  if (tp) tp.setAttribute('aria-pressed', tab === 'photo' ? 'true' : 'false');
+  var book = document.getElementById('wf-book');
+  if (book) {
+    book.textContent = 'Book ' + SLP_LABELS[cat];
+    book.setAttribute('href', slpBookHref(cat, tab));
+  }
+  // Keep the active category tab in view when the row scrolls (phones)
+  var row = document.getElementById('wf-tabs'), active = document.getElementById('wf-' + cat);
+  if (row && active && row.scrollWidth > row.clientWidth + 1) {
+    var left = Math.max(0, active.offsetLeft - (row.clientWidth - active.offsetWidth) / 2);
+    try { row.scrollTo({ left: left, behavior: (instant || SLP_REDUCE) ? 'instant' : 'smooth' }); } catch (e) { row.scrollLeft = left; }
+  }
+}
+// Scroll so the bar sits right under the nav with the section header below it.
+// Smooth scrolls issued while the page is still loading are dropped by Chrome, so
+// hash routes ask for an instant one.
+function slpScrollTarget(){
+  var anchor = document.getElementById('wf-anchor');
+  return anchor ? Math.max(0, anchor.getBoundingClientRect().top + window.scrollY - slpNavHeight()) : 0;
+}
+function slpStuckSync(){
+  var wf = document.getElementById('wayfinder'), anchor = document.getElementById('wf-anchor');
+  if (wf && anchor) wf.classList.toggle('is-stuck', anchor.getBoundingClientRect().top <= slpNavHeight() + 1);
+}
+function slpScrollToMenu(menuId, instant){
+  if (!document.getElementById('wf-anchor')) return;
+  var y = slpScrollTarget();
+  var startY = window.scrollY;
+  var smooth = !instant && !SLP_REDUCE;
+  window.scrollTo({ top: y, behavior: smooth ? 'smooth' : 'instant' });
+  if (smooth) setTimeout(function(){
+    if (Math.abs(window.scrollY - startY) < 4 && Math.abs(window.scrollY - y) > 4) window.scrollTo({ top: y, behavior: 'instant' });
+    slpStuckSync();
+  }, 500);
+  else if (window.requestAnimationFrame) requestAnimationFrame(slpStuckSync);
+}
+function slpShow(tab, cat, opts){
+  opts = opts || {};
+  tab = (tab === 'photo') ? 'photo' : 'video';
+  if (SLP_CATS.indexOf(cat) === -1) cat = 'weddings';
+  window._slpTab = tab;
+  window._slpCat = cat;
+  window._slpVCat = cat;
   slpPauseVideos();
-  document.getElementById('panel-video').style.display = (t === 'video') ? '' : 'none';
-  document.getElementById('panel-photo').style.display = (t === 'photo') ? '' : 'none';
-  document.getElementById('cat-menu').style.display = (t === 'photo') ? '' : 'none';
-  document.getElementById('vcat-menu').style.display = (t === 'video') ? '' : 'none';
-  document.getElementById('tab-video').style.cssText = base + (t === 'video' ? on : off);
-  document.getElementById('tab-photo').style.cssText = base + (t === 'photo' ? on : off);
-  document.getElementById('tab-video').setAttribute('aria-pressed', t === 'video' ? 'true' : 'false');
-  document.getElementById('tab-photo').setAttribute('aria-pressed', t === 'photo' ? 'true' : 'false');
+  var pv = document.getElementById('panel-video'), pp = document.getElementById('panel-photo');
+  if (pv) pv.style.display = (tab === 'video') ? '' : 'none';
+  if (pp) pp.style.display = (tab === 'photo') ? '' : 'none';
+  SLP_CATS.forEach(function(c){
+    var ps = document.getElementById(c);
+    if (ps) ps.style.display = (c === cat) ? '' : 'none';
+    var vs = document.getElementById('video-' + c);
+    if (vs) vs.style.display = (c === cat) ? '' : 'none';
+  });
+  var shown = document.getElementById((tab === 'video' ? 'video-' : '') + cat);
+  if (shown) [].slice.call(shown.querySelectorAll('[data-fade],[data-reveal]')).forEach(function(e){ e.style.opacity = '1'; e.style.transform = 'none'; });
+  // The hero background follows the mode: the loop for video, a still for photo
   var bgVid = document.getElementById('hero-bg-video');
   var bgPhoto = document.getElementById('hero-bg-photo');
   var bgBtn = document.getElementById('hero-bg-toggle');
   if (bgVid && bgPhoto) {
-    bgVid.style.display = (t === 'video') ? '' : 'none';
-    bgPhoto.style.display = (t === 'photo') ? '' : 'none';
-    if (bgBtn) bgBtn.style.display = (t === 'video') ? 'flex' : 'none';
-    if (t === 'video') { if (!SLP_BG_HOLD) bgVid.play().catch(function(){}); } else { bgVid.pause(); }
+    bgVid.style.display = (tab === 'video') ? '' : 'none';
+    bgPhoto.style.display = (tab === 'photo') ? '' : 'none';
+    if (bgBtn) bgBtn.style.display = (tab === 'video') ? 'flex' : 'none';
+    if (tab === 'video') { if (!SLP_BG_HOLD) bgVid.play().catch(function(){}); } else { bgVid.pause(); }
   }
-  if (t === 'photo') slpCat(window._slpCat || 'weddings', true);
-  if (t === 'video') slpVCat(window._slpVCat || 'weddings', true);
+  slpWayfinderSync(!!opts.instant);
+  if (opts.push) {
+    var route = '#' + (tab === 'video' ? 'video-' : '') + cat;
+    if (location.hash !== route) {
+      if (window.history && history.pushState) { try { history.pushState(null, '', route); } catch (e) {} }
+      else location.hash = route;
+    }
+  }
+  if (!opts.noScroll) slpScrollToMenu('wayfinder', opts.instant);
 }
-function slpCatStyle(active){
-  var base = 'cursor:pointer;font-family:var(--font-body);padding:11px clamp(16px,3.5vw,24px);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;';
-  return base + (active
-    ? 'color:#fff;background:var(--accent);border:1px solid var(--accent);box-shadow:0 0 18px var(--glow);'
-    : 'color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.22);box-shadow:none;');
-}
-function slpScrollToMenu(menuId){
-  var menu = document.getElementById(menuId);
-  if (!menu) return;
-  var navEl = document.querySelector('nav');
-  var navH = navEl ? navEl.offsetHeight : 90;
-  var y = Math.max(0, menu.getBoundingClientRect().top + window.scrollY - navH - 6);
-  var startY = window.scrollY;
-  window.scrollTo({top: y, behavior: SLP_REDUCE ? 'auto' : 'smooth'});
-  setTimeout(function(){
-    if (Math.abs(window.scrollY - startY) < 4 && Math.abs(window.scrollY - y) > 4) window.scrollTo({top: y, behavior: 'instant'});
-  }, 500);
-}
-function slpCat(id, noScroll){
-  if (SLP_CATS.indexOf(id) === -1) id = 'weddings';
-  window._slpCat = id;
-  SLP_CATS.forEach(function(c){
-    var sec = document.getElementById(c);
-    if (sec) sec.style.display = (c === id) ? '' : 'none';
-    var btn = document.getElementById('cat-' + c);
-    if (btn) { btn.style.cssText = slpCatStyle(c === id); btn.setAttribute('aria-pressed', c === id ? 'true' : 'false'); }
-  });
-  var shown = document.getElementById(id);
-  if (shown) [].slice.call(shown.querySelectorAll('[data-fade],[data-reveal]')).forEach(function(e){ e.style.opacity = '1'; e.style.transform = 'none'; });
-  if (!noScroll) slpScrollToMenu('cat-menu');
-}
-function slpVCat(id, noScroll){
-  if (SLP_VCATS.indexOf(id) === -1) id = 'weddings';
-  window._slpVCat = id;
-  slpPauseVideos();
-  SLP_VCATS.forEach(function(c){
-    var sec = document.getElementById('video-' + c);
-    if (sec) sec.style.display = (c === id) ? '' : 'none';
-    var btn = document.getElementById('vcat-' + c);
-    if (btn) { btn.style.cssText = slpCatStyle(c === id); btn.setAttribute('aria-pressed', c === id ? 'true' : 'false'); }
-  });
-  var shown = document.getElementById('video-' + id);
-  if (shown) [].slice.call(shown.querySelectorAll('[data-fade],[data-reveal]')).forEach(function(e){ e.style.opacity = '1'; e.style.transform = 'none'; });
-  if (!noScroll) slpScrollToMenu('vcat-menu');
+// Wayfinder handlers. The category stays when the mode switches, and the mode stays when the category does.
+function slpPick(cat){ slpShow(window._slpTab, cat, { push: true }); }
+function slpSetTab(t){ slpShow(t, window._slpCat, { push: true }); }
+function slpCat(id, noScroll){ slpShow('photo', id, { push: true, noScroll: !!noScroll }); }
+function slpVCat(id, noScroll){ slpShow('video', id, { push: true, noScroll: !!noScroll }); }
+// Hash router: #greek opens the Greek Life photos, #video-greek the films (printed QR cards use these).
+// Returns true when the hash named a section.
+function slpRoute(){
+  var h = (location.hash || '').replace('#','');
+  if (h.indexOf('video-') === 0 && SLP_VCATS.indexOf(h.slice(6)) !== -1) { slpShow('video', h.slice(6), { instant: true }); return true; }
+  if (SLP_CATS.indexOf(h) !== -1) { slpShow('photo', h, { instant: true }); return true; }
+  slpShow('video', 'weddings', { noScroll: true });
+  return false;
 }
 (function(){
   var progress = document.getElementById('progress');
@@ -853,8 +923,13 @@ function slpVCat(id, noScroll){
       var h = document.documentElement.scrollHeight - window.innerHeight;
       progress.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, (window.scrollY || 0) / h) : 0) + ')';
     }
+    slpStuckSync();
   }
   window.addEventListener('scroll', onScroll, { passive: true });
+  slpMeasure();
+  window.addEventListener('resize', slpMeasure);
+  window.addEventListener('load', slpMeasure);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(slpMeasure, function(){});
   onScroll();
   // Only one portfolio video plays at a time (the hero background loop is exempt)
   document.addEventListener('play', function(e){
@@ -862,9 +937,23 @@ function slpVCat(id, noScroll){
     if (!v || v.tagName !== 'VIDEO' || v.hasAttribute('data-bg')) return;
     [].slice.call(document.querySelectorAll('video:not([data-bg])')).forEach(function(o){ if (o !== v) o.pause(); });
   }, true);
-  var h = (location.hash || '').replace('#','');
-  if (h.indexOf('video-') === 0 && SLP_VCATS.indexOf(h.slice(6)) !== -1) { slpSetTab('video'); slpVCat(h.slice(6)); }
-  else if (SLP_CATS.indexOf(h) !== -1) { slpSetTab('photo'); slpCat(h); }
+  if (slpRoute()) {
+    // Late layout shifts (fonts, images) can move a deep-linked section; settle once the page
+    // has loaded unless the visitor has started scrolling themselves
+    var touched = false;
+    ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(function(ev){
+      window.addEventListener(ev, function(){ touched = true; }, { passive: true, once: true });
+    });
+    var settle = function(){
+      if (touched) return;
+      if (Math.abs(slpScrollTarget() - window.scrollY) > 4) window.scrollTo({ top: slpScrollTarget(), behavior: 'instant' });
+      slpStuckSync();
+    };
+    if (document.readyState === 'complete') settle();
+    else window.addEventListener('load', function(){ settle(); setTimeout(settle, 250); });
+  }
+  // Back and forward move between the states the wayfinder pushed
+  window.addEventListener('popstate', function(){ slpRoute(); });
   // Start the hero loop from script (no autoplay attribute) so reduced motion can keep it still
   var bgv = document.getElementById('hero-bg-video');
   if (bgv) {
