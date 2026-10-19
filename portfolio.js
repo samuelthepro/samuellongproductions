@@ -1,11 +1,13 @@
-/* portfolio.js: the three portfolio pages of samuellongproductions.com.
-   portfolio.html asks photo or video (html[data-mode="choose"]) and its head script forwards the old
-   deep links (#greek, #video-greek) to the right page. portfolio-video.html and portfolio-photo.html
-   each hold the four categories; the open one lives in html[data-cat], set before first paint by the
-   head script and here on every switch, and CSS shows the matching section and tab. */
+/* portfolio.js: the three portfolio pages and the three pricing pages of samuellongproductions.com.
+   html[data-page] names the set ("portfolio", the default, or "pricing"). portfolio.html and pricing.html
+   ask photo or video (html[data-mode="choose"]) and their head scripts forward the old deep links
+   (#greek, #video-greek, #greek-video) to the right page. The -video and -photo pages each hold the
+   four categories; the open one lives in html[data-cat], set before first paint by the head script and
+   here on every switch, and CSS shows the matching section and tab. */
 (function () {
   var html = document.documentElement;
   var MODE = html.getAttribute('data-mode') || 'choose';
+  var PAGE = html.getAttribute('data-page') === 'pricing' ? 'pricing' : 'portfolio';
   var CATS = ['weddings', 'seniors', 'greek', 'commercial'];
   var LABELS = { weddings: 'Weddings', seniors: 'Seniors', greek: 'Greek Life', commercial: 'Commercial' };
   var REDUCE = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -14,6 +16,7 @@
   function catFromHash() {
     var h = (location.hash || '').replace('#', '');
     if (h.indexOf('video-') === 0) h = h.slice(6);
+    if (h.slice(-6) === '-video') h = h.slice(0, -6);
     return CATS.indexOf(h) !== -1 ? h : null;
   }
   function preCat() {
@@ -75,8 +78,8 @@
     var ask = document.getElementById('hero-ask');
     if (pre && ask) ask.textContent = LABELS[pre] + ': photo or video? Pick one to start. You can switch at the top of either page any time.';
     [].forEach.call(document.querySelectorAll('a.choice[data-mode]'), function (a) {
-      if (pre) a.setAttribute('href', 'portfolio-' + a.getAttribute('data-mode') + '.html#' + pre);
-      a.addEventListener('click', function () { track('portfolio-choice', { mode: a.getAttribute('data-mode') }); });
+      if (pre) a.setAttribute('href', PAGE + '-' + a.getAttribute('data-mode') + '.html#' + pre);
+      a.addEventListener('click', function () { track(PAGE + '-choice', { mode: a.getAttribute('data-mode') }); });
     });
     window.addEventListener('scroll', progressSync, { passive: true });
     progressSync();
@@ -128,13 +131,13 @@
       if (b) b.setAttribute('aria-pressed', c === cat ? 'true' : 'false');
     });
     var book = document.getElementById('wf-book');
-    if (book) { book.textContent = 'Book ' + LABELS[cat]; book.setAttribute('href', 'contact.html?type=' + cat + '&from=portfolio-' + cat + '-' + MODE); }
+    if (book) { book.textContent = 'Book ' + LABELS[cat]; book.setAttribute('href', 'contact.html?type=' + cat + '&from=' + PAGE + '-' + cat + '-' + MODE); }
     // The closing CTA at the foot of the page follows the same category and mode
     var cta = document.getElementById('cta-book');
-    if (cta) { cta.textContent = 'Book ' + LABELS[cat]; cta.setAttribute('href', 'contact.html?type=' + cat + '&from=portfolio-closing-' + cat + '-' + MODE); }
-    // The link to the other portfolio keeps the category
+    if (cta) { cta.textContent = 'Book ' + LABELS[cat]; cta.setAttribute('href', 'contact.html?type=' + cat + '&from=' + PAGE + '-closing-' + cat + '-' + MODE); }
+    // The link to the other page of the set keeps the category
     var other = document.getElementById('wf-other');
-    if (other) other.setAttribute('href', 'portfolio-' + OTHER + '.html#' + cat);
+    if (other) other.setAttribute('href', PAGE + '-' + OTHER + '.html#' + cat);
     // Keep the active category tab in view when the row scrolls (phones)
     var row = document.getElementById('wf-tabs'), active = document.getElementById('wf-' + cat);
     if (row && active && row.scrollWidth > row.clientWidth + 1) {
@@ -161,10 +164,10 @@
   }
   // Bar handlers, plus the old names so nothing outside breaks
   window.slpPick = function (cat) { show(cat, { push: true }); };
-  window.slpSetTab = function (t) { t = (t === 'photo') ? 'photo' : 'video'; if (t !== MODE) location.href = 'portfolio-' + t + '.html#' + window._slpCat; };
-  window.slpCat = function (id, noScroll) { if (MODE === 'photo') show(id, { push: true, noScroll: !!noScroll }); else location.href = 'portfolio-photo.html#' + (CATS.indexOf(id) !== -1 ? id : 'weddings'); };
-  window.slpVCat = function (id, noScroll) { if (MODE === 'video') show(id, { push: true, noScroll: !!noScroll }); else location.href = 'portfolio-video.html#' + (CATS.indexOf(id) !== -1 ? id : 'weddings'); };
-  // Hash router: #greek opens Greek Life (the old #video-greek form is accepted too). Returns true for a deep link.
+  window.slpSetTab = function (t) { t = (t === 'photo') ? 'photo' : 'video'; if (t !== MODE) location.href = PAGE + '-' + t + '.html#' + window._slpCat; };
+  window.slpCat = function (id, noScroll) { if (MODE === 'photo') show(id, { push: true, noScroll: !!noScroll }); else location.href = PAGE + '-photo.html#' + (CATS.indexOf(id) !== -1 ? id : 'weddings'); };
+  window.slpVCat = function (id, noScroll) { if (MODE === 'video') show(id, { push: true, noScroll: !!noScroll }); else location.href = PAGE + '-video.html#' + (CATS.indexOf(id) !== -1 ? id : 'weddings'); };
+  // Hash router: #greek opens Greek Life (the old #video-greek and #greek-video forms are accepted too). Returns true for a deep link.
   function route() {
     var c = catFromHash();
     if (c) { show(c, { instant: true }); return true; }
@@ -179,7 +182,7 @@
   window.addEventListener('load', measure);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure, function () {});
   onScroll();
-  // Only one portfolio video plays at a time (the hero background loop is exempt)
+  // Only one video plays at a time (the hero background loop is exempt)
   document.addEventListener('play', function (e) {
     var v = e.target;
     if (!v || v.tagName !== 'VIDEO' || v.hasAttribute('data-bg')) return;
