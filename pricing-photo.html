@@ -169,7 +169,7 @@
   "dateModified": "2026-10-18"
 }
 </script>
-<script>(function(){var d=document.documentElement;d.className=d.className.replace(/\bno-js\b/,"").trim();var h=(location.hash||"").replace("#","");if(h.indexOf("video-")===0)h=h.slice(6);if(h.slice(-6)==="-video")h=h.slice(0,-6);if(["weddings","seniors","greek","commercial"].indexOf(h)!==-1)d.setAttribute("data-cat",h);})();</script>
+<script>(function(){var d=document.documentElement;d.className=d.className.replace(/\bno-js\b/,"").trim();var h=(location.hash||"").replace("#","");if(h.indexOf("video-")===0)h=h.slice(6);if(h.slice(-6)==="-video")h=h.slice(0,-6);var C=["weddings","seniors","greek","commercial"];if(C.indexOf(h)===-1){try{h=new URLSearchParams(location.search).get("cat")||"";}catch(e){h="";}}if(C.indexOf(h)!==-1)d.setAttribute("data-cat",h);})();</script>
 <script defer src="site.js"></script>
 <script defer src="portfolio.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
