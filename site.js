@@ -135,7 +135,10 @@
   // ---------- Contact form ----------
   var TYPES = { weddings: 'Weddings', wedding: 'Weddings', seniors: 'Seniors', senior: 'Seniors', greek: 'Greek Life', events: 'Events', event: 'Events', campus: 'Events', gala: 'Events', large: 'Events', commercial: 'Commercial', other: 'Other' };
   // SLP Media's packages (slpmedia.pro/packages), by the ids its links carry in ?package=
-  var PACKAGES = { photos: 'Photos, $500', 'photos-selfsearch': 'Photos + SelfSearch AI, $1,200', 'full-team': 'Full team, $2,500', bigger: 'Bigger than the Full team package' };
+  var PACKAGES = { 'small-party': 'Small party, $300', 'two-photographers': 'Two photographers, $1,450', 'full-team': 'Full team, $2,650', bigger: 'Bigger than the Full team package' };
+  // Ids from before the 10/18/26 prices. An old link or cached page still counts as SLP Media, but the
+  // email says it was an old package, so the quote goes by guest count, and the visitor sees no package line.
+  var RETIRED = { photos: 'Old link: Photos, $500 (retired; quote by guest count)', 'photos-selfsearch': 'Old link: Photos + SelfSearch AI, $1,200 (retired; quote by guest count)' };
 
   function setupForm() {
     var form = document.getElementById('contactForm');
@@ -170,11 +173,13 @@
     var guests = parseInt(params.get('guests') || '', 10);
     var guestsInput = form.querySelector('#guests');
     if (guestsInput && guests > 0 && guests <= 20000 && !guestsInput.value) guestsInput.value = guests;
-    var pkg = PACKAGES[(params.get('package') || '').toLowerCase()] || '';
-    if (pkg) hidden('package').value = pkg;
+    var pkgKey = (params.get('package') || '').toLowerCase();
+    var pkg = PACKAGES[pkgKey] || '';
+    var oldPkg = RETIRED[pkgKey] || '';
+    if (pkg || oldPkg) hidden('package').value = pkg || oldPkg;
     var refHost = '';
     try { refHost = document.referrer ? new URL(document.referrer).hostname.replace(/^www\./, '') : ''; } catch (e) {}
-    var slpMedia = /^slpmedia/.test(fromParam) || !!pkg || refHost === 'slpmedia.pro';
+    var slpMedia = /^slpmedia/.test(fromParam) || !!(pkg || oldPkg) || refHost === 'slpmedia.pro';
     var note = document.getElementById('slp-media-note');
     if (note && slpMedia) {
       note.hidden = false;
