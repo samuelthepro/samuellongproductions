@@ -89,7 +89,7 @@
 
   // ---------- the video and photo pages ----------
   var OTHER = MODE === 'video' ? 'photo' : 'video';
-  window._slpCat = catFromHash() || 'weddings';
+  window._slpCat = catFromHash() || preCat() || 'weddings';
 
   function navHeight() { var n = document.querySelector('nav'); return n ? n.offsetHeight : 104; }
   // The fixed nav's height sets where the bar sticks; the bar's height sets where sections scroll to
@@ -167,11 +167,13 @@
   window.slpSetTab = function (t) { t = (t === 'photo') ? 'photo' : 'video'; if (t !== MODE) location.href = PAGE + '-' + t + '.html#' + window._slpCat; };
   window.slpCat = function (id, noScroll) { if (MODE === 'photo') show(id, { push: true, noScroll: !!noScroll }); else location.href = PAGE + '-photo.html#' + (CATS.indexOf(id) !== -1 ? id : 'weddings'); };
   window.slpVCat = function (id, noScroll) { if (MODE === 'video') show(id, { push: true, noScroll: !!noScroll }); else location.href = PAGE + '-video.html#' + (CATS.indexOf(id) !== -1 ? id : 'weddings'); };
-  // Hash router: #greek opens Greek Life (the old #video-greek and #greek-video forms are accepted too). Returns true for a deep link.
+  // Hash router: #greek opens Greek Life (the old #video-greek and #greek-video forms are accepted too), and with no
+  // category in the hash, ?cat=greek does. Returns true for a hash deep link.
   function route() {
     var c = catFromHash();
     if (c) { show(c, { instant: true }); return true; }
-    show('weddings', { noScroll: true });
+    // ?cat=greek (the links on the Google Business Profile and its posts) opens that category in place
+    show(preCat() || 'weddings', { noScroll: true });
     return false;
   }
 
