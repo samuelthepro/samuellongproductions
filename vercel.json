@@ -13,6 +13,15 @@
     { "source": "/sportsprice/", "destination": "/seniors.html", "permanent": true },
     { "source": "/rush", "destination": "/sorority-recruitment-videos.html?utm_source=qr-card&utm_medium=print&utm_campaign=rush-2027", "permanent": false },
     { "source": "/rush/", "destination": "/sorority-recruitment-videos.html?utm_source=qr-card&utm_medium=print&utm_campaign=rush-2027", "permanent": false },
+    { "source": "/portfolio/", "destination": "/portfolio.html", "permanent": true },
+    { "source": "/gallery-2", "destination": "/portfolio.html", "permanent": true },
+    { "source": "/gallery-2/", "destination": "/portfolio.html", "permanent": true },
+    { "source": "/senior-portfolio", "destination": "/seniors.html", "permanent": true },
+    { "source": "/senior-portfolio/", "destination": "/seniors.html", "permanent": true },
+    { "source": "/real-estate-pricing", "destination": "/commercial.html", "permanent": true },
+    { "source": "/real-estate-pricing/", "destination": "/commercial.html", "permanent": true },
+    { "source": "/familyprices", "destination": "/pricing.html", "permanent": true },
+    { "source": "/familyprices/", "destination": "/pricing.html", "permanent": true },
     { "source": "/:page([a-z0-9-]+)", "destination": "/:page.html", "permanent": true }
   ],
   "headers": [
