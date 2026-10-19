@@ -96,7 +96,8 @@
       else if (SEARCH.test(refHost)) cls = 'search';
       else if (SOCIAL.test(refHost)) cls = 'social';
       else cls = 'referral';
-    } else if (/\/portfolio(\.html)?$/.test(location.pathname) && location.hash === '#video-greek') {
+    } else if (/\/portfolio(-video)?(\.html)?$/.test(location.pathname) && /^#(video-)?greek$/.test(location.hash)) {
+      // printed QR cards point at portfolio.html#video-greek, which forwards to portfolio-video.html#greek
       cls = 'qr-card (inferred)';
     } else {
       cls = 'direct';
