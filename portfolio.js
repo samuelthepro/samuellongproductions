@@ -10,7 +10,8 @@
   var PAGE = html.getAttribute('data-page') === 'pricing' ? 'pricing' : 'portfolio';
   var CATS = ['weddings', 'seniors', 'greek', 'commercial'];
   var LABELS = { weddings: 'Weddings', seniors: 'Seniors', greek: 'Greek Life', commercial: 'Commercial' };
-  if (PAGE === 'pricing' && MODE === 'photo') LABELS.weddings = 'Engagement'; // photo packages are engagement sessions; weddings are film only
+  if (MODE === 'photo') LABELS.weddings = PAGE === 'pricing' ? 'Engagement' : 'Wedding/Engagement'; // photo packages are engagement sessions; the photo portfolio's first category is wedding/engagement photos
+  if (MODE === 'choose') LABELS.weddings = 'Weddings & engagements'; // photo opens engagements, video opens wedding films
   var REDUCE = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   var HOLD = REDUCE; // the hero loop stays still under reduced motion or after the pause button
 
@@ -132,7 +133,8 @@
       if (b) b.setAttribute('aria-pressed', c === cat ? 'true' : 'false');
     });
     var book = document.getElementById('wf-book');
-    if (book) { book.textContent = 'Book ' + LABELS[cat]; book.setAttribute('href', 'contact.html?type=' + cat + '&from=' + PAGE + '-' + cat + '-' + MODE); }
+    // The category name sits in its own span so a page can drop it where the bar is too narrow for it
+    if (book) { book.innerHTML = 'Book<span class="wf-book-cat"> ' + LABELS[cat] + '</span>'; book.setAttribute('aria-label', 'Book ' + LABELS[cat]); book.setAttribute('href', 'contact.html?type=' + cat + '&from=' + PAGE + '-' + cat + '-' + MODE); }
     // The closing CTA at the foot of the page follows the same category and mode
     var cta = document.getElementById('cta-book');
     if (cta) { cta.textContent = 'Book ' + LABELS[cat]; cta.setAttribute('href', 'contact.html?type=' + cat + '&from=' + PAGE + '-closing-' + cat + '-' + MODE); }
