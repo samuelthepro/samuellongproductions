@@ -229,6 +229,8 @@
   .wf-mode a:hover{color:var(--text);}
   .wf-mode a[aria-current="page"]{color:#08080a;background:#f5f3ef;}
   .wf-book{text-decoration:none;color:#fff;background:var(--accent);padding:11px 20px;border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;box-shadow:0 0 18px var(--glow);}
+  /* "Book Wedding/Engagement" does not fit beside the Video/Photo switch on phones; the tab above names the category */
+  @media (max-width:480px){html:not([data-cat]) .wf-book-cat,html[data-cat="weddings"] .wf-book-cat{display:none;}}
   /* Section headers: title, one sentence, one red Book button and one quiet pricing link */
   .sec-head{max-width:68ch;margin-bottom:clamp(28px,5vh,48px);}
   .sec-head h2{margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(40px,7vw,88px);}
@@ -305,7 +307,7 @@
   <nav id="wayfinder" aria-label="Portfolio categories and booking">
     <div class="wf-in">
       <div id="wf-tabs" class="wf-tabs" role="group" aria-label="Category">
-        <button id="wf-weddings" class="wf-tab" type="button" aria-pressed="true" onclick="slpPick('weddings')">Engagement</button>
+        <button id="wf-weddings" class="wf-tab" type="button" aria-pressed="true" onclick="slpPick('weddings')">Wedding/Engagement</button>
         <button id="wf-seniors" class="wf-tab" type="button" aria-pressed="false" onclick="slpPick('seniors')">Seniors</button>
         <button id="wf-greek" class="wf-tab" type="button" aria-pressed="false" onclick="slpPick('greek')">Greek Life</button>
         <button id="wf-commercial" class="wf-tab" type="button" aria-pressed="false" onclick="slpPick('commercial')">Commercial</button>
@@ -315,7 +317,7 @@
           <a id="wf-other" href="portfolio-video.html#weddings">Video</a>
           <a href="portfolio-photo.html" aria-current="page">Photo</a>
         </div>
-        <a id="wf-book" class="wf-book" href="contact.html?type=weddings&amp;from=portfolio-weddings-photo">Book Engagement</a>
+        <a id="wf-book" class="wf-book" aria-label="Book Wedding/Engagement" href="contact.html?type=weddings&amp;from=portfolio-weddings-photo">Book<span class="wf-book-cat"> Wedding/Engagement</span></a>
       </div>
     </div>
   </nav>
@@ -324,14 +326,14 @@
   <main id="main">
 
 
-    <!-- ENGAGEMENT AND PROPOSALS. The id stays #weddings so the head script, portfolio.js and links from other pages keep landing here. -->
+    <!-- WEDDING/ENGAGEMENT. The id stays #weddings so the head script, portfolio.js and links from other pages keep landing here. -->
     <section id="weddings" style="padding:var(--sec-pad) var(--gutter);border-top:1px solid var(--line);background:var(--bg);">
       <div style="max-width:1280px;margin:0 auto;">
         <div data-fade class="sec-head">
-          <h2>Engagement and proposal photos</h2>
+          <h2>Wedding/Engagement photos</h2>
           <p>Engagement sessions and surprise proposals in Oxford, Jackson and across Mississippi.</p>
           <div class="sec-cta">
-            <a class="btn-book" href="contact.html?type=weddings&amp;from=portfolio-weddings-photo">Book Engagement</a>
+            <a class="btn-book" href="contact.html?type=weddings&amp;from=portfolio-weddings-photo">Book Wedding/Engagement</a>
             <a class="link-quiet" href="pricing-photo.html#weddings">Engagement photo pricing</a>
           </div>
         </div>
@@ -476,7 +478,7 @@
       <h2 data-reveal style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.9;color:#fff;font-size:clamp(48px,10vw,140px);">Let's book your shoot</h2>
       <p data-reveal data-delay="160" style="margin:22px 0 0;max-width:52ch;font-size:clamp(16px,1.8vw,20px);line-height:1.6;color:#e7e4df;font-weight:300;">Loved what you saw? Tell me about your vision and let's get a date on the calendar. I reply to every inquiry personally, usually within a day.</p>
       <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;">
-        <a id="cta-book" href="contact.html?type=weddings&amp;from=portfolio-closing-weddings-photo" style="text-decoration:none;color:#fff;background:var(--accent);padding:17px 38px;border-radius:999px;font-size:14px;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 0 34px var(--glow);">Book Engagement</a>
+        <a id="cta-book" href="contact.html?type=weddings&amp;from=portfolio-closing-weddings-photo" style="text-decoration:none;color:#fff;background:var(--accent);padding:17px 38px;border-radius:999px;font-size:14px;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 0 34px var(--glow);">Book Wedding/Engagement</a>
         <a href="https://www.instagram.com/samuellongproductions/" style="text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.35);padding:17px 38px;border-radius:999px;font-size:14px;letter-spacing:.16em;text-transform:uppercase;">@samuellongproductions</a>
       </div>
     </div>
