@@ -10,7 +10,8 @@
   var PAGE = html.getAttribute('data-page') === 'pricing' ? 'pricing' : 'portfolio';
   var CATS = ['weddings', 'seniors', 'greek', 'commercial'];
   var LABELS = { weddings: 'Weddings', seniors: 'Seniors', greek: 'Greek Life', commercial: 'Commercial' };
-  if (PAGE === 'pricing' && MODE === 'photo') LABELS.weddings = 'Engagement'; // photo packages are engagement sessions; weddings are film only
+  if (MODE === 'photo') LABELS.weddings = 'Engagement'; // the photo category is engagement sessions and proposals; weddings are film only
+  if (MODE === 'choose') LABELS.weddings = 'Weddings & engagements'; // photo opens engagements, video opens wedding films
   var REDUCE = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   var HOLD = REDUCE; // the hero loop stays still under reduced motion or after the pause button
 
