@@ -34,7 +34,7 @@
     "@id": "https://www.samuellongproductions.com/#samuel",
     "name": "Samuel Long",
     "jobTitle": "Wedding Videographer & Senior Portrait Photographer",
-    "description": "Samuel Long is a wedding videographer, senior portrait photographer, and FAA Part 107 certified drone pilot based in Oxford and Madison, Mississippi. He has filmed and photographed weddings, senior sessions, sorority and fraternity events at Ole Miss (recruitment films, bid day, parents weekend, formals), and commercial projects across Oxford, Ole Miss, and the Jackson metro since 2019. He works in live broadcasting for the SEC Network as a technical director and replay operator.",
+    "description": "Samuel Long is a wedding videographer, senior portrait photographer, and FAA Part 107 certified drone pilot serving Oxford and Madison, Mississippi. He has filmed and photographed weddings, senior sessions, sorority and fraternity events at Ole Miss (recruitment films, bid day, parents weekend, formals), and commercial projects across Oxford, Ole Miss, and the Jackson metro since 2019. He works in live broadcasting for the SEC Network as a technical director and replay operator.",
     "image": "https://www.samuellongproductions.com/uploads/about/samuel-drone-portrait.jpg",
     "worksFor": { "@id": "https://www.samuellongproductions.com/#business" },
     "hasCredential": { "@type": "EducationalOccupationalCredential", "name": "FAA Part 107 Remote Pilot Certificate" },
@@ -82,6 +82,9 @@
   .skip:focus{top:12px;outline:2px solid var(--accent);outline-offset:2px;}
   #main{scroll-margin-top:100px;}
   a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+  @media (max-width:480px){
+    .cred-grid > div > span:last-child{font-size:10.5px !important;letter-spacing:.14em !important;line-height:1.45;}
+  }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto !important;}
     *,*::before,*::after{animation:none !important;transition:none !important;}
@@ -123,7 +126,7 @@
 
   <!-- CREDENTIALS -->
   <section style="padding:clamp(50px,8vh,90px) clamp(20px,5vw,64px);background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
-    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:clamp(20px,4vw,48px);">
+    <div class="cred-grid" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,4vw,48px);">
       <div data-fade style="display:flex;flex-direction:column;gap:8px;">
         <span style="font-family:var(--font-display);font-size:clamp(40px,5vw,64px);color:#fff;line-height:.9;">7<span style="color:var(--accent);">+</span></span>
         <span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);">Years of experience</span>
@@ -131,10 +134,6 @@
       <div data-fade style="display:flex;flex-direction:column;gap:8px;">
         <span style="font-family:var(--font-display);font-size:clamp(40px,5vw,64px);color:#fff;line-height:.9;">FAA</span>
         <span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);">Certified drone pilot</span>
-      </div>
-      <div data-fade style="display:flex;flex-direction:column;gap:8px;">
-        <span style="font-family:var(--font-display);font-size:clamp(40px,5vw,64px);color:#fff;line-height:.9;">SEC</span>
-        <span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);">Network technical director</span>
       </div>
       <div data-fade style="display:flex;flex-direction:column;gap:8px;">
         <span style="font-family:var(--font-display);font-size:clamp(40px,5vw,64px);color:#fff;line-height:.9;">24<span style="color:var(--accent);">hr</span></span>
@@ -152,15 +151,10 @@
         <div style="position:relative;overflow:hidden;border-radius:8px;aspect-ratio:4/5;background:var(--panel);">
           <img loading="lazy" src="uploads/about/samuel-drone-portrait.jpg" alt="Samuel Long with his drone" style="width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block;">
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-          <div style="position:relative;overflow:hidden;border-radius:8px;aspect-ratio:4/5;background:var(--panel);">
-            <img loading="lazy" decoding="async" src="uploads/about/samuel-locked-in-kkg-parents-weekend.jpg" width="900" height="1600" alt="Samuel Long locked in with the camera and an on-camera light at a 1,200-guest parents weekend in Oxford" style="width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block;">
-          </div>
-          <div style="position:relative;overflow:hidden;border-radius:8px;aspect-ratio:4/5;background:var(--panel);">
-            <img loading="lazy" decoding="async" src="uploads/portfolio/slp-media-team-kkg-parents-weekend.jpg" width="1066" height="1600" alt="The SLP Media team, four photographers with cameras and lights, at the Kappa Kappa Gamma parents weekend backdrop" style="width:100%;height:100%;object-fit:cover;object-position:50% 35%;display:block;">
-          </div>
+        <div style="position:relative;overflow:hidden;border-radius:8px;aspect-ratio:4/3;background:var(--panel);">
+          <img loading="lazy" decoding="async" src="uploads/about/samuel-locked-in-kkg-parents-weekend.jpg" width="900" height="1600" alt="Samuel Long photographing with a camera and on-camera light at a 1,200-guest parents weekend in Oxford, MS" style="width:100%;height:100%;object-fit:cover;object-position:50% 36%;display:block;">
         </div>
-        <p style="margin:0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">On the job: parents weekend, 1,200 guests, with the SLP Media team</p>
+        <p style="margin:0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">On the job: parents weekend in Oxford, 1,200 guests</p>
       </div>
 
       <!-- RIGHT: bio -->
