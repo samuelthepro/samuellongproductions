@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="uploads/favicon.png">
+<title>Senior Session Questionnaire | Samuel Long Productions</title>
+<meta name="description" content="A few questions so I can plan your senior session: your spots, your looks and the photos you'll want to keep.">
+<!-- Sent to seniors after they inquire. Not linked from the site and kept out of search and the sitemap. -->
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Senior Session Questionnaire | Samuel Long Productions">
+<meta property="og:description" content="A few questions so I can plan your spots, your looks and the photos you'll want to keep. About 10 minutes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.samuellongproductions.com/senior-questionnaire.html">
+<meta property="og:image" content="https://www.samuellongproductions.com/uploads/og/ole-miss-graduation-pictures.jpg">
+<meta property="og:site_name" content="Samuel Long Productions">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Senior Session Questionnaire | Samuel Long Productions">
+<meta name="twitter:description" content="A few questions so I can plan your spots, your looks and the photos you'll want to keep. About 10 minutes.">
+<meta name="twitter:image" content="https://www.samuellongproductions.com/uploads/og/ole-miss-graduation-pictures.jpg">
+<script defer src="site.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;}
+  @media (max-width:480px){
+    nav a{font-size:11px !important;letter-spacing:.12em !important;}
+    nav img{height:40px !important;}
+  }
+  :root{
+    --bg:#08080a;--bg2:#101013;--panel:#15151a;--text:#f5f3ef;--muted:#9c9aa0;
+    --line:rgba(255,255,255,.1);--accent:#d0021b;--glow:rgba(208,2,27,.5);
+    --font-display:'Bebas Neue',sans-serif;--font-body:'Sora',sans-serif;
+  }
+  @keyframes slpKenP{0%{transform:scale(1.02);}100%{transform:scale(1.14);}}
+  input,select,textarea,button{font-family:var(--font-body);}
+  [hidden]{display:none !important;}
+  fieldset{border:0;margin:0;padding:0;min-width:0;}
+  legend{padding:0;}
+  .sec{display:flex;flex-direction:column;gap:30px;padding-top:36px;border-top:1px solid var(--line);}
+  .sec.first{padding-top:0;border-top:0;}
+  .sec h2{margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(28px,4.2vw,40px);color:#fff;}
+  .q{display:flex;flex-direction:column;gap:10px;}
+  .qlabel{display:block;font-size:16px;line-height:1.5;color:var(--text);font-weight:400;}
+  .req{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap;margin-left:6px;}
+  .hint{margin:0;font-size:13px;line-height:1.6;color:var(--muted);font-weight:300;}
+  .hint a{color:var(--text);text-decoration:underline;text-underline-offset:3px;}
+  .q input[type=text],.q input[type=email],.q input[type=tel],.q input[type=date],.q textarea{background:#0e0e12;border:1px solid var(--line);border-radius:8px;padding:14px 16px;color:var(--text);font-size:16px;outline:none;transition:border-color .2s ease,box-shadow .2s ease;width:100%;}
+  .q input:focus,.q textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(208,2,27,.15);}
+  .q textarea{resize:vertical;min-height:110px;line-height:1.55;}
+  .q input[type=date]{color-scheme:dark;max-width:240px;}
+  ::placeholder{color:#8a888e;}
+  .choices{display:flex;flex-wrap:wrap;gap:10px;margin-top:2px;}
+  .choices.stack{flex-direction:column;align-items:stretch;}
+  .choice{position:relative;display:block;}
+  .choice input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none;}
+  .choice span{display:inline-block;padding:11px 16px;border:1px solid var(--line);border-radius:999px;background:#0e0e12;color:var(--text);font-size:14px;line-height:1.4;cursor:pointer;transition:border-color .2s ease,background .2s ease;}
+  .choices.stack .choice span{display:block;border-radius:12px;padding:13px 16px;}
+  .choice:hover span{border-color:rgba(255,255,255,.28);}
+  .choice input:checked + span{border-color:var(--accent);background:rgba(208,2,27,.16);color:#fff;}
+  .choice input:focus-visible + span{outline:2px solid #fff;outline-offset:2px;}
+  .choice input:disabled + span{opacity:.38;cursor:not-allowed;}
+  .follow{display:flex;flex-direction:column;gap:22px;padding:18px 0 4px 16px;border-left:2px solid rgba(208,2,27,.55);}
+  .note{margin:0;padding:12px 16px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;font-size:14px;line-height:1.6;color:var(--muted);}
+  details.more{border:1px solid var(--line);border-radius:14px;background:#111116;}
+  details.more summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 22px;font-family:var(--font-display);font-size:clamp(24px,3.4vw,32px);letter-spacing:.02em;text-transform:uppercase;color:#fff;}
+  details.more summary::-webkit-details-marker{display:none;}
+  details.more summary::after{content:'+';font-family:var(--font-body);font-size:24px;line-height:1;color:var(--accent);}
+  details.more[open] summary::after{content:'\2212';}
+  details.more summary:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:14px;}
+  .more-body{display:flex;flex-direction:column;gap:30px;padding:4px 22px 26px;}
+  .skip{position:absolute;left:12px;top:-200px;z-index:10001;padding:12px 18px;border-radius:8px;background:#fff;color:#08080a;font-family:var(--font-body);font-size:14px;font-weight:600;text-decoration:none;}
+  .skip:focus{top:12px;outline:2px solid var(--accent);outline-offset:2px;}
+  #main{scroll-margin-top:100px;}
+  a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div style="background:var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh;overflow-x:hidden;position:relative;">
+
+  <div style="position:fixed;inset:0;z-index:9000;pointer-events:none;mix-blend-mode:overlay;opacity:.06;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);"></div>
+
+  <div id="progress" style="position:fixed;top:0;left:0;height:3px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:0 50%;z-index:10000;box-shadow:0 0 14px var(--glow);"></div>
+
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:8000;display:flex;flex-direction:column;align-items:center;gap:9px;padding:14px clamp(20px,5vw,64px);border-bottom:1px solid var(--line);background:var(--bg);color:#fff;">
+    <a href="/" style="text-decoration:none;color:inherit;display:flex;align-items:center;">
+      <img src="uploads/logo.png" alt="Samuel Long Productions" style="height:46px;width:auto;display:block;">
+    </a>
+    <div style="display:flex;align-items:center;gap:clamp(12px,3vw,34px);justify-content:center;flex-wrap:wrap;">
+      <a href="about.html" style="text-decoration:none;color:inherit;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">About</a>
+      <a href="portfolio.html" style="text-decoration:none;color:inherit;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">Portfolio</a>
+      <a href="pricing.html" style="text-decoration:none;color:inherit;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">Pricing</a>
+      <a href="contact.html" style="text-decoration:none;color:#fff;font-size:11px;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);padding:7px 15px;border-radius:999px;">Book</a>
+    </div>
+  </nav>
+
+  <main id="main">
+  <!-- HERO -->
+  <header style="position:relative;min-height:56svh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(130px,18vh,170px) clamp(20px,5vw,64px) clamp(40px,7vh,70px);overflow:hidden;">
+    <div style="position:absolute;inset:0;z-index:0;overflow:hidden;">
+      <div style="position:absolute;inset:-4%;background-image:url('uploads/pixieset/Saige-and-Morgan-Grad-2026-103-0cd83d59-1500.jpg');background-size:cover;background-position:center 58%;animation:slpKenP 24s ease-in-out infinite alternate;"></div>
+    </div>
+    <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,4,6,.55) 0%,rgba(4,4,6,.45) 40%,rgba(4,4,6,.96) 100%);"></div>
+    <div style="position:absolute;inset:0;z-index:1;background:radial-gradient(110% 80% at 85% 100%,var(--glow) 0%,transparent 55%);opacity:.45;mix-blend-mode:screen;"></div>
+    <div style="position:relative;z-index:2;max-width:1100px;">
+      <h1 style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.9;color:#fff;font-size:clamp(50px,10vw,132px);">Senior questionnaire</h1>
+      <p style="margin:22px 0 0;max-width:640px;font-size:clamp(15px,1.7vw,19px);line-height:1.7;color:#e7e4df;font-weight:300;">Congrats on (almost) graduating! These questions help me plan your spots, your looks and the photos you'll want to keep. It takes about 10 minutes, and short answers are fine.</p>
+      <p style="margin:14px 0 0;max-width:640px;font-size:clamp(14px,1.5vw,16px);line-height:1.7;color:#e7e4df;font-weight:300;">Skip anything you'd rather not answer. Parents, if you're filling this out, answer for your senior. Fill it out within a week if you can.</p>
+    </div>
+  </header>
+
+  <!-- QUESTIONNAIRE -->
+  <section style="padding:clamp(48px,9vh,96px) clamp(20px,5vw,64px);background:var(--bg);">
+    <div style="max-width:760px;margin:0 auto;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:clamp(24px,4vw,48px);">
+      <form id="seniorQuestionnaire" action="https://api.web3forms.com/submit" method="POST" style="display:flex;flex-direction:column;gap:36px;">
+        <!-- Same Web3Forms access key as contact.html: answers land in samuel@samuellongproductions.com -->
+        <input type="hidden" name="access_key" value="c4396b96-84f7-4a70-b1d2-cedc13dba09a">
+        <input type="hidden" name="subject" value="Senior questionnaire from samuellongproductions.com">
+        <input type="hidden" name="from_name" value="Samuel Long Productions Website">
+        <!-- Honeypot spam filter (hidden from people, catches bots) -->
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none !important;">
+
+        <!-- ABOUT YOU -->
+        <div class="sec first">
+          <h2>About you</h2>
+          <div class="q">
+            <label class="qlabel" for="q-name">Your name <span class="req">Required</span></label>
+            <input id="q-name" type="text" name="name" autocomplete="name" maxlength="100" required>
+          </div>
+          <div class="q">
+            <label class="qlabel" for="q-goes-by">The name you go by</label>
+            <input id="q-goes-by" type="text" name="Goes by" maxlength="60" placeholder="If it's different">
+          </div>
+          <div class="q">
+            <label class="qlabel" for="q-cell">Senior's cell, for texts on the day <span class="req">Required</span></label>
+            <input id="q-cell" type="tel" name="Senior cell" autocomplete="tel" inputmode="tel" maxlength="40" required>
+          </div>
+          <div class="q">
+            <label class="qlabel" for="q-email">Email <span class="req">Required</span></label>
+            <input id="q-email" type="email" name="email" autocomplete="email" maxlength="200" required>
+          </div>
+          <fieldset class="q">
+            <legend class="qlabel">Who's filling this out? <span class="req">Required</span></legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="Filled out by" value="The senior" required><span>The senior</span></label>
+              <label class="choice"><input type="radio" name="Filled out by" value="A parent or guardian"><span>A parent or guardian</span></label>
+              <label class="choice"><input type="radio" name="Filled out by" value="Both of us together"><span>Both of us together</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q">
+            <legend class="qlabel">Which session are you leaning toward?</legend>
+            <div class="choices stack">
+              <label class="choice"><input type="radio" name="Leaning toward" value="Essential"><span>Essential: 30 minutes, 1 spot, 1 look</span></label>
+              <label class="choice"><input type="radio" name="Leaning toward" value="Signature"><span>Signature: 1 hour, up to 2 spots, 2 looks</span></label>
+              <label class="choice"><input type="radio" name="Leaning toward" value="Premium"><span>Premium: 2 hours, several spots, 3 looks, room for friends</span></label>
+              <label class="choice"><input type="radio" name="Leaning toward" value="Not sure yet"><span>Not sure yet, help me pick</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q">
+            <legend class="qlabel">Where are you graduating from, and when? <span class="req">Required</span></legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="Graduating" value="Ole Miss, December 2026" required><span>Ole Miss, December 2026</span></label>
+              <label class="choice"><input type="radio" name="Graduating" value="Ole Miss, May 2027"><span>Ole Miss, May 2027</span></label>
+              <label class="choice"><input type="radio" name="Graduating" value="Ole Miss, August 2027"><span>Ole Miss, August 2027</span></label>
+              <label class="choice"><input type="radio" name="Graduating" value="High school, class of 2027"><span>High school, class of 2027</span></label>
+              <label class="choice"><input type="radio" name="Graduating" value="Other"><span>Other</span></label>
+            </div>
+            <div id="q-school" class="follow" hidden>
+              <div class="q">
+                <label class="qlabel" for="q-school-name">Which school?</label>
+                <input id="q-school-name" type="text" name="School" maxlength="120">
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="q">
+            <legend class="qlabel">Is the senior 18 or older? <span class="req">Required</span></legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="Senior is 18 or older" value="Yes" required><span>Yes</span></label>
+              <label class="choice"><input type="radio" name="Senior is 18 or older" value="No"><span>No</span></label>
+            </div>
+          </fieldset>
+          <div class="q">
+            <label class="qlabel" for="q-next">What's next after graduation?</label>
+            <p id="q-next-hint" class="hint">A job, grad school, a move? "Still figuring it out" is a fine answer.</p>
+            <input id="q-next" type="text" name="Next after graduation" maxlength="200" aria-describedby="q-next-hint">
+          </div>
+          <div id="q-parent" class="follow" hidden>
+            <p class="hint">So I can reach a parent or guardian about the session.</p>
+            <div class="q">
+              <label class="qlabel" for="q-parent-name">Parent or guardian's name <span class="req">Required</span></label>
+              <input id="q-parent-name" type="text" name="Parent or guardian name" maxlength="100" data-req>
+            </div>
+            <div class="q">
+              <label class="qlabel" for="q-parent-cell">Parent or guardian's cell <span class="req">Required</span></label>
+              <input id="q-parent-cell" type="tel" name="Parent or guardian cell" inputmode="tel" maxlength="40" data-req>
+            </div>
+          </div>
+        </div>
+
+        <!-- YOUR SESSION -->
+        <div class="sec">
+          <h2>Your session</h2>
+          <fieldset class="q" data-max="3">
+            <legend class="qlabel">Where do you want to shoot? Pick up to three.</legend>
+            <p class="hint">Essential covers one spot and Signature two, so I'll help you choose.</p>
+            <div class="choices">
+              <label class="choice"><input type="checkbox" name="Spots" value="The Grove"><span>The Grove</span></label>
+              <label class="choice"><input type="checkbox" name="Spots" value="The Lyceum"><span>The Lyceum</span></label>
+              <label class="choice"><input type="checkbox" name="Spots" value="Ventress Hall"><span>Ventress Hall</span></label>
+              <label class="choice"><input type="checkbox" name="Spots" value="The Circle"><span>The Circle</span></label>
+              <label class="choice"><input type="checkbox" name="Spots" value="Walk of Champions"><span>Walk of Champions</span></label>
+              <label class="choice"><input type="checkbox" name="Spots" value="The 1848 gateway and university seal"><span>The 1848 gateway and university seal</span></label>
+              <label class="choice"><input type="checkbox" name="Spots" value="The building for your major"><span>The building for your major</span></label>
+              <label class="choice"><input type="checkbox" name="Spots" value="The Square"><span>The Square</span></label>
+              <label class="choice"><input type="checkbox" name="Spots" value="Rowan Oak grounds"><span>Rowan Oak grounds (site fee during business hours)</span></label>
+              <label class="choice"><input type="checkbox" name="Spots" value="Lamar Park"><span>Lamar Park</span></label>
+              <label class="choice"><input type="checkbox" name="Spots" value="Sardis Lake"><span>Sardis Lake</span></label>
+              <label class="choice"><input type="checkbox" name="Spots" value="Somewhere near home"><span>Somewhere near home</span></label>
+              <label class="choice"><input type="checkbox" name="Spots" value="Somewhere else"><span>Somewhere else</span></label>
+            </div>
+            <div id="q-spot-where" class="follow" hidden>
+              <div class="q">
+                <label class="qlabel" for="q-spot-details">Where's that?</label>
+                <input id="q-spot-details" type="text" name="Spot details" maxlength="200">
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="q">
+            <legend class="qlabel">Will anyone join you in photos?</legend>
+            <p class="hint">Friends or family in photos fit best in Premium.</p>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="Anyone joining" value="No, just me"><span>No, just me</span></label>
+              <label class="choice"><input type="radio" name="Anyone joining" value="Yes"><span>Yes</span></label>
+            </div>
+            <div id="q-join-who" class="follow" hidden>
+              <fieldset class="q">
+                <legend class="qlabel">Who's joining?</legend>
+                <div class="choices">
+                  <label class="choice"><input type="checkbox" name="Joining" value="Parents or family"><span>Parents or family</span></label>
+                  <label class="choice"><input type="checkbox" name="Joining" value="Friends or roommates"><span>Friends or roommates</span></label>
+                  <label class="choice"><input type="checkbox" name="Joining" value="Significant other"><span>Significant other</span></label>
+                  <label class="choice"><input type="checkbox" name="Joining" value="A pet"><span>A pet</span></label>
+                </div>
+              </fieldset>
+              <div class="q">
+                <label class="qlabel" for="q-join-names">Their names (pets too)</label>
+                <input id="q-join-names" type="text" name="Their names" maxlength="300">
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- GET TO KNOW YOU -->
+        <div class="sec">
+          <h2>Get to know you</h2>
+          <div class="q">
+            <label class="qlabel" for="q-loves">What do you love doing, or could talk about for an hour?</label>
+            <p id="q-loves-hint" class="hint">Sports, Greek life, clubs, music, faith, a job, anything.</p>
+            <textarea id="q-loves" name="Loves doing" maxlength="2000" aria-describedby="q-loves-hint"></textarea>
+          </div>
+        </div>
+
+        <!-- STYLE -->
+        <div class="sec">
+          <h2>Style</h2>
+          <fieldset class="q" data-max="3">
+            <legend class="qlabel">Pick up to three words for the photos you want.</legend>
+            <div class="choices">
+              <label class="choice"><input type="checkbox" name="Photo words" value="Classic"><span>Classic</span></label>
+              <label class="choice"><input type="checkbox" name="Photo words" value="Bold"><span>Bold</span></label>
+              <label class="choice"><input type="checkbox" name="Photo words" value="Editorial"><span>Editorial</span></label>
+              <label class="choice"><input type="checkbox" name="Photo words" value="Fun"><span>Fun</span></label>
+              <label class="choice"><input type="checkbox" name="Photo words" value="Relaxed"><span>Relaxed</span></label>
+              <label class="choice"><input type="checkbox" name="Photo words" value="Candid"><span>Candid</span></label>
+              <label class="choice"><input type="checkbox" name="Photo words" value="Polished"><span>Polished</span></label>
+              <label class="choice"><input type="checkbox" name="Photo words" value="Natural"><span>Natural</span></label>
+              <label class="choice"><input type="checkbox" name="Photo words" value="Not sure yet"><span>Not sure yet</span></label>
+            </div>
+          </fieldset>
+          <div class="q">
+            <label class="qlabel" for="q-loves-photos">Send a few photos you love, from my portfolio or anywhere, and tell me what you like about them.</label>
+            <p id="q-loves-photos-hint" class="hint">Paste links: a Pinterest board, Instagram posts, or a Google Photos or Drive album. My senior work is in the <a href="portfolio-photo.html#seniors" target="_blank" rel="noopener">photo portfolio</a>.</p>
+            <textarea id="q-loves-photos" name="Photos they love" maxlength="2000" aria-describedby="q-loves-photos-hint"></textarea>
+          </div>
+        </div>
+
+        <!-- FEELING COMFORTABLE -->
+        <div class="sec">
+          <h2>Feeling comfortable</h2>
+          <fieldset class="q">
+            <legend class="qlabel">How do you feel about getting your pictures taken?</legend>
+            <p class="hint">No wrong answer. I'll tell you where to stand either way.</p>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="Camera comfort" value="I love it"><span>I love it</span></label>
+              <label class="choice"><input type="radio" name="Camera comfort" value="Excited but a little nervous"><span>Excited but a little nervous</span></label>
+              <label class="choice"><input type="radio" name="Camera comfort" value="Not sure yet"><span>Not sure yet</span></label>
+              <label class="choice"><input type="radio" name="Camera comfort" value="Honestly, not my thing"><span>Honestly, not my thing</span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- OUTFITS AND PROPS -->
+        <div class="sec">
+          <h2>Outfits and props</h2>
+          <div class="q">
+            <label class="qlabel" for="q-outfits">What outfits are you planning?</label>
+            <p id="q-outfits-hint" class="hint">Essential is one look, Signature two, Premium three. Want my take? Add a link to photos.</p>
+            <textarea id="q-outfits" name="Outfits" maxlength="2000" aria-describedby="q-outfits-hint"></textarea>
+          </div>
+          <fieldset class="q">
+            <legend class="qlabel">What are you bringing?</legend>
+            <div class="choices">
+              <label class="choice"><input type="checkbox" name="Bringing" value="Cap and gown"><span>Cap and gown (and hood, if your degree has one)</span></label>
+              <label class="choice"><input type="checkbox" name="Bringing" value="Stoles or cords"><span>Stoles or cords</span></label>
+              <label class="choice"><input type="checkbox" name="Bringing" value="Greek letters or a chapter item"><span>Greek letters or a chapter item</span></label>
+              <label class="choice"><input type="checkbox" name="Bringing" value="Diploma cover"><span>Diploma cover</span></label>
+              <label class="choice"><input type="checkbox" name="Bringing" value="Ole Miss gear or a jersey"><span>Ole Miss gear or a jersey</span></label>
+              <label class="choice"><input type="checkbox" name="Bringing" value="Sports gear or a uniform"><span>Sports gear or a uniform</span></label>
+              <label class="choice"><input type="checkbox" name="Bringing" value="An instrument"><span>An instrument</span></label>
+              <label class="choice"><input type="checkbox" name="Bringing" value="Something from your major"><span>Something from your major (lab coat, scrubs, tools)</span></label>
+              <label class="choice"><input type="checkbox" name="Bringing" value="A champagne pop (21 and up) or sparkling cider"><span>A champagne pop (21 and up, where it's allowed) or sparkling cider</span></label>
+              <label class="choice"><input type="checkbox" name="Bringing" value="Something else"><span>Something else</span></label>
+            </div>
+            <div id="q-gown" class="follow" hidden>
+              <fieldset class="q">
+                <legend class="qlabel">Will your cap and gown be here by your session?</legend>
+                <div class="choices">
+                  <label class="choice"><input type="radio" name="Cap and gown by session" value="Yes"><span>Yes</span></label>
+                  <label class="choice"><input type="radio" name="Cap and gown by session" value="No"><span>No</span></label>
+                  <label class="choice"><input type="radio" name="Cap and gown by session" value="Not sure"><span>Not sure</span></label>
+                </div>
+              </fieldset>
+            </div>
+            <div id="q-bring-else" class="follow" hidden>
+              <div class="q">
+                <label class="qlabel" for="q-bring-other">What else are you bringing?</label>
+                <input id="q-bring-other" type="text" name="Other things to bring" maxlength="200">
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- YOUR PHOTOS -->
+        <div class="sec">
+          <h2>Your photos</h2>
+          <div class="q">
+            <label class="qlabel" for="q-needed-by">Need them by a certain date?</label>
+            <p id="q-needed-by-hint" class="hint">For announcements, a party or a yearbook deadline.</p>
+            <input id="q-needed-by" type="date" name="Photos needed by" aria-describedby="q-needed-by-hint">
+          </div>
+          <div class="q">
+            <label class="qlabel" for="q-needed-for">What's that date for?</label>
+            <input id="q-needed-for" type="text" name="Needed for" maxlength="200">
+          </div>
+          <div class="q">
+            <label class="qlabel" for="q-one-photo">If we only got one photo, what would it be?</label>
+            <textarea id="q-one-photo" name="Must-have photo" maxlength="2000"></textarea>
+          </div>
+          <div id="q-parent-wish" class="q" hidden>
+            <label class="qlabel" for="q-parent-photo">Parents: is there a photo you're hoping for?</label>
+            <textarea id="q-parent-photo" name="Parent photo wish" maxlength="2000"></textarea>
+          </div>
+          <fieldset class="q">
+            <legend class="qlabel">Can I share a few favorites on my website and Instagram?</legend>
+            <p id="minor-note" class="note" hidden>The senior is under 18, so a parent or guardian should answer this one and the next.</p>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="OK to share on website and Instagram" value="Yes, tag me"><span>Yes, tag me</span></label>
+              <label class="choice"><input type="radio" name="OK to share on website and Instagram" value="Yes, but don't tag me"><span>Yes, but don't tag me</span></label>
+              <label class="choice"><input type="radio" name="OK to share on website and Instagram" value="Please keep them private"><span>Please keep them private</span></label>
+            </div>
+            <div id="q-handle" class="follow" hidden>
+              <div class="q">
+                <label class="qlabel" for="q-handle-input">Your Instagram handle</label>
+                <input id="q-handle-input" type="text" name="Instagram handle" maxlength="60" placeholder="@" autocapitalize="off" autocorrect="off" spellcheck="false">
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="q">
+            <legend class="qlabel">Can I share behind-the-scenes clips too?</legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="OK to share BTS clips" value="Yes"><span>Yes</span></label>
+              <label class="choice"><input type="radio" name="OK to share BTS clips" value="No"><span>No</span></label>
+            </div>
+          </fieldset>
+          <div class="q">
+            <label class="qlabel" for="q-anything">Anything else I should know?</label>
+            <p id="q-anything-hint" class="hint">A family situation, a recent loss, anything that helps me plan.</p>
+            <textarea id="q-anything" name="Anything else" maxlength="3000" aria-describedby="q-anything-hint"></textarea>
+          </div>
+        </div>
+
+        <!-- OPTIONAL -->
+        <details class="more">
+          <summary>Want to tell me more? (optional)</summary>
+          <div class="more-body">
+            <p class="hint">Answer any of these, or none.</p>
+            <div class="q">
+              <label class="qlabel" for="q-major">What's your major, or your favorite class?</label>
+              <input id="q-major" type="text" name="Major or favorite class" maxlength="200">
+            </div>
+            <div class="q">
+              <label class="qlabel" for="q-special-spot">Is one of the spots you picked special to you? Tell me why.</label>
+              <textarea id="q-special-spot" name="Special spot and why" maxlength="2000"></textarea>
+            </div>
+            <div class="q">
+              <label class="qlabel" for="q-rain">If it rains, what other days work?</label>
+              <input id="q-rain" type="text" name="Rain dates" maxlength="200">
+            </div>
+            <div class="q">
+              <label class="qlabel" for="q-best-friend">How would your best friend describe you?</label>
+              <input id="q-best-friend" type="text" name="Best friend would say" maxlength="300">
+            </div>
+            <div class="q">
+              <label class="qlabel" for="q-remember">What do you want to remember about these years?</label>
+              <textarea id="q-remember" name="Want to remember" maxlength="2000"></textarea>
+            </div>
+            <div class="q">
+              <label class="qlabel" for="q-artists">Your top three artists right now</label>
+              <input id="q-artists" type="text" name="Top 3 artists" maxlength="200">
+            </div>
+            <fieldset class="q">
+              <legend class="qlabel">Mostly smiling, mostly serious, or a mix?</legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="Smiling or serious" value="Mostly smiling"><span>Mostly smiling</span></label>
+                <label class="choice"><input type="radio" name="Smiling or serious" value="Mostly serious"><span>Mostly serious</span></label>
+                <label class="choice"><input type="radio" name="Smiling or serious" value="An even mix"><span>An even mix</span></label>
+              </div>
+            </fieldset>
+            <div id="q-posing" class="q">
+              <label class="qlabel" for="q-posing-notes">Anything I should know about posing? A favorite side, or something you'd rather I not focus on.</label>
+              <textarea id="q-posing-notes" name="Posing notes" maxlength="2000"></textarea>
+            </div>
+            <div class="q">
+              <label class="qlabel" for="q-walking">Anything that makes walking between spots or being outside harder, like heat, allergies or an injury?</label>
+              <input id="q-walking" type="text" name="Walking, heat or allergies" maxlength="300">
+            </div>
+            <div class="q">
+              <label class="qlabel" for="q-hair">Getting hair or makeup done? When?</label>
+              <input id="q-hair" type="text" name="Hair and makeup" maxlength="200">
+            </div>
+            <fieldset class="q">
+              <legend class="qlabel">What will you use your photos for?</legend>
+              <div class="choices">
+                <label class="choice"><input type="checkbox" name="Photo uses" value="Graduation announcements or party invites"><span>Graduation announcements or party invites</span></label>
+                <label class="choice"><input type="checkbox" name="Photo uses" value="Instagram"><span>Instagram</span></label>
+                <label class="choice"><input type="checkbox" name="Photo uses" value="LinkedIn or a r&eacute;sum&eacute; headshot"><span>LinkedIn or a r&eacute;sum&eacute; headshot</span></label>
+                <label class="choice"><input type="checkbox" name="Photo uses" value="Prints or wall art"><span>Prints or wall art</span></label>
+                <label class="choice"><input type="checkbox" name="Photo uses" value="Gifts for family"><span>Gifts for family</span></label>
+                <label class="choice"><input type="checkbox" name="Photo uses" value="Yearbook"><span>Yearbook</span></label>
+                <label class="choice"><input type="checkbox" name="Photo uses" value="Something else"><span>Something else</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="q">
+              <legend class="qlabel">Want any of these too?</legend>
+              <p class="hint">Hype films and drone shots on campus need university approval, so tell me early.</p>
+              <div class="choices">
+                <label class="choice"><input type="checkbox" name="Add-ons" value="A senior hype film"><span>A senior hype film</span></label>
+                <label class="choice"><input type="checkbox" name="Add-ons" value="Drone shots"><span>Drone shots</span></label>
+                <label class="choice"><input type="checkbox" name="Add-ons" value="Graduation party photos"><span>Graduation party photos</span></label>
+                <label class="choice"><input type="checkbox" name="Add-ons" value="Family photos the same day"><span>Family photos the same day</span></label>
+                <label class="choice"><input type="checkbox" name="Add-ons" value="Not right now"><span>Not right now</span></label>
+              </div>
+            </fieldset>
+          </div>
+        </details>
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <p class="hint">Your answers come straight to my inbox through Web3Forms, the same service as my contact form, and I only use them to plan your session. More on my <a href="privacy.html">privacy page</a>.</p>
+          <button type="submit" style="align-self:flex-start;cursor:pointer;border:none;color:#fff;background:var(--accent);padding:16px 38px;border-radius:999px;font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 0 30px var(--glow);">Send my answers</button>
+        </div>
+      </form>
+      <div id="formStatus" role="status" aria-live="polite" style="margin-top:18px;font-size:15px;line-height:1.6;color:var(--muted);"></div>
+    </div>
+  </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--bg);padding:clamp(48px,8vh,80px) clamp(20px,5vw,64px) 40px;border-top:1px solid var(--line);">
+    <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:flex-end;">
+      <a href="/" style="text-decoration:none;display:flex;align-items:center;">
+        <img src="uploads/logo.png" alt="Samuel Long Productions" style="height:76px;width:auto;display:block;">
+      </a>
+      <div style="display:flex;flex-wrap:wrap;gap:22px;">
+        <a href="pricing.html" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Pricing</a>
+        <a href="blog.html" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Blog</a>
+        <a href="https://www.instagram.com/samuellongproductions/" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Instagram</a>
+        <a href="https://www.youtube.com/@Samuellongproductions" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">YouTube</a>
+        <a href="https://www.linkedin.com/in/samuellong22/" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">LinkedIn</a>
+        <a href="privacy.html" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Privacy</a>
+        <a href="terms.html" style="text-decoration:none;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Terms</a>
+      </div>
+    </div>
+    <address data-nap style="max-width:1200px;margin:30px auto 0;font-style:normal;font-size:14px;line-height:1.7;color:var(--muted);"><strong style="color:var(--text);font-weight:500;">Samuel Long Productions</strong> is a photographer and videographer in Oxford, MS, covering wedding films, senior portraits, Ole Miss Greek life, events and commercial work. Call or text <a href="tel:+17692317878" style="color:var(--text);text-decoration:underline;text-underline-offset:3px;white-space:nowrap;">(769) 231-7878</a>.</address>
+    <div style="max-width:1200px;margin:34px auto 0;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <span style="font-size:11px;color:var(--muted);letter-spacing:.1em;">&copy; 2026 Samuel Long Productions</span>
+      <span style="font-size:11px;color:var(--muted);letter-spacing:.1em;">Oxford &amp; Madison, MS, serving the Jackson metro &amp; North Mississippi</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var progress = document.getElementById('progress');
+  function onScroll(){
+    if (progress) {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, (window.scrollY || 0) / h) : 0) + ')';
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  var form = document.getElementById('seniorQuestionnaire');
+  var status = document.getElementById('formStatus');
+  function $(id){ return document.getElementById(id); }
+  function picked(name){
+    var el = form.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : '';
+  }
+  function checked(name, value){
+    var el = form.querySelector('input[name="' + name + '"][value="' + value + '"]');
+    return !!(el && el.checked);
+  }
+
+  // Skip logic: follow-up questions appear only when an earlier answer calls for them
+  function update(){
+    var who = picked('Filled out by');
+    var parentAnswering = who === 'A parent or guardian' || who === 'Both of us together';
+    var minor = picked('Senior is 18 or older') === 'No';
+    var parentBox = $('q-parent');
+    parentBox.hidden = !(parentAnswering || minor);
+    [].forEach.call(parentBox.querySelectorAll('[data-req]'), function(el){ el.required = !parentBox.hidden; });
+    $('q-parent-wish').hidden = !parentAnswering;
+    $('q-posing').hidden = who === 'A parent or guardian';
+    $('q-school').hidden = !/^(High school|Other)/.test(picked('Graduating'));
+    $('minor-note').hidden = !minor;
+    $('q-join-who').hidden = picked('Anyone joining') !== 'Yes';
+    $('q-gown').hidden = !checked('Bringing', 'Cap and gown');
+    $('q-bring-else').hidden = !checked('Bringing', 'Something else');
+    $('q-spot-where').hidden = !(checked('Spots', 'Somewhere near home') || checked('Spots', 'Somewhere else'));
+    $('q-handle').hidden = picked('OK to share on website and Instagram') !== 'Yes, tag me';
+  }
+
+  // "Pick up to three": once three are checked, the rest of that group waits
+  function limit(group){
+    var max = parseInt(group.getAttribute('data-max'), 10);
+    var boxes = group.querySelectorAll('input[type="checkbox"]');
+    var n = [].filter.call(boxes, function(b){ return b.checked; }).length;
+    [].forEach.call(boxes, function(b){ b.disabled = !b.checked && n >= max; });
+  }
+  var limited = [].slice.call(form.querySelectorAll('[data-max]'));
+  form.addEventListener('change', function(e){
+    limited.forEach(function(g){ if (g.contains(e.target)) limit(g); });
+    update();
+  });
+  limited.forEach(limit);
+  update();
+
+  // One entry per question, in page order. Checkbox groups are joined into one line (FormData
+  // would keep only the last box), and questions hidden by the skip logic are left out.
+  function answers(){
+    var out = {}, seen = {};
+    [].forEach.call(form.elements, function(el){
+      var name = el.name;
+      if (!name || seen[name] || el.type === 'submit') return;
+      if (name === 'botcheck') { seen[name] = true; if (el.checked) out.botcheck = 'on'; return; }
+      if (el.type !== 'hidden' && el.closest('[hidden]')) return;
+      seen[name] = true;
+      if (el.type === 'checkbox') {
+        var vals = [].filter.call(form.querySelectorAll('input[name="' + name + '"]'), function(c){ return c.checked; })
+          .map(function(c){ return c.value; });
+        if (vals.length) out[name] = vals.join(', ');
+      } else if (el.type === 'radio') {
+        var v = picked(name);
+        if (v) out[name] = v;
+      } else {
+        var t = (el.value || '').trim();
+        if (t) out[name] = t;
+      }
+    });
+    return out;
+  }
+
+  var started = false;
+  form.addEventListener('focusin', function(){
+    if (started) return;
+    started = true;
+    if (window.slp) window.slp.track('questionnaire-start');
+  });
+
+  // Error text is built from DOM nodes so nothing from the API response is parsed as HTML
+  function showEmailFallback(lead, tail){
+    var link = document.createElement('a');
+    link.href = 'mailto:samuel@samuellongproductions.com';
+    link.style.color = '#fff';
+    link.textContent = 'samuel@samuellongproductions.com';
+    status.style.color = '#ffb3a0';
+    status.textContent = '';
+    status.appendChild(document.createTextNode(lead + ' Please email '));
+    status.appendChild(link);
+    status.appendChild(document.createTextNode(' ' + tail));
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = form.querySelector('button[type="submit"]');
+    var who = form.querySelector('[name="name"]').value.trim();
+    form.querySelector('[name="subject"]').value = 'Senior questionnaire: ' + (who || 'no name') + ' (' + (picked('Graduating') || 'school not given') + ')';
+    var data = answers();
+    status.style.color = 'var(--muted)';
+    status.textContent = 'Sending…';
+    btn.disabled = true; btn.style.opacity = '.6';
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(function(res){ return res.json(); })
+    .then(function(json){
+      if (json.success) {
+        if (window.slp) window.slp.track('questionnaire-sent', { graduating: data['Graduating'] || 'unspecified', session: data['Leaning toward'] || 'unspecified' });
+        form.style.display = 'none';
+        status.style.color = 'var(--text)';
+        status.innerHTML = "<strong style='font-family:var(--font-display);font-size:30px;letter-spacing:.02em;text-transform:uppercase;color:#fff;display:block;margin-bottom:8px;'>Thank you. Got it.</strong>I'll read through your answers and get back to you with a plan for your session, usually within a day.";
+        status.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        showEmailFallback(String(json.message || 'Something went wrong').replace(/[.\s]+$/, '') + '.', 'your answers instead.');
+        btn.disabled = false; btn.style.opacity = '1';
+      }
+    })
+    .catch(function(){
+      showEmailFallback('Network error.', 'your answers instead.');
+      btn.disabled = false; btn.style.opacity = '1';
+    });
+  });
+})();
+</script>
+</body>
+</html>
