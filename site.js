@@ -133,7 +133,7 @@
   };
 
   // ---------- Contact form ----------
-  var TYPES = { weddings: 'Weddings', wedding: 'Weddings', seniors: 'Seniors', senior: 'Seniors', greek: 'Greek Life', events: 'Events', event: 'Events', campus: 'Events', gala: 'Events', large: 'Events', commercial: 'Commercial', other: 'Other' };
+  var TYPES = { weddings: 'Weddings', wedding: 'Weddings', seniors: 'Seniors', senior: 'Seniors', greek: 'Greek Life', events: 'Events', event: 'Events', campus: 'Events', gala: 'Events', large: 'Events', commercial: 'Commercial', website: 'Website', websites: 'Website', other: 'Other' };
   // SLP Media's packages (slpmedia.pro/packages), by the ids its links carry in ?package=
   var PACKAGES = { 'small-party': 'Small party, $300', 'two-photographers': 'Two photographers, $1,450', 'full-team': 'Full team, $2,650', bigger: 'Bigger than the Full team package' };
   // Ids from before the 10/18/26 prices. An old link or cached page still counts as SLP Media, but the
