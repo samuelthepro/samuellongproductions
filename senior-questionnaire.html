@@ -141,12 +141,9 @@
             <input id="q-goes-by" type="text" name="Goes by" maxlength="60" placeholder="If it's different">
           </div>
           <div class="q">
-            <label class="qlabel" for="q-cell">Senior's cell, for texts on the day <span class="req">Required</span></label>
-            <input id="q-cell" type="tel" name="Senior cell" autocomplete="tel" inputmode="tel" maxlength="40" required>
-          </div>
-          <div class="q">
-            <label class="qlabel" for="q-email">Email <span class="req">Required</span></label>
-            <input id="q-email" type="email" name="email" autocomplete="email" maxlength="200" required>
+            <label class="qlabel" for="q-cell">Senior's cell, for texts on the day</label>
+            <p id="q-cell-hint" class="hint">Skip this if it's the number you already gave me.</p>
+            <input id="q-cell" type="tel" name="Senior cell" autocomplete="tel" inputmode="tel" maxlength="40" aria-describedby="q-cell-hint">
           </div>
           <fieldset class="q">
             <legend class="qlabel">Who's filling this out? <span class="req">Required</span></legend>
@@ -154,15 +151,6 @@
               <label class="choice"><input type="radio" name="Filled out by" value="The senior" required><span>The senior</span></label>
               <label class="choice"><input type="radio" name="Filled out by" value="A parent or guardian"><span>A parent or guardian</span></label>
               <label class="choice"><input type="radio" name="Filled out by" value="Both of us together"><span>Both of us together</span></label>
-            </div>
-          </fieldset>
-          <fieldset class="q">
-            <legend class="qlabel">Which session are you leaning toward?</legend>
-            <div class="choices stack">
-              <label class="choice"><input type="radio" name="Leaning toward" value="Essential"><span>Essential: 30 minutes, 1 spot, 1 look</span></label>
-              <label class="choice"><input type="radio" name="Leaning toward" value="Signature"><span>Signature: 1 hour, up to 2 spots, 2 looks</span></label>
-              <label class="choice"><input type="radio" name="Leaning toward" value="Premium"><span>Premium: 2 hours, several spots, 3 looks, room for friends</span></label>
-              <label class="choice"><input type="radio" name="Leaning toward" value="Not sure yet"><span>Not sure yet, help me pick</span></label>
             </div>
           </fieldset>
           <fieldset class="q">
@@ -181,6 +169,11 @@
               </div>
             </div>
           </fieldset>
+          <div id="q-major" class="q">
+            <label class="qlabel" for="q-major-name">What's your major?</label>
+            <p id="q-major-hint" class="hint">So I know which building is yours if you want photos there.</p>
+            <input id="q-major-name" type="text" name="Major" maxlength="120" aria-describedby="q-major-hint">
+          </div>
           <fieldset class="q">
             <legend class="qlabel">Is the senior 18 or older? <span class="req">Required</span></legend>
             <div class="choices">
@@ -404,8 +397,8 @@
           <div class="more-body">
             <p class="hint">Answer any of these, or none.</p>
             <div class="q">
-              <label class="qlabel" for="q-major">What's your major, or your favorite class?</label>
-              <input id="q-major" type="text" name="Major or favorite class" maxlength="200">
+              <label class="qlabel" for="q-fav-class">What's your favorite class?</label>
+              <input id="q-fav-class" type="text" name="Favorite class" maxlength="200">
             </div>
             <div class="q">
               <label class="qlabel" for="q-special-spot">Is one of the spots you picked special to you? Tell me why.</label>
@@ -543,6 +536,7 @@
     $('q-parent-wish').hidden = !parentAnswering;
     $('q-posing').hidden = who === 'A parent or guardian';
     $('q-school').hidden = !/^(High school|Other)/.test(picked('Graduating'));
+    $('q-major').hidden = /^High school/.test(picked('Graduating'));
     $('minor-note').hidden = !minor;
     $('q-join-who').hidden = picked('Anyone joining') !== 'Yes';
     $('q-gown').hidden = !checked('Bringing', 'Cap and gown');
@@ -628,7 +622,7 @@
     .then(function(res){ return res.json(); })
     .then(function(json){
       if (json.success) {
-        if (window.slp) window.slp.track('questionnaire-sent', { graduating: data['Graduating'] || 'unspecified', session: data['Leaning toward'] || 'unspecified' });
+        if (window.slp) window.slp.track('questionnaire-sent', { graduating: data['Graduating'] || 'unspecified' });
         form.style.display = 'none';
         status.style.color = 'var(--text)';
         status.innerHTML = "<strong style='font-family:var(--font-display);font-size:30px;letter-spacing:.02em;text-transform:uppercase;color:#fff;display:block;margin-bottom:8px;'>Thank you. Got it.</strong>I'll read through your answers and get back to you with a plan for your session, usually within a day.";
