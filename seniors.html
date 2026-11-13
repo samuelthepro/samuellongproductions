@@ -53,7 +53,7 @@
         "@id": "https://www.samuellongproductions.com/seniors.html#breadcrumb"
       },
       "inLanguage": "en-US",
-      "dateModified": "2026-10-26"
+      "dateModified": "2026-11-12"
     },
     {
       "@type": "BreadcrumbList",
@@ -203,6 +203,8 @@
 }
 </script>
 <script defer src="site.js"></script>
+<script defer src="intake.js"></script>
+<link rel="stylesheet" href="intake.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -265,7 +267,7 @@
       <h1 data-reveal style="margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.9;color:#fff;font-size:clamp(44px,9vw,120px);max-width:14ch;">High school senior photographer in Mississippi</h1>
       <p data-reveal data-delay="140" style="margin:22px 0 0;max-width:620px;font-size:clamp(15px,1.7vw,19px);line-height:1.7;color:#e7e4df;font-weight:300;">I'm Samuel Long, a senior photographer and videographer serving Madison, MS and Oxford, MS. I take senior pictures and make hype films for high school seniors across the Jackson, MS metro, including Ridgeland, Flowood and Brandon, and for Ole Miss seniors in Oxford.</p>
       <div data-reveal data-delay="220" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;">
-        <a href="contact.html?type=seniors&amp;from=seniors" style="text-decoration:none;color:#fff;background:var(--accent);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 0 22px var(--glow);">Book a session</a>
+        <a href="#book" style="text-decoration:none;color:#fff;background:var(--accent);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 0 22px var(--glow);">Book a session</a>
         <a href="#hype-films" style="text-decoration:none;color:var(--text);border:1px solid rgba(255,255,255,.35);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;">Watch a hype film</a>
       </div>
     </div>
@@ -310,7 +312,7 @@
       </div>
       <div data-reveal style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;">
         <a href="pricing-photo.html#seniors" style="text-decoration:none;color:var(--text);border:1px solid rgba(255,255,255,.35);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;">Senior session pricing</a>
-        <a href="contact.html?type=seniors&amp;from=seniors-quote" style="text-decoration:none;color:#fff;background:var(--accent);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 0 22px var(--glow);">Get a quote</a>
+        <a href="#book" style="text-decoration:none;color:#fff;background:var(--accent);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 0 22px var(--glow);">Book a session</a>
       </div>
     </div>
   </section>
@@ -450,12 +452,83 @@
     </div>
   </section>
 
-  <section style="position:relative;padding:clamp(72px,12vh,130px) clamp(20px,5vw,64px);background:var(--bg);border-top:1px solid var(--line);overflow:hidden;text-align:center;">
+  <section id="book" style="position:relative;padding:clamp(72px,12vh,130px) clamp(20px,5vw,64px);background:var(--bg);border-top:1px solid var(--line);overflow:hidden;text-align:center;">
     <div style="position:absolute;inset:0;background:radial-gradient(70% 90% at 50% 100%,var(--glow) 0%,transparent 60%);opacity:.35;"></div>
     <div style="position:relative;max-width:760px;margin:0 auto;">
       <h2 data-reveal style="margin:0 0 16px;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;color:#fff;font-size:clamp(36px,6vw,72px);">Book your senior session</h2>
-      <p data-reveal data-delay="120" style="margin:0 auto 28px;max-width:52ch;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Tell me what you have in mind: photos, a hype film or both. You can also email <a href="mailto:samuel@samuellongproductions.com" style="color:var(--text);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere;">samuel@samuellongproductions.com</a>.</p>
-      <a data-reveal data-delay="200" href="contact.html?type=seniors&amp;from=seniors" style="display:inline-block;text-decoration:none;color:#fff;background:var(--accent);padding:15px 30px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 0 26px var(--glow);">Start your inquiry</a>
+      <p data-reveal data-delay="120" style="margin:0 auto 28px;max-width:52ch;font-size:clamp(15px,1.6vw,17px);line-height:1.7;color:var(--muted);font-weight:300;">Fill this out and I'll get back to you with open dates, usually within a day. Want a hype film too? Tell me about it on my <a href="contact.html?type=seniors&amp;from=seniors-film" style="color:var(--text);text-decoration:underline;text-underline-offset:3px;">contact form</a>, or email <a href="mailto:samuel@samuellongproductions.com" style="color:var(--text);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere;">samuel@samuellongproductions.com</a>.</p>
+      <div style="background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:clamp(24px,4vw,48px);">
+        <form id="seniorBook" class="intake" data-intake data-label="Seniors" data-where="seniors" data-cta="seniors-form" data-status="seniorBookStatus" action="https://api.web3forms.com/submit" method="POST">
+          <!-- Same Web3Forms access key and questions as senior-intake.html; logic in intake.js -->
+          <input type="hidden" name="access_key" value="c4396b96-84f7-4a70-b1d2-cedc13dba09a">
+          <input type="hidden" name="subject" value="New inquiry: Seniors">
+          <input type="hidden" name="from_name" value="Samuel Long Productions Website">
+          <input type="hidden" name="project_type" value="Seniors">
+          <input type="hidden" name="Form" value="Senior page booking form">
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none !important;">
+
+          <div class="sec first">
+            <h3>About you</h3>
+            <div class="q">
+              <label class="qlabel" for="sb-name">Your full name <span class="req">Required</span></label>
+              <input id="sb-name" type="text" name="name" autocomplete="name" maxlength="100" required>
+            </div>
+            <div class="q">
+              <label class="qlabel" for="sb-email">Email <span class="req">Required</span></label>
+              <input id="sb-email" type="email" name="email" autocomplete="email" maxlength="200" placeholder="you@email.com" required>
+            </div>
+            <div class="q">
+              <label class="qlabel" for="sb-phone">Phone number <span class="req">Required</span></label>
+              <input id="sb-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" maxlength="40" placeholder="(000) 000-0000" required>
+            </div>
+            <div class="q">
+              <label class="qlabel" for="sb-handle">Your Instagram handle</label>
+              <input id="sb-handle" type="text" name="Instagram handle" maxlength="60" placeholder="@" autocapitalize="off" autocorrect="off" spellcheck="false">
+            </div>
+            <fieldset class="q">
+              <legend class="qlabel">What school do you attend?</legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="School" value="Ole Miss"><span>Ole Miss</span></label>
+                <label class="choice"><input type="radio" name="School" value="Mississippi State"><span>Mississippi State</span></label>
+                <label class="choice"><input type="radio" name="School" value="Other"><span>Other</span></label>
+              </div>
+              <div class="follow intake-other" hidden>
+                <div class="q">
+                  <label class="qlabel" for="sb-other-school">If other, what school do you attend?</label>
+                  <input id="sb-other-school" type="text" name="Other school" maxlength="120">
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="sec">
+            <h3>Your session</h3>
+            <a class="pkg" href="pricing-photo.html#seniors">See senior packages</a>
+            <fieldset class="q">
+              <legend class="qlabel">What type of session are you interested in?</legend>
+              <p class="hint">Booking more than one type of session? Send a separate form for each so I can keep everything organized.</p>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="Session type" value="Individual"><span>Individual</span></label>
+                <label class="choice"><input type="radio" name="Session type" value="Duo"><span>Duo</span></label>
+                <label class="choice"><input type="radio" name="Session type" value="Group"><span>Group</span></label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="sec next">
+            <h3>What happens next?</h3>
+            <p>Once you send this, I'll reach out by text or email, usually within a day, to help you pick a session and lock in your date.</p>
+            <p>After you book, I'll send a short questionnaire so I can plan your spots, your outfits and the photos you'll want to keep.</p>
+            <p><strong>Congrats on (almost) graduating. I can't wait to celebrate with you!</strong></p>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <p class="hint">This comes straight to my inbox through Web3Forms, the same service as my contact form, and I only use it to reply to you. More on my <a href="privacy.html">privacy page</a>.</p>
+            <button type="submit" class="send">Send</button>
+          </div>
+        </form>
+        <div id="seniorBookStatus" class="intake-status" role="status" aria-live="polite"></div>
+      </div>
     </div>
   </section>
   </main>

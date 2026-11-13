@@ -20,6 +20,8 @@
 <meta name="twitter:description" content="Spring 2027 grad sessions are booking now. Takes about a minute.">
 <meta name="twitter:image" content="https://www.samuellongproductions.com/uploads/og/ole-miss-graduation-pictures.jpg">
 <script defer src="site.js"></script>
+<script defer src="intake.js"></script>
+<link rel="stylesheet" href="intake.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -37,35 +39,8 @@
     --font-display:'Bebas Neue',sans-serif;--font-body:'Sora',sans-serif;
   }
   @keyframes slpKenP{0%{transform:scale(1.02);}100%{transform:scale(1.14);}}
-  input,select,textarea,button{font-family:var(--font-body);}
-  [hidden]{display:none !important;}
-  fieldset{border:0;margin:0;padding:0;min-width:0;}
-  legend{padding:0;}
   .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 6px;}
   .shots img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:8px;background:#0e0e12;}
-  .sec{display:flex;flex-direction:column;gap:30px;padding-top:36px;border-top:1px solid var(--line);}
-  .sec.first{padding-top:0;border-top:0;}
-  .sec h2{margin:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(28px,4.2vw,40px);color:#fff;}
-  .q{display:flex;flex-direction:column;gap:10px;}
-  .qlabel{display:block;font-size:16px;line-height:1.5;color:var(--text);font-weight:400;}
-  .req{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap;margin-left:6px;}
-  .hint{margin:0;font-size:13px;line-height:1.6;color:var(--muted);font-weight:300;}
-  .hint a{color:var(--text);text-decoration:underline;text-underline-offset:3px;}
-  .q input[type=text],.q input[type=email],.q input[type=tel]{background:#0e0e12;border:1px solid var(--line);border-radius:8px;padding:14px 16px;color:var(--text);font-size:16px;outline:none;transition:border-color .2s ease,box-shadow .2s ease;width:100%;}
-  .q input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(208,2,27,.15);}
-  ::placeholder{color:#8a888e;}
-  .choices{display:flex;flex-wrap:wrap;gap:10px;margin-top:2px;}
-  .choice{position:relative;display:block;}
-  .choice input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none;}
-  .choice span{display:inline-block;padding:11px 16px;border:1px solid var(--line);border-radius:999px;background:#0e0e12;color:var(--text);font-size:14px;line-height:1.4;cursor:pointer;transition:border-color .2s ease,background .2s ease;}
-  .choice:hover span{border-color:rgba(255,255,255,.28);}
-  .choice input:checked + span{border-color:var(--accent);background:rgba(208,2,27,.16);color:#fff;}
-  .choice input:focus-visible + span{outline:2px solid #fff;outline-offset:2px;}
-  .follow{display:flex;flex-direction:column;gap:22px;padding:18px 0 4px 16px;border-left:2px solid rgba(208,2,27,.55);}
-  .pkg{align-self:flex-start;text-decoration:none;color:var(--text);border:1px solid rgba(255,255,255,.35);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;transition:border-color .2s ease;}
-  .pkg:hover{border-color:#fff;}
-  .next p{margin:0;max-width:62ch;font-size:15px;line-height:1.7;color:var(--muted);font-weight:300;}
-  .next p strong{color:var(--text);font-weight:500;}
   .skip{position:absolute;left:12px;top:-200px;z-index:10001;padding:12px 18px;border-radius:8px;background:#fff;color:#08080a;font-family:var(--font-body);font-size:14px;font-weight:600;text-decoration:none;}
   .skip:focus{top:12px;outline:2px solid var(--accent);outline-offset:2px;}
   #main{scroll-margin-top:100px;}
@@ -123,7 +98,7 @@
         <img src="uploads/portfolio/saige-morgan-grad-jerseys.jpg" width="1066" height="1600" loading="lazy" decoding="async" alt="Two graduates in matching red and navy Ole Miss number 10 jerseys on the stadium field">
       </div>
 
-      <form id="seniorIntake" action="https://api.web3forms.com/submit" method="POST" style="display:flex;flex-direction:column;gap:36px;margin-top:36px;">
+      <form id="seniorIntake" class="intake" data-intake data-label="Seniors, Spring 2027" data-where="senior-intake" data-status="formStatus" action="https://api.web3forms.com/submit" method="POST" style="margin-top:36px;">
         <!-- Same Web3Forms access key as contact.html: inquiries land in the same inbox -->
         <input type="hidden" name="access_key" value="c4396b96-84f7-4a70-b1d2-cedc13dba09a">
         <input type="hidden" name="subject" value="New inquiry: Seniors, Spring 2027">
@@ -159,7 +134,7 @@
               <label class="choice"><input type="radio" name="School" value="Mississippi State"><span>Mississippi State</span></label>
               <label class="choice"><input type="radio" name="School" value="Other"><span>Other</span></label>
             </div>
-            <div id="i-other" class="follow" hidden>
+            <div id="i-other" class="follow intake-other" hidden>
               <div class="q">
                 <label class="qlabel" for="i-other-school">If other, what school do you attend?</label>
                 <input id="i-other-school" type="text" name="Other school" maxlength="120">
@@ -193,10 +168,10 @@
 
         <div style="display:flex;flex-direction:column;gap:16px;">
           <p class="hint">This comes straight to my inbox through Web3Forms, the same service as my contact form, and I only use it to reply to you. More on my <a href="privacy.html">privacy page</a>.</p>
-          <button type="submit" style="align-self:flex-start;cursor:pointer;border:none;color:#fff;background:var(--accent);padding:16px 38px;border-radius:999px;font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 0 30px var(--glow);">Send</button>
+          <button type="submit" class="send">Send</button>
         </div>
       </form>
-      <div id="formStatus" role="status" aria-live="polite" style="margin-top:18px;font-size:15px;line-height:1.6;color:var(--muted);"></div>
+      <div id="formStatus" class="intake-status" role="status" aria-live="polite"></div>
     </div>
   </section>
   </main>
@@ -237,93 +212,6 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-
-  var form = document.getElementById('seniorIntake');
-  var status = document.getElementById('formStatus');
-  function picked(name){
-    var el = form.querySelector('input[name="' + name + '"]:checked');
-    return el ? el.value : '';
-  }
-
-  // "If other, what school?" only shows once Other is picked
-  function update(){
-    document.getElementById('i-other').hidden = picked('School') !== 'Other';
-  }
-  form.addEventListener('change', update);
-  update();
-
-  // One entry per question, in page order; a hidden follow-up is left out
-  function answers(){
-    var out = {}, seen = {};
-    [].forEach.call(form.elements, function(el){
-      var name = el.name;
-      if (!name || seen[name] || el.type === 'submit') return;
-      if (name === 'botcheck') { seen[name] = true; if (el.checked) out.botcheck = 'on'; return; }
-      if (el.type !== 'hidden' && el.closest('[hidden]')) return;
-      seen[name] = true;
-      var v = el.type === 'radio' ? picked(name) : (el.value || '').trim();
-      if (v) out[name] = v;
-    });
-    return out;
-  }
-
-  var started = false;
-  form.addEventListener('focusin', function(){
-    if (started) return;
-    started = true;
-    if (window.slp) window.slp.track('intake-start');
-  });
-
-  // Error text is built from DOM nodes so nothing from the API response is parsed as HTML
-  function showEmailFallback(lead){
-    var link = document.createElement('a');
-    link.href = 'mailto:samuel@samuellongproductions.com';
-    link.style.color = '#fff';
-    link.textContent = 'samuel@samuellongproductions.com';
-    status.style.color = '#ffb3a0';
-    status.textContent = '';
-    status.appendChild(document.createTextNode(lead + ' Please email '));
-    status.appendChild(link);
-    status.appendChild(document.createTextNode(' or text (769) 231-7878 instead.'));
-  }
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var btn = form.querySelector('button[type="submit"]');
-    var data = answers();
-    // Same attribution fields as the contact form (where the visitor came from)
-    var lead = window.slp && window.slp.lead ? window.slp.lead() : {};
-    Object.keys(lead).forEach(function(k){ data[k] = lead[k]; });
-    var school = data['School'] === 'Other' ? (data['Other school'] || 'Other') : data['School'];
-    var details = [data['Session type'], school].filter(Boolean);
-    details.push('via ' + (window.slp ? window.slp.source() : 'unknown'));
-    data.subject = 'New inquiry: Seniors, Spring 2027 (' + details.join(', ') + ')';
-    status.style.color = 'var(--muted)';
-    status.textContent = 'Sending…';
-    btn.disabled = true; btn.style.opacity = '.6';
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data)
-    })
-    .then(function(res){ return res.json(); })
-    .then(function(json){
-      if (json.success) {
-        if (window.slp) window.slp.track('intake-sent', { session: data['Session type'] || 'unspecified' });
-        form.style.display = 'none';
-        status.style.color = 'var(--text)';
-        status.innerHTML = "<strong style='font-family:var(--font-display);font-size:30px;letter-spacing:.02em;text-transform:uppercase;color:#fff;display:block;margin-bottom:8px;'>Thank you. Got it.</strong>I'll be in touch about your spring 2027 session, usually within a day.";
-        status.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } else {
-        showEmailFallback(String(json.message || 'Something went wrong').replace(/[.\s]+$/, '') + '.');
-        btn.disabled = false; btn.style.opacity = '1';
-      }
-    })
-    .catch(function(){
-      showEmailFallback('Network error.');
-      btn.disabled = false; btn.style.opacity = '1';
-    });
-  });
 })();
 </script>
 </body>
