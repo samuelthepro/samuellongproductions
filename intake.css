@@ -1,0 +1,32 @@
+/* Senior booking form: senior-intake.html and the Book section on seniors.html */
+.intake{display:flex;flex-direction:column;gap:36px;text-align:left;}
+.intake [hidden]{display:none !important;}
+.intake fieldset{border:0;margin:0;padding:0;min-width:0;}
+.intake legend{padding:0;}
+.intake input,.intake button{font-family:var(--font-body);}
+.intake .sec{display:flex;flex-direction:column;gap:30px;padding-top:36px;border-top:1px solid var(--line);}
+.intake .sec.first{padding-top:0;border-top:0;}
+.intake .sec h2,.intake .sec h3{margin:0;font-family:var(--font-display);font-weight:400;text-transform:uppercase;letter-spacing:.02em;line-height:.95;font-size:clamp(28px,4.2vw,40px);color:#fff;}
+.intake .q{display:flex;flex-direction:column;gap:10px;}
+.intake .qlabel{display:block;font-size:16px;line-height:1.5;color:var(--text);font-weight:400;}
+.intake .req{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap;margin-left:6px;}
+.intake .hint{margin:0;font-size:13px;line-height:1.6;color:var(--muted);font-weight:300;}
+.intake .hint a{color:var(--text);text-decoration:underline;text-underline-offset:3px;}
+.intake .q input[type=text],.intake .q input[type=email],.intake .q input[type=tel]{background:#0e0e12;border:1px solid var(--line);border-radius:8px;padding:14px 16px;color:var(--text);font-size:16px;outline:none;transition:border-color .2s ease,box-shadow .2s ease;width:100%;}
+.intake .q input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(208,2,27,.15);}
+.intake ::placeholder{color:#8a888e;}
+.intake .choices{display:flex;flex-wrap:wrap;gap:10px;margin-top:2px;}
+.intake .choice{position:relative;display:block;}
+.intake .choice input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none;}
+.intake .choice span{display:inline-block;padding:11px 16px;border:1px solid var(--line);border-radius:999px;background:#0e0e12;color:var(--text);font-size:14px;line-height:1.4;cursor:pointer;transition:border-color .2s ease,background .2s ease;}
+.intake .choice:hover span{border-color:rgba(255,255,255,.28);}
+.intake .choice input:checked + span{border-color:var(--accent);background:rgba(208,2,27,.16);color:#fff;}
+.intake .choice input:focus-visible + span{outline:2px solid #fff;outline-offset:2px;}
+.intake .follow{display:flex;flex-direction:column;gap:22px;padding:18px 0 4px 16px;border-left:2px solid rgba(208,2,27,.55);}
+.intake .pkg{align-self:flex-start;text-decoration:none;color:var(--text);border:1px solid rgba(255,255,255,.35);padding:13px 24px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;transition:border-color .2s ease;}
+.intake .pkg:hover{border-color:#fff;}
+.intake .next p{margin:0;max-width:62ch;font-size:15px;line-height:1.7;color:var(--muted);font-weight:300;}
+.intake .next p strong{color:var(--text);font-weight:500;}
+.intake .send{align-self:flex-start;cursor:pointer;border:none;color:#fff;background:var(--accent);padding:16px 38px;border-radius:999px;font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 0 30px var(--glow);}
+.intake-status{margin-top:18px;font-size:15px;line-height:1.6;color:var(--muted);text-align:left;}
+.intake-status strong{font-family:var(--font-display);font-weight:400;font-size:30px;letter-spacing:.02em;text-transform:uppercase;color:#fff;display:block;margin-bottom:8px;}
