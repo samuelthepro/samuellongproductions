@@ -125,11 +125,22 @@
     return f || 'index';
   }
   function sourceLabel() { return att.cls + (att.detail ? ': ' + att.detail : ''); }
+  // Where the visitor came from, sent with every inquiry form
+  function leadFields() {
+    return {
+      lead_source: sourceLabel(),
+      lead_landing_page: att.landing,
+      lead_referrer: att.referrer || '(none)',
+      lead_cta: get('slp_cta') || '(none)',
+      lead_pages_viewed: (get('slp_pages') || []).join(' > ')
+    };
+  }
 
   window.slp = {
     track: track,
     source: function () { return att.cls; },
-    sourceLabel: sourceLabel
+    sourceLabel: sourceLabel,
+    lead: leadFields
   };
 
   // ---------- Contact form ----------
@@ -189,11 +200,8 @@
     }
 
     function fill() {
-      hidden('lead_source').value = sourceLabel();
-      hidden('lead_landing_page').value = att.landing;
-      hidden('lead_referrer').value = att.referrer || '(none)';
-      hidden('lead_cta').value = get('slp_cta') || '(none)';
-      hidden('lead_pages_viewed').value = (get('slp_pages') || []).join(' > ');
+      var lead = leadFields();
+      Object.keys(lead).forEach(function (k) { hidden(k).value = lead[k]; });
       var heard = form.querySelector('#heard_about');
       var named = heard && /chatgpt|gemini|perplexity|copilot|claude|ai assistant/i.test(heard.value) ? heard.value : '';
       if (!named && att.cls === 'ai-assistant') named = att.detail;
